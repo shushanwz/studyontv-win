@@ -56,6 +56,10 @@ def decide_lock_mode(argv: list[str]) -> bool:
     """
     if "--no-lock" in argv or "--unlock" in argv:
         return False
+    if "--force-lock" in argv:
+        # 看门狗拉起时用：这里已经确认过「之前就是锁屏态、且密码存在」，
+        # 不再重新判断，否则状态文件一时读不出来就漏锁了。
+        return True
     if consume_unlock_flag():
         print("已读取 unlock.flag：本次跳过锁屏，文件已删除。")
         return False

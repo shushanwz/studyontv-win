@@ -1,6 +1,7 @@
 """锁屏界面冒烟测试：真实建窗，验证锁定 → 兑换 → 计时条 → 回锁这条链路。
 
-只测界面与状态联动，不做系统加固（Alt+Tab 拦截、看门狗是 P3 的事）。
+只测界面与状态联动，不做系统加固（Alt+Tab 拦截、看门狗另见 harden_smoke 与
+guard_wiring_smoke）。
 
 运行： python tests/lock_ui_smoke.py [截图路径]
 """
@@ -23,6 +24,8 @@ TMP = Path(tempfile.mkdtemp(prefix="quizwin-lockui-")) / "data"
 for _file in (ROOT / "data" / "banks").glob("*.json"):
     shutil.copy(_file, TMP / "banks" / _file.name)
 os.environ["QUIZWIN_DATA"] = str(TMP)
+# 测试进程绝不能真装键盘钩子、真起看门狗：那会把跑测试的这台机器锁住
+os.environ["QUIZWIN_NO_GUARD"] = "1"
 
 from quizwin.core.parent import ParentControl  # noqa: E402
 from quizwin.core.storage import Storage, today_key  # noqa: E402

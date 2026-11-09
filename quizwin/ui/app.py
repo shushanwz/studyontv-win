@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import traceback
 import tkinter as tk
 from datetime import datetime
@@ -11,7 +12,8 @@ from tkinter import messagebox
 from ..core.engine import Engine, EngineError
 from ..core.lock import REASON_MANUAL, LockController
 from ..core.parent import ParentControl
-from ..core.storage import Storage
+from ..core.storage import BASE_DIR, Storage
+from ..winapi import HardenOptions, Hardening, Watchdog, set_task_manager_disabled
 from .overlay import OverlayBar
 from .page_lock import LockBar, ParentMenu, ParentSetupDialog, PasswordDialog
 from .theme import DARK, LIGHT, Fonts, apply_dark_title_bar, palette
@@ -111,8 +113,12 @@ class App(tk.Tk):
         self.current = "quiz"
         self._nav_tabs: dict[str, NavTab] = {}
 
+        self._guard_job = None
+        self.hardening: Hardening | None = None
+        self.watchdog: Watchdog | None = None
         if self.lock_mode:
             self._apply_lock_window()
+            self._build_guard()
 
         self.report_callback_exception = self._report_exception
         self._build_shell()
@@ -128,17 +134,97 @@ class App(tk.Tk):
         self.after(400, self._heartbeat)
         if self.lock_mode:
             self.after(300, self._tick_lock)
+            # 等窗口真正映射到桌面再装钩子：过早装，hwnd 还没成型
+            self.after(600, self.engage_guard)
 
     # ------------------------------------------------------------ 锁屏形态
 
     def _apply_lock_window(self) -> None:
-        """全屏无边框置顶。这是「锁屏」的窗口层，输入层与进程层由 winlock 负责。"""
+        """全屏无边框置顶。这是「锁屏」的窗口层，输入层与进程层由 winapi 负责。"""
         self.overrideredirect(True)
         self.attributes("-topmost", True)
         screen_w = self.winfo_screenwidth()
         screen_h = self.winfo_screenheight()
         self.geometry(f"{screen_w}x{screen_h}+0+0")
         self.minsize(900, 640)
+
+    # ------------------------------------------------------------ 系统层封锁
+
+    def _build_guard(self) -> None:
+        if os.environ.get("QUIZWIN_NO_GUARD") == "1":
+            # 自动化测试用：不装钩子、不起守护，避免测试进程真的把桌面锁住
+            self.hardening = None
+            self.watchdog = None
+            return
+        cfg = self.parent.cfg.get("hardening") or {}
+        self.hardening = Hardening(
+            lambda: self.winfo_id(),
+            HardenOptions(
+                keyboard_hook=bool(cfg.get("keyboardHook", True)),
+                clip_cursor=bool(cfg.get("clipCursor", True)),
+                keep_foreground=True,
+            ),
+        )
+        self.watchdog = Watchdog(BASE_DIR) if bool(cfg.get("watchdog", True)) else None
+
+    def engage_guard(self) -> None:
+        """进入锁屏：装键盘钩子、限制鼠标、拉起看门狗。"""
+        if not self.lock_mode:
+            return
+        # 启动时那次 engage 是延迟调度的，若期间已经解锁（家长手快，或自动解锁），
+        # 再装上就等于把刚放行的人又关回去。以此状态为准。
+        if self.lock.is_unlocked():
+            return
+        if self.hardening is not None:
+            if self.hardening.install():
+                self.hardening.keep_foreground()
+            else:
+                # 钩子没装上，锁屏就只剩一个全屏窗口，必须让家长知道
+                self.toast(f"输入封锁未生效：{self.hardening.last_error}", 8000)
+        if self.watchdog is not None and not self.watchdog.running:
+            self.watchdog.start()
+        cfg = self.parent.cfg.get("hardening") or {}
+        if cfg.get("disableTaskMgr"):
+            if set_task_manager_disabled(True):
+                self._mark_taskmgr()
+        else:
+            self._restore_taskmgr()
+
+    def _taskmgr_mark(self) -> Path:
+        return BASE_DIR / "data" / "runtime" / "taskmgr.flag"
+
+    def _mark_taskmgr(self) -> None:
+        """留个记号：这个策略是本程序设的，退出时要自己收拾干净。"""
+        try:
+            path = self._taskmgr_mark()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("1", encoding="utf-8")
+        except OSError:
+            pass
+
+    def _restore_taskmgr(self) -> None:
+        """只清自己设过的策略，别人设的不碰。"""
+        path = self._taskmgr_mark()
+        if not path.exists():
+            return
+        set_task_manager_disabled(False)
+        try:
+            path.unlink()
+        except OSError:
+            pass
+
+    def release_guard(self, graceful: bool = False) -> None:
+        """离开锁屏：卸载钩子、放开鼠标。
+
+        graceful=True 表示这是家长放行的正常退出，要让看门狗别再拉起来；
+        解锁自由玩电脑时只能 graceful=False，否则计时归零回锁后看门狗会误判退出。
+        """
+        if self.hardening is not None:
+            self.hardening.uninstall()
+        if self.watchdog is not None:
+            self.watchdog.stop(graceful=graceful)
+        if graceful:
+            self._restore_taskmgr()
 
 
     # ------------------------------------------------------------ 骨架
@@ -324,7 +410,11 @@ class App(tk.Tk):
         self.enter_overlay()
 
     def enter_overlay(self) -> None:
-        """解锁：收起锁屏窗口，桌面上只留一条计时。"""
+        """解锁：收起锁屏窗口，桌面上只留一条计时。
+
+        必须先卸掉输入封锁——晚一秒，家长就多一秒用不了自己的电脑。
+        """
+        self.release_guard(graceful=False)
         if self.overlay is None:
             self.overlay = OverlayBar(self)
         self.overlay.refresh(self.lock.remaining_seconds())
@@ -362,6 +452,7 @@ class App(tk.Tk):
         self.deiconify()
         self.attributes("-topmost", True)
         self.lift()
+        self.engage_guard()
         page = self.pages.get("quiz")
         if page is not None:
             page.refresh_entry()
@@ -402,6 +493,9 @@ class App(tk.Tk):
         self._lock_tick_job = None
         self._lock_ticks = getattr(self, "_lock_ticks", 0) + 1
         try:
+            # 每两秒把窗口顶回最前一次：偷换前台窗口是绕过锁屏最常见的一步
+            if self.hardening is not None and self._lock_ticks % 2 == 1:
+                self.hardening.pump()
             if self.lock.tick():
                 self.return_to_lock()
             elif self.lock_bar and self.lock.is_locked() and self._lock_ticks % 3 == 0:
@@ -506,6 +600,8 @@ class App(tk.Tk):
                 return
             self.lock.force_lock(REASON_MANUAL)
         self._cancel_overlay_job()
+        # 先让看门狗知道「这次是正常退出」，再卸载钩子，最后才销毁窗口
+        self.release_guard(graceful=True)
         try:
             if self.engine:
                 self.engine.st.save_state()
