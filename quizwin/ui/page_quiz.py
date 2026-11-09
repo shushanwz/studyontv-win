@@ -119,8 +119,17 @@ class QuizPage(tk.Frame):
         self._watch_left = 0
         self._watch_paused = False
         self.stage = tk.Frame(self, bg=app.theme.bg)
-        self.stage.pack(fill="both", expand=True, padx=54, pady=24)
+        self._stage_pad = 54
+        self.stage.pack(fill="both", expand=True, padx=self._stage_pad, pady=24)
+        self.bind("<Configure>", self._fit_stage)
         self.render()
+
+    def _fit_stage(self, event) -> None:
+        """全屏时把答题区收窄居中：选项和反馈面板横着铺满 1920 会很难读。"""
+        pad = max(54, int((event.width - 1360) / 2))
+        if pad != self._stage_pad:
+            self._stage_pad = pad
+            self.stage.pack_configure(padx=pad)
 
     # ------------------------------------------------------------ 生命周期
 
@@ -842,7 +851,8 @@ class QuizPage(tk.Frame):
 
         actions = tk.Frame(inner, bg=theme.bg)
         actions.pack(pady=(26, 0))
-        if passed and status.get("remainingMinutes", 0) > 0:
+        # 锁屏模式下解锁按钮在页面底部的额度条上，这里不重复给
+        if passed and status.get("remainingMinutes", 0) > 0 and not getattr(self.app, "lock_mode", False):
             Button(actions, theme, fonts, "开始使用", self.start_watch, kind="primary", height=46).pack(side="left")
         Button(
             actions,
@@ -903,9 +913,14 @@ class QuizPage(tk.Frame):
         actions = tk.Frame(inner, bg=theme.bg)
         actions.pack(pady=(24, 0))
         Button(actions, theme, fonts, "返回", self.show_start, kind="ghost", height=44).pack(side="left")
-        Button(actions, theme, fonts, "规则设置", lambda: self.app.set_page("rules"), kind="quiet", height=44).pack(
-            side="left", padx=(12, 0)
-        )
+        if getattr(self.app, "lock_mode", False):
+            Button(actions, theme, fonts, "家长操作", self.app.open_parent_gate, kind="quiet", height=44).pack(
+                side="left", padx=(12, 0)
+            )
+        else:
+            Button(
+                actions, theme, fonts, "规则设置", lambda: self.app.set_page("rules"), kind="quiet", height=44
+            ).pack(side="left", padx=(12, 0))
 
     def show_blocked(self, reason: str, status: dict) -> None:
         self._blocked_reason = reason
@@ -1039,9 +1054,14 @@ class QuizPage(tk.Frame):
         ).pack(pady=(12, 0))
         actions = tk.Frame(inner, bg=theme.bg)
         actions.pack(pady=(22, 0))
-        Button(actions, theme, fonts, "去题库", lambda: self.app.set_page("bank"), kind="primary", height=44).pack(
-            side="left"
-        )
+        if getattr(self.app, "lock_mode", False):
+            Button(actions, theme, fonts, "家长操作", self.app.open_parent_gate, kind="primary", height=44).pack(
+                side="left"
+            )
+        else:
+            Button(actions, theme, fonts, "去题库", lambda: self.app.set_page("bank"), kind="primary", height=44).pack(
+                side="left"
+            )
         Button(actions, theme, fonts, "重试", self.reload, kind="ghost", height=44).pack(side="left", padx=(12, 0))
 
     # ------------------------------------------------------------ 键盘

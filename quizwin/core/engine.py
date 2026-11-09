@@ -513,6 +513,58 @@ class Engine:
             "updated_at": now,
         }
 
+    # ---------------------------------------------------------------- 兑换
+
+    def redeem_options(self, tiers: list[int]) -> list[dict]:
+        """给出各档位当前是否可兑换，供锁屏页渲染按钮。"""
+        self.st.roll_day()
+        rules = self.rules()
+        today = self.st.state["today"]
+        credit = int(today["credit_ms"])
+        used = int(today["used_ms"])
+        room = max(0, rules.daily_ms() - used)
+        budget = min(credit, room)
+        options = []
+        for minutes in tiers:
+            need = int(minutes) * 60000
+            options.append(
+                {
+                    "minutes": int(minutes),
+                    "enabled": need > 0 and budget >= need,
+                    "short": 0 if budget >= need else int(math.ceil((need - budget) / 60000)),
+                    "need": int(minutes),
+                    "quota": room <= 0,
+                }
+            )
+        return options
+
+    def redeem(self, minutes: int) -> dict:
+        """把答题余额兑换成自由使用的分钟数。
+
+        预扣制：兑换当下就把额度计入 used_ms，中途提前结束也不退——否则
+        「解锁 25 分钟、5 分钟后主动回锁、再解锁」可以反复刷时长。
+        """
+        self.st.roll_day()
+        rules = self.rules()
+        today = self.st.state["today"]
+        need = int(minutes) * 60000
+        if need <= 0:
+            return {"ok": False, "reason": "invalid"}
+        credit = int(today["credit_ms"])
+        used = int(today["used_ms"])
+        room = max(0, rules.daily_ms() - used)
+        if room <= 0:
+            return {"ok": False, "reason": "quota", "short": int(minutes), "creditAfter": credit}
+        if credit < need or room < need:
+            short = int(math.ceil((need - min(credit, room)) / 60000))
+            return {"ok": False, "reason": "short", "short": short, "creditAfter": credit}
+
+        today["credit_ms"] = credit - need
+        today["used_ms"] = used + need
+        self.st.history_bump(used_ms=need)
+        self.st.save_state()
+        return {"ok": True, "minutes": int(minutes), "creditAfter": today["credit_ms"]}
+
     # ---------------------------------------------------------------- 使用时长
 
     def consume(self, milliseconds: int) -> int:
