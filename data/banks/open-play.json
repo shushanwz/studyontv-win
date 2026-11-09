@@ -1,0 +1,12 @@
+{
+  "name": "开放题型示例",
+  "version": 2,
+  "items": [
+    {"type":"single","q":"计算 $\\frac{1}{2}+\\frac{1}{4}$。","a":["$\\frac{1}{4}$","$\\frac{3}{4}$","$1$"],"k":1,"difficulty":2,"tip":"先通分，再相加。"},
+    {"type":"multiple","q":"下列哪些数是偶数？","a":["2","3","4","5"],"correctIndices":[0,2],"difficulty":1},
+    {"type":"boolean","q":"三角形的内角和是 $180^\\circ$。","k":0,"difficulty":1},
+    {"type":"text","q":"水的化学式是什么？","answers":["H2O","H₂O"],"difficulty":2},
+    {"type":"subjective","q":"已知 $x^2-5x+6=0$，求 $x$ 并写出推导过程。","modelAnswer":"$(x-2)(x-3)=0$，所以 $x=2$ 或 $x=3$。","rubric":"正确因式分解 50 分，得出全部解 50 分。","difficulty":3},
+    {"type":"subjective","q":"用两三句话说明：发现有人落水时，应该怎样安全求助？","modelAnswer":"先呼叫附近成年人，拨打救援电话；在安全位置递救生物品，不贸然下水。","rubric":"能说清呼救和求助方法，并意识到不能贸然下水。","difficulty":2}
+  ]
+}

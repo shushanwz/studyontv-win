@@ -1,0 +1,214 @@
+"""本地存储：题库文件与进度状态。
+
+所有数据都放在程序目录的 data/ 下，拷贝整个文件夹即可带走，不写注册表、不联网。
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import shutil
+from datetime import date, datetime, timedelta
+from pathlib import Path
+from typing import Any
+
+from .models import Bank
+
+BASE_DIR = Path(__file__).resolve().parents[2]  # 程序根目录（storage.py 在 quizwin/core 下）
+DATA_DIR = BASE_DIR / "data"
+BANKS_DIR = DATA_DIR / "banks"
+TRASH_DIR = DATA_DIR / "trash"
+STATE_PATH = DATA_DIR / "state.json"
+
+DEFAULT_STATE: dict[str, Any] = {
+    "schema": 1,
+    "active_bank": "",
+    "theme": "dark",
+    "rules": {},
+    "today": {"day": "", "credit_ms": 0, "used_ms": 0, "rounds_done": 0},
+    "extra_pool": 0,
+    "wrong_progress": 0,
+    "active_round": None,
+    "progress": {},
+    "history": {},
+}
+
+
+def today_key() -> str:
+    return date.today().isoformat()
+
+
+def _atomic_write(path: Path, text: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
+class BankInfo:
+    __slots__ = ("name", "path", "count")
+
+    def __init__(self, name: str, path: Path, count: int):
+        self.name = name
+        self.path = path
+        self.count = count
+
+    @property
+    def filename(self) -> str:
+        return self.path.name
+
+    def __repr__(self) -> str:  # pragma: no cover - 调试用
+        return f"BankInfo({self.name!r}, {self.count})"
+
+
+class Storage:
+    def __init__(self, data_dir: Path | None = None):
+        if data_dir is None:
+            override = os.environ.get("QUIZWIN_DATA")
+            data_dir = Path(override) if override else DATA_DIR
+        self.data_dir = Path(data_dir)
+        self.banks_dir = self.data_dir / "banks"
+        self.trash_dir = self.data_dir / "trash"
+        self.state_path = self.data_dir / "state.json"
+        self.banks_dir.mkdir(parents=True, exist_ok=True)
+        self.trash_dir.mkdir(parents=True, exist_ok=True)
+        self.state: dict[str, Any] = self._load_state()
+
+    # ---------------- 状态 ----------------
+
+    def _load_state(self) -> dict[str, Any]:
+        state = json.loads(json.dumps(DEFAULT_STATE))
+        if self.state_path.exists():
+            try:
+                saved = json.loads(self.state_path.read_text(encoding="utf-8"))
+                if isinstance(saved, dict):
+                    for key, value in saved.items():
+                        state[key] = value
+            except (json.JSONDecodeError, OSError):
+                # 状态文件损坏不应阻止程序启动：保留原文件另存一份，再用默认值
+                try:
+                    broken = self.state_path.with_suffix(".broken.json")
+                    shutil.copyfile(self.state_path, broken)
+                except OSError:
+                    pass
+        today = state.setdefault("today", {})
+        if not isinstance(today, dict):
+            today = {"day": "", "credit_ms": 0, "used_ms": 0, "rounds_done": 0}
+            state["today"] = today
+        state["today"] = {
+            "day": str(today.get("day") or ""),
+            "credit_ms": int(today.get("credit_ms") or 0),
+            "used_ms": int(today.get("used_ms") or 0),
+            "rounds_done": int(today.get("rounds_done") or 0),
+        }
+        state.setdefault("history", {})
+        state.setdefault("progress", {})
+        return state
+
+    def save_state(self) -> None:
+        _atomic_write(self.state_path, json.dumps(self.state, ensure_ascii=False, indent=2) + "\n")
+
+    def roll_day(self) -> bool:
+        """跨天时重置当日额度，返回是否发生了重置。"""
+        today = self.state["today"]
+        key = today_key()
+        if today.get("day") == key:
+            return False
+        today["day"] = key
+        today["credit_ms"] = 0
+        today["used_ms"] = 0
+        today["rounds_done"] = 0
+        self.save_state()
+        return True
+
+    # ---------------- 题库 ----------------
+
+    def bank_infos(self) -> list[BankInfo]:
+        infos: list[BankInfo] = []
+        for path in sorted(self.banks_dir.glob("*.json")):
+            name, count = path.stem, 0
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                if isinstance(payload, dict):
+                    name = str(payload.get("name") or path.stem)
+                    items = payload.get("items")
+                    count = len(items) if isinstance(items, list) else 0
+                elif isinstance(payload, list):
+                    count = len(payload)
+                    name = path.stem
+            except (json.JSONDecodeError, OSError):
+                count = -1
+            infos.append(BankInfo(name, path, count))
+        return infos
+
+    def load_bank(self, path: Path) -> Bank:
+        return Bank.load(Path(path))
+
+    def load_active_bank(self) -> Bank:
+        path = self.active_bank_path()
+        if path is None:
+            raise FileNotFoundError("data/banks 下没有可用的题库文件")
+        return self.load_bank(path)
+
+    def active_bank_path(self) -> Path | None:
+        infos = self.bank_infos()
+        if not infos:
+            return None
+        active = str(self.state.get("active_bank") or "")
+        for info in infos:
+            if info.filename == active:
+                return info.path
+        return infos[0].path
+
+    def set_active_bank(self, filename: str) -> None:
+        self.state["active_bank"] = filename
+        self.save_state()
+
+    def unique_bank_path(self, name: str) -> Path:
+        safe = "".join(ch for ch in name if ch not in '\\/:*?"<>|').strip() or "题库"
+        safe = safe.replace(" ", "-")
+        candidate = self.banks_dir / f"{safe}.json"
+        index = 2
+        while candidate.exists():
+            candidate = self.banks_dir / f"{safe}-{index}.json"
+            index += 1
+        return candidate
+
+    def retire_bank(self, path: Path) -> Path:
+        """把题库移入 data/trash，避免误删不可恢复。"""
+        target = self.trash_dir / f"{path.stem}-{datetime.now().strftime('%Y%m%d-%H%M%S')}{path.suffix}"
+        shutil.move(str(path), str(target))
+        return target
+
+    # ---------------- 历史 ----------------
+
+    def history_bump(self, answered: int = 0, correct: int = 0, rounds: int = 0, used_ms: int = 0) -> None:
+        history = self.state.setdefault("history", {})
+        key = today_key()
+        entry = history.setdefault(key, {"answered": 0, "correct": 0, "rounds": 0, "used_ms": 0})
+        entry["answered"] = int(entry.get("answered", 0)) + answered
+        entry["correct"] = int(entry.get("correct", 0)) + correct
+        entry["rounds"] = int(entry.get("rounds", 0)) + rounds
+        entry["used_ms"] = int(entry.get("used_ms", 0)) + used_ms
+        # 只保留最近 60 天
+        if len(history) > 60:
+            keep = sorted(history)[-60:]
+            self.state["history"] = {k: history[k] for k in keep}
+
+    def recent_history(self, days: int = 7) -> list[dict]:
+        history = self.state.get("history", {})
+        rows = []
+        for offset in range(days):
+            day = (date.today() - timedelta(days=offset)).isoformat()
+            entry = history.get(day, {})
+            rows.append(
+                {
+                    "day": day,
+                    "label": "今天" if offset == 0 else ("昨天" if offset == 1 else day[5:]),
+                    "answered": int(entry.get("answered", 0)),
+                    "correct": int(entry.get("correct", 0)),
+                    "rounds": int(entry.get("rounds", 0)),
+                    "used_minutes": round(int(entry.get("used_ms", 0)) / 60000, 1),
+                }
+            )
+        return rows

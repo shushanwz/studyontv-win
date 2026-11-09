@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+
+# 运行态数据：不进版本库，但题库与目录结构保留
+data/state.json
+data/state.broken.json
+data/error.log
+data/.hb
+data/unlock.flag
+
+# 截图中间产物
+shots/*.bmp
+shots/_*.png
+
+_scratch/

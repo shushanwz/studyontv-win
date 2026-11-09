@@ -1,0 +1,116 @@
+{
+  "name": "英语基础（单词 + 语法）",
+  "version": 1,
+  "items": [
+    {
+      "q": "“苹果”用英语怎么说？",
+      "a": [
+        "apple",
+        "banana",
+        "orange",
+        "pear"
+      ],
+      "k": 0,
+      "tip": "apple 苹果。"
+    },
+    {
+      "q": "“谢谢”用英语怎么说？",
+      "a": [
+        "Sorry",
+        "Thank you",
+        "Hello",
+        "Goodbye"
+      ],
+      "k": 1,
+      "tip": "Thank you，谢谢。"
+    },
+    {
+      "q": "“图书馆”用英语怎么说？",
+      "a": [
+        "lab",
+        "library",
+        "bookstore",
+        "school"
+      ],
+      "k": 1,
+      "tip": "library 图书馆。"
+    },
+    {
+      "q": "“星期一”用英语怎么说？",
+      "a": [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Friday"
+      ],
+      "k": 1,
+      "tip": "Monday 星期一。"
+    },
+    {
+      "q": "“我喜欢读书”正确的说法是？",
+      "a": [
+        "I like read books.",
+        "I likes reading books.",
+        "I like reading books.",
+        "I liking read books."
+      ],
+      "k": 2,
+      "tip": "like doing sth：I like reading books."
+    },
+    {
+      "q": "“She ___ to school by bus.” 应该填？",
+      "a": [
+        "go",
+        "goes",
+        "going",
+        "gone"
+      ],
+      "k": 1,
+      "tip": "第三人称单数动词加 es。"
+    },
+    {
+      "q": "“cat”的复数形式是？",
+      "a": [
+        "cat",
+        "cates",
+        "cats",
+        "caties"
+      ],
+      "k": 2,
+      "tip": "一般名词加 s。"
+    },
+    {
+      "q": "“big”的反义词是？",
+      "a": [
+        "small",
+        "tall",
+        "long",
+        "fat"
+      ],
+      "k": 0,
+      "tip": "big 大 ↔ small 小。"
+    },
+    {
+      "q": "“How old are you?” 是什么意思？",
+      "a": [
+        "你多大了？",
+        "你在哪里？",
+        "你叫什么？",
+        "你好吗？"
+      ],
+      "k": 0,
+      "tip": "How old are you? 你几岁了？"
+    },
+    {
+      "q": "“早餐”用英语怎么说？",
+      "a": [
+        "lunch",
+        "dinner",
+        "breakfast",
+        "supper"
+      ],
+      "k": 2,
+      "tip": "breakfast 早餐。"
+    }
+  ]
+}
