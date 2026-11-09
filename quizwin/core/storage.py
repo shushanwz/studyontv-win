@@ -20,8 +20,39 @@ BANKS_DIR = DATA_DIR / "banks"
 TRASH_DIR = DATA_DIR / "trash"
 STATE_PATH = DATA_DIR / "state.json"
 
+DEFAULT_PARENT: dict[str, Any] = {
+    "enabled": True,
+    "setupDone": False,
+    "password": {},
+    "recovery": {"hash": "", "salt": "", "iters": 0, "used": False},
+    "failCount": 0,
+    "lockUntil": 0,
+    "tiers": [10, 15, 20, 25],
+    "hardening": {
+        "keyboardHook": True,
+        "clipCursor": True,
+        "watchdog": True,
+        "disableTaskMgr": False,
+    },
+    "banksRequirePassword": True,
+    "settingsGraceSeconds": 300,
+    "overlay": {"x": -1, "y": -1},
+}
+
+DEFAULT_LOCK: dict[str, Any] = {
+    "state": "locked",
+    "deadlineWall": 0,
+    "lastSeenWall": 0,
+    "unlockedMinutes": 0,
+    "lastUnlockSource": "",
+    "tamperCount": 0,
+    "abnormalExit": 0,
+    "lockCount": 0,
+    "lastLockReason": "",
+}
+
 DEFAULT_STATE: dict[str, Any] = {
-    "schema": 1,
+    "schema": 2,
     "active_bank": "",
     "theme": "dark",
     "rules": {},
@@ -31,7 +62,30 @@ DEFAULT_STATE: dict[str, Any] = {
     "active_round": None,
     "progress": {},
     "history": {},
+    "parent": DEFAULT_PARENT,
+    "lock": DEFAULT_LOCK,
 }
+
+
+def _safe_int(value: Any, default: int = 0) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return default
+
+
+def _deep_fill(default: dict, saved: Any) -> dict:
+    """用默认值补齐缺失字段：一层字典合并，够用且不会把未知字段丢掉。"""
+    result = json.loads(json.dumps(default))
+    if not isinstance(saved, dict):
+        return result
+    for key, value in saved.items():
+        base = result.get(key)
+        if isinstance(base, dict) and isinstance(value, dict):
+            result[key] = _deep_fill(base, value)
+        else:
+            result[key] = value
+    return result
 
 
 def today_key() -> str:
@@ -83,7 +137,12 @@ class Storage:
                 saved = json.loads(self.state_path.read_text(encoding="utf-8"))
                 if isinstance(saved, dict):
                     for key, value in saved.items():
-                        state[key] = value
+                        default = DEFAULT_STATE.get(key)
+                        if isinstance(default, dict):
+                            # 结构型字段：损坏成非字典时保留默认值，不让脏数据进内存
+                            state[key] = _deep_fill(default, value if isinstance(value, dict) else {})
+                        else:
+                            state[key] = value
             except (json.JSONDecodeError, OSError):
                 # 状态文件损坏不应阻止程序启动：保留原文件另存一份，再用默认值
                 try:
@@ -91,15 +150,17 @@ class Storage:
                     shutil.copyfile(self.state_path, broken)
                 except OSError:
                     pass
+        # 老文件的 schema 号不再回写：结构已经按新版补齐，标记成新版即可
+        state["schema"] = _safe_int(DEFAULT_STATE.get("schema"), 2)
         today = state.setdefault("today", {})
         if not isinstance(today, dict):
             today = {"day": "", "credit_ms": 0, "used_ms": 0, "rounds_done": 0}
             state["today"] = today
         state["today"] = {
             "day": str(today.get("day") or ""),
-            "credit_ms": int(today.get("credit_ms") or 0),
-            "used_ms": int(today.get("used_ms") or 0),
-            "rounds_done": int(today.get("rounds_done") or 0),
+            "credit_ms": _safe_int(today.get("credit_ms")),
+            "used_ms": _safe_int(today.get("used_ms")),
+            "rounds_done": _safe_int(today.get("rounds_done")),
         }
         state.setdefault("history", {})
         state.setdefault("progress", {})
