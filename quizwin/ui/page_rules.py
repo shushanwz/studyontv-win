@@ -23,6 +23,8 @@ class RulesPage(tk.Frame):
         self.subjects: set[str] = set()
         self.levels: set[str] = set()
         self._switches: dict[str, Switch] = {}
+        self.tier_vars: list[tk.StringVar] = []
+        self.hard_flags: dict[str, tk.BooleanVar] = {}
         self._load_rules()
         self._build()
 
@@ -70,6 +72,7 @@ class RulesPage(tk.Frame):
         theme, fonts = self.app.theme, self.app.fonts
         scroll = ScrollFrame(self, theme, parent_bg=theme.bg)
         scroll.pack(fill="both", expand=True, padx=46, pady=22)
+        self.scroll = scroll
         body = scroll.body
 
         head = tk.Frame(body, bg=theme.bg)
@@ -256,6 +259,8 @@ class RulesPage(tk.Frame):
         ).pack(side="left", padx=(8, 10), ipady=4)
         tk.Label(window_row, text="格式 HH:MM", bg=theme.bg, fg=theme.text3, font=fonts.small).pack(side="left")
 
+        self._build_parent_section(body)
+
         self._section(body, "外观")
         theme_row = tk.Frame(body, bg=theme.bg)
         theme_row.pack(fill="x")
@@ -289,6 +294,147 @@ class RulesPage(tk.Frame):
             fg=theme.text3,
             font=fonts.small,
         ).pack(side="left", padx=(18, 0))
+
+    # ------------------------------------------------------------ 家长控制
+
+    def _build_parent_section(self, body) -> None:
+        theme, fonts = self.app.theme, self.app.fonts
+        control = self.app.parent
+        cfg = control.cfg
+        hard = cfg.get("hardening") or {}
+
+        self._section(body, "家长控制")
+
+        has_password = control.has_password
+        enabled = bool(cfg.get("enabled")) and has_password
+        try:
+            status = self.app.engine.status() if self.app.engine else {}
+        except Exception:  # pragma: no cover - 状态异常不该挡住设置页
+            status = {}
+        left = float(status.get("remainingMinutes") or 0)
+
+        if enabled:
+            line = f"已开启 · 今日剩余额度 {left:g} 分钟 · 攒够额度才能解锁电脑"
+            color = theme.ok
+        elif has_password:
+            line = "已暂停 · 打开程序不再锁屏，密码仍然有效"
+            color = theme.text2
+        else:
+            line = "未设置密码 · 没设密码就不会锁屏，先设一个再启用"
+            color = theme.bad
+        tk.Label(body, text=line, bg=theme.bg, fg=color, font=fonts.body).pack(anchor="w")
+
+        tier_row = tk.Frame(body, bg=theme.bg)
+        tier_row.pack(fill="x", pady=(14, 0))
+        tk.Label(tier_row, text="解锁档位", bg=theme.bg, fg=theme.text, font=fonts.body_bold).pack(side="left")
+        existing = control.tiers
+        self.tier_vars = []
+        for index in range(4):
+            value = existing[index] if index < len(existing) else 0
+            var = tk.StringVar(value=str(value) if value else "")
+            self.tier_vars.append(var)
+            self._spin(tier_row, var, 1, 60, 5, width=4).pack(side="left", padx=(10 if index == 0 else 8, 0))
+        tk.Label(tier_row, text="分钟（留空或 0 表示不要这一档）", bg=theme.bg, fg=theme.text3, font=fonts.small).pack(
+            side="left", padx=(10, 0)
+        )
+
+        self.hard_flags = {
+            "keyboardHook": tk.BooleanVar(value=bool(hard.get("keyboardHook", True))),
+            "clipCursor": tk.BooleanVar(value=bool(hard.get("clipCursor", True))),
+            "watchdog": tk.BooleanVar(value=bool(hard.get("watchdog", True))),
+            "disableTaskMgr": tk.BooleanVar(value=bool(hard.get("disableTaskMgr", False))),
+        }
+        self._parent_switch_row(
+            body, "keyboardHook", "封锁切换键", "拦下 Win、Alt+Tab、Alt+F4、Ctrl+Esc，锁屏期间切不走"
+        )
+        self._parent_switch_row(body, "clipCursor", "限制鼠标范围", "光标锁在全屏窗口内，点不到任务栏")
+        self._parent_switch_row(body, "watchdog", "看门狗", "进程被强行结束后，两三秒内自动把锁屏拉回来")
+        self._parent_switch_row(
+            body,
+            "disableTaskMgr",
+            "禁用任务管理器",
+            "更硬，但会影响这台电脑的其他使用；程序正常退出时会自动恢复",
+        )
+
+        actions = tk.Frame(body, bg=theme.bg)
+        actions.pack(fill="x", pady=(16, 0))
+        Button(actions, theme, fonts, "修改家长密码", self._change_password, kind="ghost", height=38).pack(side="left")
+        if self.app.lock_mode:
+            Button(actions, theme, fonts, "立即回到锁屏", self._lock_now, kind="ghost", height=38).pack(
+                side="left", padx=(10, 0)
+            )
+        Button(actions, theme, fonts, "停用家长控制", self._disable_parent, kind="quiet", height=38).pack(
+            side="left", padx=(10, 0)
+        )
+
+    def _parent_switch_row(self, parent, key: str, title: str, hint: str) -> None:
+        theme, fonts = self.app.theme, self.app.fonts
+        row = tk.Frame(parent, bg=theme.bg)
+        row.pack(fill="x", pady=(10, 0))
+        text = tk.Frame(row, bg=theme.bg)
+        text.pack(side="left", fill="x", expand=True)
+        tk.Label(text, text=title, bg=theme.bg, fg=theme.text, font=fonts.body_bold).pack(anchor="w")
+        tk.Label(
+            text, text=hint, bg=theme.bg, fg=theme.text3, font=fonts.small, justify="left", anchor="w"
+        ).pack(anchor="w", pady=(2, 0))
+        var = self.hard_flags[key]
+        Switch(row, theme, checked=var.get(), on_change=lambda value, v=var: v.set(value)).pack(
+            side="right", padx=(16, 0)
+        )
+
+    def _change_password(self) -> None:
+        from .page_lock import ParentSetupDialog, PasswordDialog
+
+        passed, _code = PasswordDialog.ask(self.app, self.app, "修改家长密码", "先输入当前密码，验证后可以设新的")
+        if not passed:
+            return
+        ok, _new_code = ParentSetupDialog.ask(self.app, self.app)
+        if ok:
+            self.app.toast("家长密码已更新，恢复码也已重新生成")
+            self._rebuild()
+
+    def _lock_now(self) -> None:
+        self.app.back_to_lock()
+
+    def _disable_parent(self) -> None:
+        from .page_lock import PasswordDialog
+
+        passed, _code = PasswordDialog.ask(self.app, self.app, "停用家长控制", "停用后打开程序不再锁屏")
+        if not passed:
+            return
+        if not self.app.confirm("停用家长控制", "停用后这台电脑将不再需要答题解锁。确定停用？"):
+            return
+        self.app.parent.cfg["enabled"] = False
+        self.app.parent.st.save_state()
+        self.app.toast("家长控制已停用")
+        if self.app.lock_mode:
+            self.app.on_close(force=True)
+        else:
+            self._rebuild()
+
+    def _save_parent(self) -> None:
+        control = self.app.parent
+        tiers: list[int] = []
+        for var in self.tier_vars:
+            raw = str(var.get()).strip()
+            if not raw:
+                continue
+            try:
+                value = int(float(raw))
+            except ValueError:
+                continue
+            if value > 0:
+                tiers.append(value)
+        if tiers:
+            ok, message = control.set_tiers(tiers)
+            if not ok:
+                self.app.toast(f"档位没保存：{message}")
+                return
+        hard = control.cfg.setdefault("hardening", {})
+        for key, var in self.hard_flags.items():
+            hard[key] = bool(var.get())
+        control.st.save_state()
+        self.app.reload_guard_config()
 
     # ------------------------------------------------------------ 组件
 
@@ -436,6 +582,7 @@ class RulesPage(tk.Frame):
             return
 
         engine.save_rules(rules)
+        self._save_parent()
         self.app.toast("规则已保存，下一组任务生效")
         self.app.refresh_status()
 

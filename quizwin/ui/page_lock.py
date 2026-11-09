@@ -623,6 +623,9 @@ class ParentMenu(_DialogBase):
             Button(actions, theme, fonts, "立即回锁", self._lock_now, kind="ghost", height=44).pack(
                 fill="x", pady=(8, 0)
             )
+            Button(actions, theme, fonts, "打开设置", self._open_settings, kind="ghost", height=44).pack(
+                fill="x", pady=(8, 0)
+            )
         Button(actions, theme, fonts, "退出程序", self._quit, kind="danger", height=44).pack(fill="x", pady=(8, 0))
         Button(actions, theme, fonts, "关闭", self.destroy, kind="quiet", height=38).pack(fill="x", pady=(10, 0))
 
@@ -637,6 +640,10 @@ class ParentMenu(_DialogBase):
     def _lock_now(self) -> None:
         self.destroy()
         self.app.end_unlock_early()
+
+    def _open_settings(self) -> None:
+        self.destroy()
+        self.app.open_settings_as_parent()
 
     def _quit(self) -> None:
         self.destroy()

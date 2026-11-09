@@ -78,6 +78,10 @@ class App(tk.Tk):
         super().__init__()
         self.withdraw()
         self.lock_mode = bool(lock_mode)
+        # shell_mode 决定「当前长什么样」，lock_mode 决定「这个进程是不是锁屏进程」。
+        # 两者分开，家长才能从锁屏临时切到设置界面再切回来。
+        self.shell_mode = "lock" if self.lock_mode else "normal"
+        self.settings_mode = False
         self.title(APP_TITLE)
         width, height = 1280, 840
         screen_w = self.winfo_screenwidth()
@@ -167,13 +171,23 @@ class App(tk.Tk):
         )
         self.watchdog = Watchdog(BASE_DIR) if bool(cfg.get("watchdog", True)) else None
 
+    def reload_guard_config(self) -> None:
+        """设置里改了加固开关后，按新配置重建封锁对象。"""
+        if not self.lock_mode or os.environ.get("QUIZWIN_NO_GUARD") == "1":
+            return
+        if self.hardening is not None:
+            self.hardening.uninstall()
+        if self.watchdog is not None:
+            self.watchdog.stop(graceful=False)
+        self._build_guard()
+
     def engage_guard(self) -> None:
         """进入锁屏：装键盘钩子、限制鼠标、拉起看门狗。"""
         if not self.lock_mode:
             return
         # 启动时那次 engage 是延迟调度的，若期间已经解锁（家长手快，或自动解锁），
         # 再装上就等于把刚放行的人又关回去。以此状态为准。
-        if self.lock.is_unlocked():
+        if self.lock.is_unlocked() or self.settings_mode:
             return
         if self.hardening is not None:
             if self.hardening.install():
@@ -230,7 +244,7 @@ class App(tk.Tk):
     # ------------------------------------------------------------ 骨架
 
     def _build_shell(self) -> None:
-        if self.lock_mode:
+        if self.shell_mode == "lock":
             self._build_lock_shell()
         else:
             self._build_normal_shell()
@@ -312,6 +326,11 @@ class App(tk.Tk):
         self.clock_label.pack(side="right", padx=(16, 0))
         self.status_pill = Pill(right, theme, fonts, "正在加载…", parent_bg=theme.bg)
         self.status_pill.pack(side="right")
+        if self.lock_mode:
+            # 家长从锁屏进了设置，总得有条路回去
+            Button(right, theme, fonts, "返回锁屏", self.back_to_lock, kind="ghost", height=32).pack(
+                side="right", padx=(0, 12)
+            )
 
         tk.Frame(self, bg=theme.line, height=1).pack(side="top", fill="x")
 
@@ -334,7 +353,7 @@ class App(tk.Tk):
         from .page_quiz import QuizPage
         from .page_rules import RulesPage
 
-        if self.lock_mode:
+        if self.shell_mode == "lock":
             # 锁屏下只有答题页，导航栏都不建，孩子没有可去的别处
             page = QuizPage(self.body, self)
             page.place(relx=0, rely=0, relwidth=1, relheight=1)
@@ -350,7 +369,7 @@ class App(tk.Tk):
 
     def set_page(self, key: str) -> None:
         if key not in self.pages:
-            if self.lock_mode:
+            if self.shell_mode == "lock":
                 # 锁屏下没有别的页，强行跳转只当成一次提示
                 self.toast("现在只能答题，要进设置得先让家长验证密码")
             return
@@ -367,9 +386,61 @@ class App(tk.Tk):
         page.on_show()
         self.refresh_status()
 
+    def switch_shell(self, mode: str, page: str | None = None) -> None:
+        """在「锁屏形态」与「普通形态」之间整体重建界面。
+
+        不切换窗口属性（overrideredirect 反复开关会闪、也会打乱 DPI 与焦点），
+        只换内容：锁屏是全屏无边框 + 只有答题页，普通形态带导航。
+        """
+        target = "normal" if str(mode).lower() == "normal" else "lock"
+        wanted = page or self.current
+        self._cancel_overlay_job()
+        if self._toast_job:
+            try:
+                self.after_cancel(self._toast_job)
+            except tk.TclError:
+                pass
+            self._toast_job = None
+        # 只属于某个形态的控件，重建前先置空：
+        # 否则切回锁屏后 self.status_pill 还指着已销毁的控件，一刷新就抛 TclError
+        for name in ("status_pill", "clock_label", "day_label", "header"):
+            setattr(self, name, None)
+        for child in list(self.children.values()):
+            child.destroy()
+        self.shell_mode = target
+        self._nav_tabs = {}
+        self.pages = {}
+        self.lock_bar = None
+        self.current = wanted if wanted else "quiz"
+        self._build_shell()
+        self._build_pages()
+        self.set_page(self.current if self.current in self.pages else "quiz")
+        try:
+            self._paint_clock()
+        except tk.TclError:
+            pass
+        apply_dark_title_bar(self, self.theme.name == "dark" and target == "normal")
+
+    def open_settings_as_parent(self) -> None:
+        """家长验证通过 → 进设置。放开输入封锁，但不算解锁，也不消耗额度。"""
+        self.release_guard(graceful=False)
+        self.settings_mode = True
+        self.switch_shell("normal", "rules")
+        self.attributes("-topmost", True)
+
+    def back_to_lock(self) -> None:
+        """从设置回锁屏：重建锁屏形态并重新装上封锁。"""
+        self.settings_mode = False
+        self.switch_shell("lock", "quiz")
+        page = self.pages.get("quiz")
+        if page is not None:
+            page.refresh_entry()
+        self.engage_guard()
+        self.lift()
+
     def refresh_status(self) -> None:
         pill = getattr(self, "status_pill", None)
-        if pill is None:
+        if pill is None or not pill.winfo_exists():
             # 锁屏形态没有状态胶囊，进度改由底部额度条表达
             if self.lock_bar is not None:
                 self.lock_bar.refresh()
@@ -492,6 +563,10 @@ class App(tk.Tk):
         """锁屏期间的每秒心跳：既判断是否到点，也顺带刷新额度条。"""
         self._lock_tick_job = None
         self._lock_ticks = getattr(self, "_lock_ticks", 0) + 1
+        if self.settings_mode:
+            # 家长在设置里，不要抢焦点、也不要因为计时把人踢回锁屏
+            self._lock_tick_job = self.after(1000, self._tick_lock)
+            return
         try:
             # 每两秒把窗口顶回最前一次：偷换前台窗口是绕过锁屏最常见的一步
             if self.hardening is not None and self._lock_ticks % 2 == 1:
@@ -570,15 +645,22 @@ class App(tk.Tk):
 
     def _tick_clock(self) -> None:
         try:
-            now = datetime.now()
-            self.clock_label.configure(text=now.strftime("%H:%M"))
-            day_label = getattr(self, "day_label", None)
-            if day_label is not None:
-                weekday = "一二三四五六日"[now.weekday()]
-                day_label.configure(text=now.strftime("%m 月 %d 日 · 周") + weekday)
+            self._paint_clock()
         except tk.TclError:
-            return
+            # 控件正在被重建（切换形态、换主题），这一拍跳过，但排程必须继续，
+            # 否则时钟一停就再也不走了
+            pass
         self.after(20_000, self._tick_clock)
+
+    def _paint_clock(self) -> None:
+        now = datetime.now()
+        clock = getattr(self, "clock_label", None)
+        if clock is not None and clock.winfo_exists():
+            clock.configure(text=now.strftime("%H:%M"))
+        day = getattr(self, "day_label", None)
+        if day is not None and day.winfo_exists():
+            weekday = "一二三四五六日"[now.weekday()]
+            day.configure(text=now.strftime("%m 月 %d 日 · 周") + weekday)
 
     # ------------------------------------------------------------ 键盘
 
