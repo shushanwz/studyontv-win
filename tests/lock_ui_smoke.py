@@ -139,6 +139,48 @@ def main() -> int:
     )
     check("计时条显示 mm:ss", app.overlay.clock.cget("text") in ("10:00", "09:59"), app.overlay.clock.cget("text"))
 
+    # ---------------- 计时条尺寸与闪烁 ----------------
+
+    overlay = app.overlay
+    app.update()
+    check(
+        "时钟高度够，不被窗口切掉",
+        overlay.clock.winfo_height() >= overlay.clock.winfo_reqheight(),
+        f"{overlay.clock.winfo_height()} < {overlay.clock.winfo_reqheight()}",
+    )
+    check(
+        "时钟宽度够",
+        overlay.clock.winfo_width() >= overlay.clock.winfo_reqwidth(),
+        f"{overlay.clock.winfo_width()} < {overlay.clock.winfo_reqwidth()}",
+    )
+    check(
+        "窗口高度按字体算过",
+        overlay.winfo_height() >= overlay._inner.winfo_reqheight(),
+        f"{overlay.winfo_height()} < {overlay._inner.winfo_reqheight()}",
+    )
+    check("平时写「剩余时间」", overlay.caption.cget("text") == "剩余时间", overlay.caption.cget("text"))
+
+    overlay.refresh(45)
+    check("60 秒内提示「快结束了」", overlay.caption.cget("text") == "快结束了", overlay.caption.cget("text"))
+    overlay.refresh(29)
+    first = overlay.clock.cget("fg")
+    overlay.refresh(29)
+    second = overlay.clock.cget("fg")
+    check("最后 30 秒开始闪（颜色每秒翻转）", first != second, f"{first} / {second}")
+    check("闪的同时提醒保存", overlay.caption.cget("text") == "记得保存", overlay.caption.cget("text"))
+    overlay.refresh(9)
+    check("最后 10 秒改说「即将回锁」", overlay.caption.cget("text") == "即将回锁", overlay.caption.cget("text"))
+    overlay.refresh(300)
+    check("回到 5 分钟时不再闪", overlay.caption.cget("text") == "剩余时间", overlay.caption.cget("text"))
+    check("一位数小时也能显示", overlay._format(3725) == "1:02:05", overlay._format(3725))
+    overlay.refresh(59)
+    app.update()
+    check(
+        "位数变少后照样完整",
+        overlay.clock.winfo_width() >= overlay.clock.winfo_reqwidth(),
+        f"{overlay.clock.winfo_width()} / {overlay.clock.winfo_reqwidth()}",
+    )
+
     # ---------------- 到点回锁 ----------------
 
     app.lock._deadline = app.lock._clock() - 1

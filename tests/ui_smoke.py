@@ -74,7 +74,11 @@ def main() -> int:
                 quiz.submit()
             else:
                 quiz.choose(item.expected_indices()[0])
-            app.update()
+                if item.type == "multiple" and not quiz.answered:
+                    # 多选题 choose() 只负责勾选，还得按一次确认；抽到多选题时
+                    # 少了这一步就会误报「作答后出现反馈」失败（随机抽题的假阴性）
+                    quiz.submit()
+                app.update()
             if quiz.view == "self":
                 check("主观题进入自评", True)
                 quiz._self_judge(True)

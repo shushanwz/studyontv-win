@@ -9,6 +9,7 @@ from tkinter import filedialog, messagebox, simpledialog, ttk
 
 from ..core.engine import EngineError
 from ..core.models import LETTERS, TYPE_LABEL, Bank, Question, loads_lenient
+from ..core.wrongbook import WRONG_FILE
 from . import bank_prompt
 from .theme import Fonts, Palette, apply_dark_title_bar, mix
 from .widgets import Button, ScrollFrame, SlimScrollbar, Switch
@@ -69,6 +70,23 @@ def dark_scrollbar(parent: tk.Misc, theme: Palette, command) -> SlimScrollbar:
     return SlimScrollbar(parent, theme, command=command, parent_bg=theme.surface, width=10)
 
 
+def fit_text(widget: tk.Misc, fonts: Fonts, text: str, font, max_px: int) -> str:
+    """按像素宽度截断文字。
+
+    按字数截（原来的做法）在高 DPI 下不够：同样 12 个字，125% 缩放后宽出一大截，
+    名字会压到右边「参与出题」的开关上。这里直接量宽度。
+    """
+    if max_px <= 0 or fonts.measure(widget, text, font) <= max_px:
+        return text
+    cut = text
+    while cut and fonts.measure(widget, cut + "…", font) > max_px:
+        cut = cut[:-1]
+    return (cut + "…") if cut else "…"
+
+
+NAME_MAX_PX = 188  # 左栏 280 - 竖条 3 - 内边距 18 - 右侧开关/删除列 54 - 余量
+
+
 class BankRow(tk.Frame):
     """一行题库：名称与题数、是否参与出题、删除。
 
@@ -76,7 +94,8 @@ class BankRow(tk.Frame):
     用户可能一边编辑「数学」，一边让「语文 / 历史」也混进来抽题。
     """
 
-    def __init__(self, master, page: "BankPage", info, active: bool, selected: bool, builtin: bool = False):
+    def __init__(self, master, page: "BankPage", info, active: bool, selected: bool, builtin: bool = False,
+                 wrong: bool = False):
         theme, fonts = page.app.theme, page.app.fonts
         bg = theme.accent_soft if active else theme.surface2
         super().__init__(master, bg=bg, cursor="hand2", height=74)
@@ -91,10 +110,9 @@ class BankRow(tk.Frame):
 
         body = tk.Frame(self, bg=bg)
         body.grid(row=0, column=1, sticky="ew", padx=(12, 6), pady=10)
-        name = info.name if len(info.name) <= 12 else info.name[:11] + "…"
         name_label = tk.Label(
             body,
-            text=name,
+            text=fit_text(self, fonts, info.name, fonts.body_bold, NAME_MAX_PX),
             bg=bg,
             fg=theme.text if active else theme.text2,
             font=fonts.body_bold,
@@ -105,6 +123,8 @@ class BankRow(tk.Frame):
         count_text = f"{info.count} 题" if info.count >= 0 else "文件无法解析"
         if builtin:
             count_text += " · 内置"
+        if wrong:
+            count_text += " · 自动收集"
         count_label = tk.Label(
             body,
             text=count_text,
@@ -239,6 +259,10 @@ class BankPage(tk.Frame):
         )
         Button(head_actions, theme, fonts, "保存题库", self.save_bank, kind="ghost", height=36, padx=16).pack(
             side="left", padx=(8, 0)
+        )
+        # 先不 pack：只有打开错题库时才出现，见 refresh_table 里的 _sync_wrong_button
+        self.clear_wrong = Button(
+            head_actions, theme, fonts, "清空错题库", self.clear_wrong_book, kind="danger", height=36, padx=14
         )
 
         info_row = tk.Frame(head, bg=theme.bg)
@@ -383,6 +407,7 @@ class BankPage(tk.Frame):
                 active=info.filename == active_name,
                 selected=info.filename in selected,
                 builtin=info.filename in builtin_names,
+                wrong=info.filename == WRONG_FILE,
             )
             row.pack(fill="x", pady=(0, 6))
 
@@ -394,14 +419,17 @@ class BankPage(tk.Frame):
             self.dirty_label.configure(text="")
             self.tree.delete(*self.tree.get_children())
             self.footer.configure(text="")
+            self._sync_wrong_button(None)
             return
         bank = engine.bank
+        self._sync_wrong_button(bank)
         theme, fonts = self.app.theme, self.app.fonts
         self.title_label.configure(text=bank.name if len(bank.name) <= 18 else bank.name[:17] + "…")
         enabled = len(bank.active_items())
         scope = engine.quiz_scope()
         scope_text = f" · 抽题范围 {scope['banks']} 份 / {scope['pool']} 题" if scope["banks"] else ""
-        self.meta_label.configure(text=f"共 {len(bank.items)} 题 · 启用 {enabled} 题{scope_text}")
+        wrong_prefix = "答错自动收集 · " if Path(bank.path or "").name == WRONG_FILE else ""
+        self.meta_label.configure(text=f"{wrong_prefix}共 {len(bank.items)} 题 · 启用 {enabled} 题{scope_text}")
         self.dirty_label.configure(text="未保存" if bank.dirty else "")
 
         raw_keyword = self.keyword_entry.get().strip() if hasattr(self, "keyword_entry") else ""
@@ -544,6 +572,47 @@ class BankPage(tk.Frame):
             self.app.toast(f"已找回 {len(created)} 份内置题库")
         else:
             self.app.toast("内置题库都在，没有需要恢复的")
+
+    def _sync_wrong_button(self, bank) -> None:
+        """只有打开错题库时才露出「清空错题库」。"""
+        is_wrong = bool(bank and Path(bank.path or "").name == WRONG_FILE)
+        managed = bool(self.clear_wrong.winfo_manager())
+        if is_wrong and not managed:
+            self.clear_wrong.pack(side="left", padx=(8, 0))
+        elif not is_wrong and managed:
+            self.clear_wrong.pack_forget()
+
+    def clear_wrong_book(self) -> None:
+        storage = self.app.storage
+        book = storage.wrong_book
+        engine = self.app.engine
+        bank = engine.bank if engine else None
+        editing = bool(bank and Path(bank.path or "").name == WRONG_FILE)
+        total = len(bank.items) if editing else book.count()
+        if total <= 0:
+            self.app.toast("错题库还是空的：答错的题会自动收进来")
+            return
+        if not messagebox.askyesno(
+            "清空错题库",
+            f"把错题库里的 {total} 道题全部删掉？\n\n"
+            "这些题是从答错的记录里自动攒起来的，清空后不会自己长回来；"
+            "以后再答错，还会重新收进来。",
+            parent=self,
+        ):
+            return
+        if editing:
+            # 正在编辑这一份：清内存里那份再落盘，别让缓存里的旧内容又写回去
+            bank.items = []
+            bank.dirty = True
+            self._persist()
+            book.invalidate()
+        else:
+            book.clear()
+        self.selected_id = None
+        self.reload_bank_list()
+        self.refresh_table()
+        self.app.refresh_status()
+        self.app.toast("错题库已清空")
 
     def delete_bank(self, info) -> None:
         engine = self.app.engine

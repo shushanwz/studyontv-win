@@ -107,9 +107,8 @@ def main() -> int:
     content = dialog.text.get("1.0", "end")
     check("对话框展示提示词", "【输出格式】" in content and "小学" in content)
     check("提示词够长", len(content) > 1200, str(len(content)))
-    dialog.toggle_topic("古文段落")
-    app.update()
-    check("加主题后追加重点", "【本次重点】" in dialog.text.get("1.0", "end"))
+    check("提示词里留着背景占位", "xxx 省xxx市" in content)
+    check("界面提示怎么用", "背景及学习阶段" in dialog.tip_label.cget("text"), dialog.tip_label.cget("text")[:40])
     dialog.copy_prompt()
     app.update()
     check("复制进了剪贴板", "【输出格式】" in dialog.clipboard_get())
@@ -128,6 +127,51 @@ def main() -> int:
     # 家长想让它回来再点一下开关即可
     check("参与出题的份数被记住", len(app2.storage.selected_banks()) == 7, str(app2.storage.state["quiz_banks"]))
     check("恢复的题库默认不参与", len(rows(app2.pages["bank"])) == 8, str(len(rows(app2.pages["bank"]))))
+
+    print("\n[6] 错题库在列表里的样子")
+    from quizwin.core.models import Question  # noqa: E402
+    from quizwin.core.wrongbook import WRONG_FILE  # noqa: E402
+
+    page2 = app2.pages["bank"]
+    app2.storage.wrong_book.add(
+        Question({"type": "single", "q": "错题一号", "a": ["甲", "乙"], "k": 0, "subject": "数学"})
+    )
+    app2.storage.set_bank_selected(WRONG_FILE, True)
+    page2.reload_bank_list()
+    page2.refresh_table()
+    app2.update()
+    check("列表里多出「错题库」", len(rows(page2)) == 9, str(len(rows(page2))))
+    wrong_row = next((r for r in rows(page2) if r.info.filename == WRONG_FILE), None)
+    check("找到了错题库那一行", wrong_row is not None)
+    check("默认参与出题", WRONG_FILE in page2.selected_names(), str(page2.selected_names()))
+
+    page2.switch_bank(wrong_row.info)
+    app2.update()
+    check("能打开错题库", app2.engine.bank.path.name == WRONG_FILE, str(app2.engine.bank.path))
+    check("副标题说明是自动收集", "答错自动收集" in page2.meta_label.cget("text"), page2.meta_label.cget("text"))
+    check("露出「清空错题库」", bool(page2.clear_wrong.winfo_manager()))
+
+    app2.set_page("quiz")
+    app2.set_page("bank")
+    app2.update()
+    check("换页回来按钮还在", bool(page2.clear_wrong.winfo_manager()))
+
+    other = next(info for info in app2.storage.bank_infos() if info.filename != WRONG_FILE)
+    page2.switch_bank(other)
+    app2.update()
+    check("换成别的题库按钮收起", not page2.clear_wrong.winfo_manager())
+
+    page2.switch_bank(wrong_row.info)
+    app2.update()
+    with mock.patch("quizwin.ui.page_bank.messagebox.askyesno", return_value=False):
+        page2.clear_wrong_book()
+    check("点「否」不清空", app2.storage.wrong_book.count() == 1, str(app2.storage.wrong_book.count()))
+    with mock.patch("quizwin.ui.page_bank.messagebox.askyesno", return_value=True):
+        page2.clear_wrong_book()
+    app2.update()
+    check("确认后清空", app2.storage.wrong_book.count() == 0, str(app2.storage.wrong_book.count()))
+    check("清空后表格显示 0 题", "共 0 题" in page2.meta_label.cget("text"), page2.meta_label.cget("text"))
+
     app2.on_close(force=True)
 
     print()

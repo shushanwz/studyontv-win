@@ -19,7 +19,7 @@ from quizwin.core.engine import Engine  # noqa: E402
 from quizwin.core.models import Bank, Question, loads_lenient  # noqa: E402
 from quizwin.core.rules import Rules  # noqa: E402
 from quizwin.core.storage import Storage  # noqa: E402
-from quizwin.ui.bank_prompt import PROMPT, TOPIC_PRESETS, build_prompt  # noqa: E402
+from quizwin.ui.bank_prompt import PROMPT, build_prompt  # noqa: E402
 
 PASSED: list[str] = []
 FAILED: list[str] = []
@@ -252,13 +252,13 @@ def test_prompt() -> None:
         check(f"写明字段 {field}", field in PROMPT)
 
     check("要求禁用争议题", "争议" in PROMPT)
-    check("要求分批输出", "分批" in PROMPT)
-    check("要求输出前自检", "自检" in PROMPT)
-    check("主题包齐全", len(TOPIC_PRESETS) >= 6, str(list(TOPIC_PRESETS)))
-    check("不带主题时不追加", build_prompt() == PROMPT)
-    added = build_prompt(["电脑与 AI", "古文段落"])
-    check("加主题后追加重点", "【本次重点】" in added and "人工智能" in added)
-    check("未知主题被忽略", build_prompt(["不存在的主题"]) == PROMPT)
+    check("要求先做知识点汇总", "知识点汇总" in PROMPT)
+    check("要求输出前自检", "输出前自检" in PROMPT)
+    check("写明题量要求", "各出200道" in PROMPT and "100道" in PROMPT)
+    check("留了背景待填占位", "【背景及学习阶段】" in PROMPT and "xxx 省xxx市" in PROMPT)
+    check("要求分别存 json", "分别保存为json文件" in PROMPT)
+    check("提示词原样返回", build_prompt() == PROMPT)
+    check("不夹带额外指令", PROMPT.strip().startswith("你是一位资深的中小学教研员"), PROMPT[:20])
 
 
 def main() -> int:

@@ -16,6 +16,7 @@ from typing import Any
 
 from . import paths
 from .models import Bank
+from .wrongbook import WrongBook
 
 BASE_DIR = paths.app_dir()  # 程序目录（安装后即 exe 所在目录）
 DATA_DIR = paths.default_data_dir()
@@ -149,6 +150,16 @@ class Storage:
         self.state: dict[str, Any] = self._load_state()
         # 状态先读出来，才知道哪些内置题库被用户主动删过；再补缺失的内置题库
         self.seeded = self.ensure_builtin() if seed else []
+        self._wrong_book: WrongBook | None = None
+
+    # ---------------- 错题库 ----------------
+
+    @property
+    def wrong_book(self) -> WrongBook:
+        """错题库的读写入口。懒建：没有错题时不产生空文件。"""
+        if self._wrong_book is None:
+            self._wrong_book = WrongBook(self)
+        return self._wrong_book
 
     # ---------------- 状态 ----------------
 
@@ -289,6 +300,7 @@ class Storage:
         path = Path(path)
         name = path.name
         target = self.retire_bank(path)
+        self.wrong_book.invalidate()
         if self.is_builtin(path):
             removed = _str_list(self.state.get("banks_removed"))
             if name not in removed:

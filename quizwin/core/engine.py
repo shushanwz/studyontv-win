@@ -29,6 +29,7 @@ from typing import Any
 from .models import Bank, Question
 from .rules import PLAY_MODES, Rules
 from .storage import Storage
+from .wrongbook import WRONG_FILE, fingerprint
 
 
 class EngineError(Exception):
@@ -87,6 +88,7 @@ class Engine:
         rules = rules or self.rules()
         items: list[Question] = []
         seen: set[str] = set()
+        seen_prints: set[str] = set()
         for path in self.quiz_paths():
             for question in self._bank_items(path):
                 if not question.enabled:
@@ -101,7 +103,13 @@ class Engine:
                     question.id = f"{Path(path).stem}#{question.id}"
                     if question.id in seen:
                         continue
+                # 内容指纹去重：错题库里存的就是题库里那道题的副本，两边都参与出题时
+                # 不能当成两道题——否则同一轮里可能连着出同一题
+                stamp = fingerprint(question)
+                if stamp in seen_prints:
+                    continue
                 seen.add(question.id)
+                seen_prints.add(stamp)
                 items.append(question)
         return items
 
@@ -477,6 +485,9 @@ class Engine:
 
         self._record_progress(question.id, quality if quality is not None else (4 if correct else 1))
 
+        # 答错就收进错题库；答对不动它（「全部收集」的取舍见 wrongbook.py）
+        wrong_record = self._remember_wrong(question) if not correct else None
+
         streak_target = int(round_.get("streak", 0)) >= target
         answered_target = int(round_.get("answered", 0)) >= target
         base_done = streak_target if mode == "streak" else answered_target
@@ -496,6 +507,9 @@ class Engine:
             "passed": bool(finished and passed),
             "wasExtra": was_extra,
             "answeredText": answered_text,
+            # 错题库：这题是不是刚收进去、现在一共多少题
+            "wrongAdded": bool(wrong_record and wrong_record.get("added")),
+            "wrongTotal": int(wrong_record.get("total", 0)) if wrong_record else 0,
         }
 
         today = state["today"]
@@ -537,6 +551,26 @@ class Engine:
         self.st.save_state()
         result["status"] = self.status()
         return result
+
+    # ---------------------------------------------------------------- 错题库
+
+    def _remember_wrong(self, question: Question) -> dict:
+        """把一个错题收进错题库；第一次建本子时顺手加入出题范围。
+
+        用户正开着错题库时必须写内存里那份：从磁盘重读再追加，会把他没保存的
+        改动顶掉（错题库也是普通题库，可以被编辑）。
+        """
+        book = self.st.wrong_book
+        active = None
+        if self.bank and self.bank.path and Path(self.bank.path).name == WRONG_FILE:
+            active = self.bank
+        record = book.add(question, prefer=active)
+        if record.get("added"):
+            # 文件刚写完，缓存里的旧内容不能再用（同一时间刻度内 mtime 可能没变）
+            self._bank_cache.pop(str(book.path), None)
+            if record.get("created"):
+                self.st.set_bank_selected(WRONG_FILE, True)
+        return record
 
     # ---------------------------------------------------------------- 间隔重复
 

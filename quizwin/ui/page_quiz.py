@@ -663,10 +663,15 @@ class QuizPage(tk.Frame):
             parent_bg=theme.ok_soft if right else theme.bad_soft,
         ).pack(side="left")
         extra_after = int(result.get("extraPoolAfter") or 0)
+        notes = []
         if extra_after > 0 and not right:
+            notes.append(f"错误累计 {int(result.get('wrongProgress') or 0)} · 加练池 {extra_after} 题")
+        if not right and result.get("wrongAdded"):
+            notes.append(f"已收进错题库 · 共 {int(result.get('wrongTotal') or 0)} 题")
+        if notes:
             tk.Label(
                 actions,
-                text=f"错误累计 {int(result.get('wrongProgress') or 0)} · 加练池 {extra_after} 题",
+                text=" · ".join(notes),
                 bg=theme.bad_soft,
                 fg=theme.text2,
                 font=fonts.small,

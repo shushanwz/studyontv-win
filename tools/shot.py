@@ -48,8 +48,20 @@ def main() -> int:
     if "--bank" in sys.argv:
         target_bank = sys.argv[sys.argv.index("--bank") + 1]
         app.engine.load_bank(TMP / "banks" / target_bank)
+    if "--wrongbook" in sys.argv:
+        # 造几条错题再切过去，用来截「答错自动收集」那一屏
+        from quizwin.core.wrongbook import WRONG_FILE
+
+        for item in app.engine.bank.items[:5]:
+            app.storage.wrong_book.add(item)
+        app.storage.set_bank_selected(WRONG_FILE, True)
+        app.engine.load_bank(TMP / "banks" / WRONG_FILE)
     app.set_page(page)
     app.update()
+    if "--wrongbook" in sys.argv:
+        # 错题库排在列表末尾，滚到底才看得见
+        app.pages["bank"].list_frame.canvas.yview_moveto(1.0)
+        app.update()
 
     if page == "quiz":
         quiz = app.pages["quiz"]
