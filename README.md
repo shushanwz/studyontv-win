@@ -361,6 +361,9 @@ python tests\guard_relaunch_smoke.py  :: 真起守护进程，真杀父进程，
 - `shot_rules.py`：滚到规则页底部，截「家长控制」分区
 - `harden_probe.py`：装 20 秒键盘钩子并统计吞键次数，用来亲手验证 Alt+Tab 是否真被拦
 - `launch_check.py`：真的调用 `启动.bat`，确认窗口能起来再关掉
+- `window_shot.py`：按窗口标题抓截图，用于验证打包后的 exe（没有 tkinter 句柄可用）
+- `press_enter.py`：给安装向导发回车翻页，配合 `window_shot.py` 逐页核对
+- `uninstall_silent.py`：静默卸载已安装的程序（绕开 Git Bash 的 `/S` 转换）
 - `make_shots.py`：批量生成 `shots/` 里的展示图
 - `make_launcher.py`：重新生成 GBK 编码的启动脚本
 
