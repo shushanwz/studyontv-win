@@ -8,6 +8,7 @@ data/error.log
 data/.hb
 data/unlock.flag
 data/runtime/
+data/trash/
 
 # 截图中间产物
 shots/*.bmp
