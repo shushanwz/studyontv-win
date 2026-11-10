@@ -18,7 +18,7 @@ CASES = [
     ("02-答题页", ["quiz"]),
     ("03-作答反馈", ["quiz", "--answer"]),
     ("04-结算页", ["quiz", "--result"]),
-    ("05-主观题自评", ["quiz", "--bank", "open-play.json", "--type", "subjective", "--answer"]),
+    ("05-主观题自评", ["quiz", "--type", "subjective", "--answer"]),
     ("06-使用计时", ["quiz", "--watch"]),
     ("07-今日已满", ["quiz", "--blocked"]),
     ("08-题库管理", ["bank"]),

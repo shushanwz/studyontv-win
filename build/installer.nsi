@@ -14,7 +14,7 @@ Unicode true
 !include "FileFunc.nsh"
 
 !define APP_NAME "题了个题"
-!define APP_VERSION "0.3.3"
+!define APP_VERSION "0.3.4"
 !define APP_EXE "题了个题.exe"
 !define APP_REGKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\题了个题"
 !define APP_DATA "$LOCALAPPDATA\题了个题"
@@ -31,7 +31,7 @@ SetCompressorDictSize 32
 CRCCheck on
 XPStyle on
 
-VIProductVersion "0.3.3.0"
+VIProductVersion "0.3.4.0"
 VIAddVersionKey /LANG=2052 "ProductName" "${APP_NAME}"
 VIAddVersionKey /LANG=2052 "FileDescription" "${APP_NAME} 安装程序"
 VIAddVersionKey /LANG=2052 "FileVersion" "${APP_VERSION}"

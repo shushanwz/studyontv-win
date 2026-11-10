@@ -173,8 +173,49 @@ def mix(color_a: str, color_b: str, ratio: float) -> str:
     return "#" + "".join(out)
 
 
+HEAD_BAN = "，。、；：？！）】》」』”’…～—"
+_WORD_CHARS = "._-/%'"
+
+
+def _tail_chunk(prev: str) -> int:
+    """prev 末尾最后一个「词」有多长：英文词整段搬，汉字一次一个。"""
+    index = len(prev)
+    while index > 0 and prev[index - 1].isascii() and (prev[index - 1].isalnum() or prev[index - 1] in _WORD_CHARS):
+        index -= 1
+    return len(prev) - index or 1
+
+
+def _balance_tail(lines: list[str], font: tkfont.Font, width: int) -> None:
+    """末行只剩一两个字时，从上一行匀字下来。
+
+    逐字折行很容易折出「…点「」/「导入」。」这种孤字行。匀几个字下来，
+    整体矩形更好看；只在末行明显偏短时动手，正常结尾不受影响。
+    """
+    if len(lines) < 2 or width <= 0:
+        return
+    last, prev = lines[-1], lines[-2]
+    if not last.strip() or not prev.strip():
+        return
+    for _ in range(40):
+        if not prev or font.measure(last) >= width * 0.4:
+            break
+        size = _tail_chunk(prev)
+        while size > 1 and font.measure(prev[-size:] + last) > width:
+            size -= 1
+        last = prev[-size:] + last
+        prev = prev[:-size]
+        # 别把标点甩到行首：连带上一个字一起挪
+        while prev and prev[-1] in HEAD_BAN:
+            last = prev[-1] + last
+            prev = prev[:-1]
+    lines[-1], lines[-2] = last, prev
+
+
 def wrap_text(text: str, font: tkfont.Font, width: int) -> list[str]:
-    """按像素宽度折行，兼顾中英文（中文逐字断行，英文按空格断词）。"""
+    """按像素宽度折行，兼顾中英文（中文逐字断行，英文按空格断词）。
+
+    折完会把末行调匀（见 _balance_tail），并把不留在行首的标点挪到上一行。
+    """
     if width <= 0:
         return [text]
     lines: list[str] = []
@@ -195,8 +236,13 @@ def wrap_text(text: str, font: tkfont.Font, width: int) -> list[str]:
                     lines.append(head)
                     current = tail + char
                     continue
+            if char in HEAD_BAN and len(current) > 1:
+                lines.append(current[:-1])
+                current = current[-1] + char
+                continue
             lines.append(current)
             current = char
     if current or not lines:
         lines.append(current)
+    _balance_tail(lines, font, width)
     return lines

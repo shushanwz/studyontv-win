@@ -1,4 +1,4 @@
-"""用 NSIS 把 dist\\题了个题\\ 打成安装包 dist\\题了个题-0.3.3-安装版.exe。
+"""用 NSIS 把 dist\\题了个题\\ 打成安装包 dist\\题了个题-0.3.4-安装版.exe。
 
 前置：
   1. 先跑 build_package.py，生成 dist\\题了个题\\；
@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent
 BUILD = ROOT / "build"
 DIST = ROOT / "dist"
 APP_NAME = "题了个题"
-VERSION = "0.3.3"
+VERSION = "0.3.4"
 PAYLOAD = DIST / APP_NAME
 SCRIPT = BUILD / "installer.nsi"
 OUTPUT = DIST / f"{APP_NAME}-{VERSION}-安装版.exe"

@@ -70,6 +70,23 @@ def main() -> int:
             quiz.reload()
             app.update()
             item = next((q for q in app.engine.bank.items if q.type == wanted), None)
+            if item is None and wanted == "subjective":
+                # 内置题库已经没有主观题了，临时造一条，截图才不依赖特定题库文件
+                from quizwin.core.models import Question
+
+                item = Question(
+                    {
+                        "type": "subjective",
+                        "q": "用自己的话说说：「学而不思则罔，思而不学则殆」讲的是什么道理？",
+                        "modelAnswer": "只读书不思考就会迷惑无所得，只空想不读书就会疑惑不安；学和思要并重。",
+                        "rubric": "点出「学」与「思」缺一不可各得一半分，能结合自己的例子再加分",
+                        "difficulty": 3,
+                        "subject": "语文",
+                        "level": "七年级",
+                        "tip": "解析：先分别解释「罔」「殆」，再说两者的关系。",
+                    }
+                )
+                app.engine.bank.items.append(item)
             if item and app.engine.st.state.get("active_round"):
                 app.engine.st.state["active_round"]["question"] = item.to_dict(for_export=False)
                 app.engine.st.save_state()

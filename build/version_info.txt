@@ -19,12 +19,12 @@ VSVersionInfo(
           [
             StringStruct('CompanyName', '本地自用'),
             StringStruct('FileDescription', '题了个题 · 桌面版'),
-            StringStruct('FileVersion', '0.3.3.0'),
+            StringStruct('FileVersion', '0.3.4.0'),
             StringStruct('InternalName', 'quizwin'),
             StringStruct('LegalCopyright', '仅本地使用，不联网'),
             StringStruct('OriginalFilename', '题了个题.exe'),
             StringStruct('ProductName', '题了个题'),
-            StringStruct('ProductVersion', '0.3.3.0')
+            StringStruct('ProductVersion', '0.3.4.0')
           ]
         )
       ]

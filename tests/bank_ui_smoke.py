@@ -9,6 +9,7 @@ import os
 import shutil
 import sys
 import tempfile
+import tkinter.font as tkfont
 from pathlib import Path
 from unittest import mock
 
@@ -29,6 +30,7 @@ enable_dpi_awareness()
 from quizwin.ui.app import App  # noqa: E402
 from quizwin.ui.bank_prompt import BankPromptDialog  # noqa: E402
 from quizwin.ui.page_bank import BankRow  # noqa: E402
+from quizwin.ui.theme import HEAD_BAN  # noqa: E402
 
 FAILURES: list[str] = []
 
@@ -108,7 +110,16 @@ def main() -> int:
     check("对话框展示提示词", "【输出格式】" in content and "小学" in content)
     check("提示词够长", len(content) > 1200, str(len(content)))
     check("提示词里留着背景占位", "xxx 省xxx市" in content)
-    check("界面提示怎么用", "背景及学习阶段" in dialog.tip_label.cget("text"), dialog.tip_label.cget("text")[:40])
+    tip = dialog.tip_label.cget("text")
+    flat = tip.replace("\n", "")
+    check("界面提示怎么用", "背景及学习阶段" in flat, tip[:40])
+    check("题量提醒也在", "一次要 500 道容易被截断" in flat, tip[-30:])
+    tip_font = tkfont.Font(font=dialog.tip_label.cget("font"))
+    width = dialog.tip_label.winfo_width()
+    over = [line for line in tip.split("\n") if tip_font.measure(line) > width + 2]
+    check("每行都没超出标签", not over, str(over[:1]))
+    heads = [line for line in tip.split("\n") if line and line[0] in HEAD_BAN]
+    check("标点不落行首", not heads, str(heads[:1]))
     dialog.copy_prompt()
     app.update()
     check("复制进了剪贴板", "【输出格式】" in dialog.clipboard_get())

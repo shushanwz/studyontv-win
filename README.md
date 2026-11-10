@@ -12,7 +12,7 @@
 
 ## 一、安装（推荐给普通用户）
 
-双击 **`dist\题了个题-0.3.3-安装版.exe`**（8.4 MB），按向导走完即可。
+双击 **`dist\题了个题-0.3.4-安装版.exe`**（8.4 MB），按向导走完即可。
 
 | 项目 | 说明 |
 | --- | --- |
@@ -439,11 +439,11 @@ python tests\guard_wiring_smoke.py    :: 封锁时序：锁时装、解锁时卸
 python tests\guard_relaunch_smoke.py  :: 真起守护进程，真杀父进程，验证重启决策
 python tests\first_run_smoke.py       :: 首次运行 35 项：默认进锁屏、全屏设置、跳过即退出、设完立刻回锁
 python tests\bank_pool_smoke.py       :: 题库 74 项：多库混合抽题、id 撞车、删除、内置恢复、AI 提示词、AI 输出容错
-python tests\bank_ui_smoke.py         :: 题库页界面 37 项：勾选出题范围、删除确认、恢复内置、提示词复制、错题库入口
+python tests\bank_ui_smoke.py         :: 题库页界面 40 项：勾选出题范围、删除确认、恢复内置、提示词复制与折行、错题库入口
 python tests\wrongbook_smoke.py       :: 错题库 49 项：自动收集、内容去重、自动进入范围、清空、删除后重建、编辑中收录
 ```
 
-十三套共 **518 项**，全绿再打包。
+十三套共 **521 项**，全绿再打包。
 
 > 后两套会真的起守护进程。它们用 `QUIZWIN_GUARD_DRY=1` 让「重启锁屏」只留痕不真执行，
 > 因此不会在跑测试时把桌面锁住。
@@ -471,7 +471,7 @@ python tests\wrongbook_smoke.py       :: 错题库 49 项：自动收集、内�
 
 ```bat
 python build_package.py      :: PyInstaller  → dist\题了个题\（免安装目录）
-python build_installer.py    :: NSIS         → dist\题了个题-0.3.3-安装版.exe（8.4 MB）
+python build_installer.py    :: NSIS         → dist\题了个题-0.3.4-安装版.exe（8.4 MB）
 ```
 
 本机 PATH 上的 `python` 是不带 tkinter 的托管版（3.13.12），得用系统那个：

@@ -10,8 +10,9 @@
 from __future__ import annotations
 
 import tkinter as tk
+from tkinter import font as tkfont
 
-from .theme import apply_dark_title_bar
+from .theme import apply_dark_title_bar, wrap_text
 from .widgets import Button, SlimScrollbar
 
 PROMPT = """你是一位资深的中小学教研员兼题库编辑，熟悉中国大陆义务教育与普通高中课程标准。请为我编写一份可直接导入答题程序的题库，输出 JSON。
@@ -88,9 +89,11 @@ xxx 省xxx市 xxx年级 上学期/下学期  期中/期末
 TIP = (
     "三步：① 先把提示词里「背景及学习阶段」那行改成自家情况（省份、年级、上/下册、期中还是期末）；"
     "② 整段复制给任意大模型（WorkBuddy、DeepSeek、通义、Kimi 都行）；"
-    "③ 把它输出的 JSON 存成 UTF-8 的 .json 文件，回到题库页点「导入」。\n"
-    "一次要 500 道容易被截断：可以按科目分开要，缺了就让它在原文件后面接着补。"
-    "只想出某一类题（比如只出古文），在末尾补一句「本次只出古文段落」即可。"
+    "③ 把它输出的 JSON 存成 UTF-8 的 .json 文件，回到题库页点「导入」。"
+)
+TIP_TAIL = (
+    "一次要 500 道容易被截断，可以按科目分开要，缺了让它在原文件后面接着补；"
+    "只想出某一类题（比如只出古文段落），在末尾补一句「本次只出古文段落」即可。"
 )
 
 
@@ -144,16 +147,22 @@ class BankPromptDialog(tk.Toplevel):
         Button(bottom, theme, fonts, "关闭", self.destroy, kind="ghost", height=44).pack(side="right", padx=(0, 10))
 
         tk.Label(wrap, text="用 AI 自建题库", bg=theme.bg, fg=theme.text, font=fonts.h2).pack(anchor="w")
+        # 两段分开排：合成一段时 tk 的自动折行会为了一个空格提前收行，
+        # 「三步：① 」「一次要 500」都会被单独拆成一行。所以不用 wraplength，
+        # 自己按像素折（见 _reflow_tip）。
         self.tip_label = tk.Label(
             wrap,
-            text=TIP,
+            text="",
             bg=theme.bg,
             fg=theme.text3,
             font=fonts.small,
             justify="left",
-            wraplength=800,
+            anchor="w",
         )
-        self.tip_label.pack(anchor="w", pady=(8, 12))
+        self.tip_label.pack(anchor="w", fill="x", pady=(8, 12))
+        self._tip_font = tkfont.Font(font=fonts.small)
+        self._tip_width = 0
+        self.tip_label.bind("<Configure>", self._reflow_tip)
 
         holder = tk.Frame(wrap, bg=theme.line)
         holder.pack(fill="both", expand=True)
@@ -177,6 +186,16 @@ class BankPromptDialog(tk.Toplevel):
         self.text.insert("1.0", build_prompt())
         self.text.mark_set("insert", "1.0")
         self.text.focus_set()
+
+    def _reflow_tip(self, event=None) -> None:
+        """按当前宽度重排说明文字。宽度没变就跳过，避免与 <Configure> 互相触发。"""
+        width = event.width if event is not None else self.tip_label.winfo_width()
+        if width <= 1 or abs(width - self._tip_width) < 8:
+            return
+        self._tip_width = width
+        lines = wrap_text(TIP, self._tip_font, width)
+        lines += [""] + wrap_text(TIP_TAIL, self._tip_font, width)
+        self.tip_label.configure(text="\n".join(lines))
 
     # ------------------------------------------------------------ 动作
 
