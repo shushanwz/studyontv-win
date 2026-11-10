@@ -23,6 +23,7 @@ import time
 import unicodedata
 import uuid
 from datetime import datetime, timedelta
+from pathlib import Path
 from typing import Any
 
 from .models import Bank, Question
@@ -53,6 +54,8 @@ class Engine:
     def __init__(self, storage: Storage):
         self.st = storage
         self.bank: Bank | None = None
+        # 出题范围内的其他题库：按「路径 → (mtime, 题目列表)」缓存，改过的文件会自动失效
+        self._bank_cache: dict[str, tuple[float, list[Question]]] = {}
         self.load_bank()
 
     # ---------------------------------------------------------------- 题库
@@ -77,13 +80,70 @@ class Engine:
         }
 
     def pool(self, rules: Rules | None = None) -> list[Question]:
+        """出题池：选中题库里所有启用的题，按规则里的科目 / 年级再筛一遍。
+
+        未勾选任何题库时退回「只用当前打开的这一份」，保证旧数据行为不变。
+        """
         rules = rules or self.rules()
-        items = [q for q in (self.bank.items if self.bank else []) if q.enabled]
-        if rules.quizSubjects:
-            items = [q for q in items if q.subject in rules.quizSubjects]
-        if rules.quizLevels:
-            items = [q for q in items if q.level in rules.quizLevels]
+        items: list[Question] = []
+        seen: set[str] = set()
+        for path in self.quiz_paths():
+            for question in self._bank_items(path):
+                if not question.enabled:
+                    continue
+                if rules.quizSubjects and question.subject not in rules.quizSubjects:
+                    continue
+                if rules.quizLevels and question.level not in rules.quizLevels:
+                    continue
+                if question.id in seen:
+                    # 复制出来的题库会带着同样的题目 id，撞了会让间隔重复的进度串题
+                    question = Question(question.to_dict(for_export=False))
+                    question.id = f"{Path(path).stem}#{question.id}"
+                    if question.id in seen:
+                        continue
+                seen.add(question.id)
+                items.append(question)
         return items
+
+    def quiz_paths(self) -> list[Path]:
+        """参与出题的题库文件路径。"""
+        names = self.st.selected_banks()
+        infos = {info.filename: info.path for info in self.st.bank_infos()}
+        if not names:
+            path = self.bank.path if self.bank else None
+            return [Path(path)] if path else []
+        return [infos[name] for name in names if name in infos]
+
+    def _bank_items(self, path: Path) -> list[Question]:
+        path = Path(path)
+        # 当前编辑中的题库用内存对象，避免刚改的题还没落盘就抽不到
+        if self.bank and self.bank.path and Path(self.bank.path) == path:
+            return self.bank.items
+        key = str(path)
+        try:
+            mtime = path.stat().st_mtime
+        except OSError:
+            return []
+        cached = self._bank_cache.get(key)
+        if cached and cached[0] == mtime:
+            return cached[1]
+        try:
+            bank = self.st.load_bank(path)
+            items = bank.items
+        except (json.JSONDecodeError, OSError, ValueError):
+            items = []
+        self._bank_cache[key] = (mtime, items)
+        return items
+
+    def quiz_scope(self) -> dict:
+        """给界面用：参与出题的份数、可用题数、是否跨库。"""
+        paths = self.quiz_paths()
+        return {
+            "banks": len(paths),
+            "pool": len(self.pool()),
+            "mixed": len(paths) > 1,
+            "names": [Path(p).name for p in paths],
+        }
 
     # ---------------------------------------------------------------- 规则
 
@@ -212,7 +272,7 @@ class Engine:
         status = self.status()
         rules = self.rules()
 
-        if not self.bank:
+        if not self.quiz_paths():
             raise EngineError("还没有题库，请先在「题库」里新建或导入")
 
         if rules.playMode != "practice" and status["reason"] in ("quota", "rounds", "schedule"):

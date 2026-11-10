@@ -36,6 +36,14 @@ PASSED: list[str] = []
 FAILED: list[str] = []
 
 
+def alive(widget) -> bool:
+    """窗口是否还活着；已销毁时 Tk 会抛 TclError，这里一并当成「没了」。"""
+    try:
+        return bool(widget.winfo_exists())
+    except Exception:
+        return False
+
+
 def check(name: str, condition: bool, detail: str = "") -> None:
     if condition:
         PASSED.append(name)
@@ -148,16 +156,20 @@ def test_setup_dialog() -> None:
     check("取消不算设置成功", dialog.result is False)
     check("取消不写密码", not app.parent.has_password)
     check("取消也不改 enabled", app.parent.enabled is True)
-    for _ in range(3):
+    # 退出走的是 after(1) 延迟回调，给它跑完的时间；期间窗口可能已经销毁，
+    # 再碰 winfo_exists 会抛 TclError，所以统一用 alive() 兜住
+    deadline = time.time() + 2
+    while alive(app) and time.time() < deadline:
         try:
             app.update()
         except Exception:
             break
+        time.sleep(0.02)
     try:
-        alive = bool(app.winfo_exists())
+        still_open = alive(app)
     except tk.TclError:
-        alive = False  # 解释器都关了，说明真的退出干净了
-    check("主窗口已关闭", not alive)
+        still_open = False  # 解释器都关了，说明真的退出干净了
+    check("主窗口已关闭", not still_open)
 
 
 def test_enter_lock() -> None:

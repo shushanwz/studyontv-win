@@ -572,11 +572,15 @@ class SlimScrollbar(tk.Canvas):
 class ScrollFrame(tk.Frame):
     """带细滚动条的滚动容器，内容放在 self.body 里。"""
 
-    def __init__(self, master: tk.Misc, theme: Palette, parent_bg: str | None = None):
+    def __init__(self, master: tk.Misc, theme: Palette, parent_bg: str | None = None, height: int | None = None):
         self.theme = theme
         bg = parent_bg or _parent_bg(master, theme.bg)
         super().__init__(master, bg=bg)
         self.canvas = tk.Canvas(self, bg=bg, highlightthickness=0, bd=0)
+        if height:
+            # 不给高度时 Canvas 的默认请求高度会把同一列里的按钮挤出可视区，
+            # 窗口一矮（笔记本 768p）就看不到「新建 / 导入」了
+            self.canvas.configure(height=height)
         self.canvas.pack(side="left", fill="both", expand=True)
         self.scrollbar = SlimScrollbar(self, theme, command=self.canvas.yview, parent_bg=bg)
         self.scrollbar.pack(side="right", fill="y")

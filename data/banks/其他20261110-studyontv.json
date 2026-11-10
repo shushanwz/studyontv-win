@@ -1,0 +1,1263 @@
+{
+ "name": "六年级至初一题库·其他（2026-11-10）",
+ "version": 2,
+ "items": [
+  {
+   "type": "single",
+   "q": "为了使萎蔫的青菜叶片硬挺起来，可将青菜放入?",
+   "a": [
+    "浓盐水中",
+    "清水中",
+    "阴凉干燥处",
+    "太阳下"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Biology-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "大白菜生长过程中，需要最多的无机盐是?",
+   "a": [
+    "含铁、锌、钙的无机盐",
+    "含锰、铝、铜的无机盐",
+    "含氮、磷、钙的无机盐",
+    "含氮、磷、钾的无机盐"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Biology-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "根吸水和无机盐的主要部位?",
+   "a": [
+    "伸长区",
+    "分生区",
+    "成熟区",
+    "根冠"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Biology-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "植物从土壤中吸收水分时，水分最先进入的是?",
+   "a": [
+    "导管",
+    "筛管",
+    "根毛",
+    "叶肉细胞"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Biology-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下面生活例子中细胞能够吸水的是?",
+   "a": [
+    "糖拌西红柿",
+    "腌萝卜",
+    "浸入水的萎蔫空心菜",
+    "被海水久泡的农作物"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Biology-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "从环境保护的角度考虑，下列燃料中最理想的是?",
+   "a": [
+    "氢气",
+    "煤炭",
+    "汽油",
+    "一氧化碳"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chemistry-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "合理使用食品添加剂可成就美食，维护健康。下列食品添加剂与其作用不相符的是?",
+   "a": [
+    "食盐—调味剂",
+    "蔗糖—甜味剂",
+    "碳酸钙—预防骨质疏松",
+    "小苏打—预防甲状腺肿大"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chemistry-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "江西宜春被誉为“亚洲锂都”，锂矿石所含氧化锂(Li2O)中锂元素的化合价是?",
+   "a": [
+    "-2",
+    "-1",
+    "1",
+    "2"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chemistry-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列与“水”相关的说法错误的是?",
+   "a": [
+    "硬水蒸馏后可以转化为软水",
+    "电解水可以探究水的组成",
+    "含洗涤剂的水除油污是乳化作用",
+    "将水注入浓硫酸配成稀硫酸"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chemistry-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "化学学科核心素养展现了化学课程对学生发展的重要价值，下列示例说法错误的是?",
+   "a": [
+    "化学观念：酸溶液中都含有H+，所以具有相似的化学性质",
+    "科学思维：碱能使无色酚酞溶液变红，能使无色酚酞溶液变红的一定是碱",
+    "科学探究与实践：将火柴梗迅速平放入蜡烛的火焰中约1s后取出，探究火焰哪层温度最高",
+    "科学态度与责任：可燃性气体遇明火易发生爆炸，加油站要严禁烟火"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chemistry-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列实例中,材料的选用与描述的物理属性不相符的是?",
+   "a": [
+    "电线的线芯用铜制成,是因为铜的导电性好",
+    "房屋的天窗用玻璃制成,是因为玻璃的透光性好",
+    "水壶的把手用胶术制成,是因为胶木的导热性好",
+    "划玻璃的刀刃用金刚石制成,是因为金刚石的硬度大"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Physics-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "纳米材料是由纳米颗粒经过特殊制备得到的。室温下外形相同的纳米铜比普通铜可多拉长50倍而不断裂的事实,表明纳米铜具有较好的?",
+   "a": [
+    "导电性",
+    "导热性",
+    "延展性",
+    "弹性"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Physics-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "用天平秤出一个塑料瓶的质量,然后将其剪碎再放到天平上秤,比较这个物体在形状改变前后的质量?",
+   "a": [
+    "变大",
+    "变小",
+    "不变",
+    "无法确定"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Physics-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "以下学习文具,通常情况下属于导体的是?",
+   "a": [
+    "铅笔芯",
+    "塑料三角尺",
+    "透明塑料笔袋",
+    "橡皮"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Physics-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "在生产和生活中,人们常以密度作为选择材料的主要因素,下列事例中主要从密度的角度来考虑选择材料的是?",
+   "a": [
+    "用塑料做电源插座的外壳",
+    "用水做汽车发动机的冷却液",
+    "用橡胶做汽车的轮胎",
+    "用塑料泡沫做成表演场景中滚落的“石头”"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Physics-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "国家监察委员会是我国的最高监察机关，它的首要职责是?",
+   "a": [
+    "监督",
+    "调查",
+    "处置",
+    "审判"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Politics-Social Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "西藏牧区的主要畜种是?",
+   "a": [
+    "滩羊",
+    "三河马",
+    "牦牛",
+    "细毛羊"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Geography-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "衡量一个国家综合经济实力的重要标志是?",
+   "a": [
+    "钢铁工业",
+    "石油工业",
+    "化学工业",
+    "机械工业"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Geography-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "我国主要的交通运输方式是?",
+   "a": [
+    "公路",
+    "铁路",
+    "管道",
+    "河运"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Geography-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "我国北方沿海航区以____为中心。",
+   "a": [
+    "天津、上海",
+    "上海、大连",
+    "大连、秦皇岛",
+    "上海、青岛"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Geography-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "我国季风形成的主要原因是我国?",
+   "a": [
+    "背靠世界最大的大陆,面对世界最大的大洋,海陆热力差异最大",
+    "南北纬度跨度大",
+    "西经度跨度大",
+    "地形多种多样"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Geography-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "常温下，水结成冰这一物态变化叫做？",
+   "a": [
+    "凝固",
+    "汽化",
+    "熔化",
+    "升华"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 物质由液态变为固态的过程叫做凝固。"
+  },
+  {
+   "type": "single",
+   "q": "下列现象中，属于液化（气态变为液态）的是？",
+   "a": [
+    "清晨草叶上出现露珠",
+    "衣柜里的樟脑丸变小",
+    "湿衣服晾干",
+    "春天冰雪消融"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 露珠是空气中的水蒸气遇冷凝结而成的小水滴。"
+  },
+  {
+   "type": "single",
+   "q": "在地球表面，物体由于地球的吸引而受到的力叫做？",
+   "a": [
+    "重力",
+    "摩擦力",
+    "弹力",
+    "浮力"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 重力是由于地球吸引而使物体受到的力，方向竖直向下。"
+  },
+  {
+   "type": "single",
+   "q": "下列工具在正常使用时，属于省力杠杆的是？",
+   "a": [
+    "羊角锤拔钉子",
+    "镊子夹取物品",
+    "筷子夹菜",
+    "钓鱼竿钓鱼"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 羊角锤的动力臂大于阻力臂，属于省力杠杆。"
+  },
+  {
+   "type": "single",
+   "q": "我们能从各个方向看到本身不发光的物体，是因为光在其表面发生了？",
+   "a": [
+    "漫反射",
+    "镜面反射",
+    "折射",
+    "色散"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 粗糙表面发生漫反射，反射光射向四面八方。"
+  },
+  {
+   "type": "single",
+   "q": "声音不能在下列哪种环境中传播？",
+   "a": [
+    "真空",
+    "空气",
+    "水",
+    "钢铁"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 声音传播需要介质，真空不能传声。"
+  },
+  {
+   "type": "single",
+   "q": "关于安全用电，下列做法正确的是？",
+   "a": [
+    "不用湿手触摸电器和开关",
+    "用铜丝代替保险丝",
+    "多个大功率电器共用一个插座",
+    "发现有人触电立即用手去拉"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 湿手易导电，铜丝不能代替保险丝，触电应先断电。"
+  },
+  {
+   "type": "single",
+   "q": "下列结构中，植物细胞具有而动物细胞一般不具有的是？",
+   "a": [
+    "细胞壁",
+    "细胞膜",
+    "细胞质",
+    "细胞核"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 植物细胞有细胞壁和液泡，动物细胞没有细胞壁。"
+  },
+  {
+   "type": "single",
+   "q": "绿色植物进行光合作用的主要器官是？",
+   "a": [
+    "叶",
+    "根",
+    "茎",
+    "花"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 叶片含有叶绿体，是光合作用的主要场所。"
+  },
+  {
+   "type": "single",
+   "q": "人体中，推动血液在血管中循环流动的“泵”是？",
+   "a": [
+    "心脏",
+    "肝脏",
+    "肺",
+    "肾脏"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 心脏通过收缩舒张推动血液在血管中循环。"
+  },
+  {
+   "type": "single",
+   "q": "在地球仪上，连接南北两极、指示南北方向的线叫做？",
+   "a": [
+    "经线",
+    "纬线",
+    "赤道",
+    "回归线"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 经线连接南北两极，指示南北方向。"
+  },
+  {
+   "type": "single",
+   "q": "地球上最长的一条纬线是？",
+   "a": [
+    "赤道",
+    "北回归线",
+    "南回归线",
+    "北极圈"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 赤道是最长的纬线，纬度为零度。"
+  },
+  {
+   "type": "single",
+   "q": "世界上面积最大的大洲是？",
+   "a": [
+    "亚洲",
+    "非洲",
+    "北美洲",
+    "南美洲"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 七大洲中亚洲面积最大。"
+  },
+  {
+   "type": "single",
+   "q": "世界上面积最大、最深的大洋是？",
+   "a": [
+    "太平洋",
+    "大西洋",
+    "印度洋",
+    "北冰洋"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 太平洋是四大洋中面积最大的大洋。"
+  },
+  {
+   "type": "single",
+   "q": "我国地势的总体特征是？",
+   "a": [
+    "西高东低，呈三级阶梯状分布",
+    "东高西低，呈阶梯状分布",
+    "中部高、四周低",
+    "南高北低，较为平坦"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 我国地势西高东低，大致呈三级阶梯分布。"
+  },
+  {
+   "type": "single",
+   "q": "在地图上，表示图上距离比实地距离缩小程度的是？",
+   "a": [
+    "比例尺",
+    "方向",
+    "图例",
+    "注记"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 比例尺表示图上距离比实地距离缩小的程度。"
+  },
+  {
+   "type": "single",
+   "q": "下列描述中，表示“天气”的是？",
+   "a": [
+    "今天午后有雷阵雨",
+    "昆明四季如春",
+    "南极地区终年严寒",
+    "北京冬季寒冷干燥"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 天气描述短时间的大气状况，气候描述多年平均状况。"
+  },
+  {
+   "type": "single",
+   "q": "在我国法律体系中，具有最高法律效力、被称为国家根本大法的是？",
+   "a": [
+    "宪法",
+    "刑法",
+    "民法典",
+    "义务教育法"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 宪法是国家根本法，其他法律不得与之相抵触。"
+  },
+  {
+   "type": "single",
+   "q": "父母或其他监护人依法履行对未成年人的监护、抚养和教育职责，这属于对未成年人的？",
+   "a": [
+    "家庭保护",
+    "学校保护",
+    "社会保护",
+    "司法保护"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 父母或其他监护人履行的职责属于家庭保护。"
+  },
+  {
+   "type": "single",
+   "q": "根据我国宪法，下列哪一项既是公民的基本权利，又是公民的基本义务？",
+   "a": [
+    "受教育",
+    "依法纳税",
+    "服兵役",
+    "选举和被选举"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 受教育和劳动既是公民权利，也是公民义务。"
+  },
+  {
+   "type": "single",
+   "q": "成语“一诺千金”主要体现的中华传统美德是？",
+   "a": [
+    "诚实守信",
+    "勤俭节约",
+    "尊老爱幼",
+    "见义勇为"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 一诺千金形容说话算数、极守信用。"
+  },
+  {
+   "type": "single",
+   "q": "在网络交往中，下列做法正确的是？",
+   "a": [
+    "不轻易向陌生人透露真实姓名和家庭住址",
+    "把家庭住址告诉刚认识的网友",
+    "随意转发未经核实的消息",
+    "用侮辱性语言攻击持不同意见的人"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 网络交往应保护个人隐私、文明发言。"
+  },
+  {
+   "type": "single",
+   "q": "下列选项中，属于计算机软件的是？",
+   "a": [
+    "操作系统",
+    "键盘",
+    "鼠标",
+    "显示器"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 操作系统属于软件，键盘鼠标显示器属于硬件。"
+  },
+  {
+   "type": "single",
+   "q": "下列设备中，属于计算机输入设备的是？",
+   "a": [
+    "键盘",
+    "显示器",
+    "打印机",
+    "音箱"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 键盘用于向计算机输入信息，属于输入设备。"
+  },
+  {
+   "type": "single",
+   "q": "在计算机中，用来分门别类存放和管理文件的是？",
+   "a": [
+    "文件夹",
+    "回收站",
+    "任务栏",
+    "控制面板"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 文件夹用来分类组织和管理文件，可层层嵌套。"
+  },
+  {
+   "type": "single",
+   "q": "在常用的文字编辑软件中，快捷键 Ctrl+C 的作用是？",
+   "a": [
+    "复制",
+    "粘贴",
+    "剪切",
+    "保存"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ Ctrl+C 复制、Ctrl+V 粘贴、Ctrl+S 保存。"
+  },
+  {
+   "type": "single",
+   "q": "下列密码设置方式中，相对更安全的是？",
+   "a": [
+    "长度较长且混合字母、数字和符号",
+    "使用自己的出生日期",
+    "使用连续数字123456",
+    "使用自己的姓名拼音"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 长且混合字符的密码不易被猜到，更安全。"
+  },
+  {
+   "type": "single",
+   "q": "人在紧张或受到惊吓时，常会出现的身体反应是？",
+   "a": [
+    "心跳加快",
+    "体温骤降到很低",
+    "身高明显增加",
+    "视力突然变好"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 紧张时心跳加快、呼吸变急是常见的生理反应。"
+  },
+  {
+   "type": "single",
+   "q": "心里感到烦恼时，下列做法较有助于舒缓情绪的是？",
+   "a": [
+    "找信任的家人或朋友倾诉",
+    "把情绪全部憋在心里谁也不说",
+    "摔打物品来发泄",
+    "长时间拒绝和任何人交流"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 向信任的人倾诉是常见的情绪调节方式。"
+  },
+  {
+   "type": "single",
+   "q": "与同学意见不一致时，比较恰当的做法是？",
+   "a": [
+    "耐心倾听并说清自己的想法",
+    "立刻大声争吵",
+    "从此不再理对方",
+    "强迫对方必须听自己的"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 相互倾听、平和沟通有助于化解分歧。"
+  },
+  {
+   "type": "single",
+   "q": "一次考试没有考好，比较积极的做法是？",
+   "a": [
+    "分析原因并调整学习方法",
+    "认定自己永远学不好",
+    "撕掉试卷放弃努力",
+    "把责任全推给题目太难"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 分析原因、改进方法是面对挫折的积极方式。"
+  },
+  {
+   "type": "single",
+   "q": "在标准篮球比赛中，每队同时上场的队员人数是？",
+   "a": [
+    "5人",
+    "6人",
+    "7人",
+    "11人"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 标准篮球比赛每队同时上场五名队员。"
+  },
+  {
+   "type": "single",
+   "q": "体育锻炼前进行热身活动，主要目的是？",
+   "a": [
+    "预防运动损伤",
+    "让身体更快疲劳",
+    "立刻增加肌肉体积",
+    "减少出汗"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 热身能让身体逐步进入运动状态，减少拉伤。"
+  },
+  {
+   "type": "single",
+   "q": "在简谱中，用来表示休止（停顿）的符号是？",
+   "a": [
+    "0",
+    "1",
+    "2",
+    "3"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 简谱用一到七表示音高，零表示休止符。"
+  },
+  {
+   "type": "single",
+   "q": "在美术（颜料）中，通常所说的色彩三原色是？",
+   "a": [
+    "红、黄、蓝",
+    "红、绿、蓝",
+    "橙、绿、紫",
+    "黑、白、灰"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 颜料三原色为红黄蓝，色光三原色为红绿蓝。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列现象中，属于物理变化（没有生成新物质）的有？",
+   "a": [
+    "冰融化成水",
+    "把纸撕碎",
+    "铁钉生锈",
+    "木柴燃烧"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 冰融化和撕碎纸片只改变状态或形状，没有生成新物质。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列工具中，属于杠杆类简单机械的有？",
+   "a": [
+    "跷跷板",
+    "天平",
+    "筷子",
+    "斜面坡道"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 跷跷板、天平、筷子都绕固定点转动，属于杠杆。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列现象中，主要由光的反射形成的有？",
+   "a": [
+    "水中倒影",
+    "照镜子看到自己",
+    "小孔成像",
+    "日食"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 倒影和镜中像由光的反射形成，小孔成像源于光的直线传播。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列物品中，通常情况下容易导电（属于导体）的有？",
+   "a": [
+    "铜钥匙",
+    "铅笔芯",
+    "干燥的木筷",
+    "玻璃杯"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 金属和石墨容易导电，干燥木材与玻璃通常不易导电。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于细胞的说法，正确的有？",
+   "a": [
+    "细胞是生物体结构和功能的基本单位",
+    "动植物细胞一般都有细胞膜、细胞质和细胞核",
+    "所有生物都由细胞构成",
+    "植物细胞都有叶绿体"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 病毒没有细胞结构，植物根部细胞一般也没有叶绿体。"
+  },
+  {
+   "type": "multiple",
+   "q": "一个完整的生态系统，一般包括下列哪些成分？",
+   "a": [
+    "生产者（绿色植物）",
+    "消费者（动物）",
+    "分解者（细菌、真菌）",
+    "阳光、空气、水等非生物部分"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 生态系统由生物部分和非生物部分共同组成。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列属于七大洲的有？",
+   "a": [
+    "亚洲",
+    "非洲",
+    "南极洲",
+    "太平洋"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 太平洋属于四大洋，不属于七大洲。"
+  },
+  {
+   "type": "multiple",
+   "q": "关于经纬线的说法，正确的有？",
+   "a": [
+    "纬线指示东西方向",
+    "经线指示南北方向",
+    "赤道是最长的纬线",
+    "所有经线长度都不相等"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 纬线指示东西、经线指示南北，所有经线长度相等。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于我国地形、地势的说法，正确的有？",
+   "a": [
+    "地势西高东低",
+    "地形复杂多样",
+    "山区面积广大",
+    "地势东高西低"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 我国地势西高东低、地形复杂多样、山区面积广大。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列有关规则的说法，正确的有？",
+   "a": [
+    "社会规则保障社会秩序的实现",
+    "规则需要大家共同遵守",
+    "过马路遵守交通信号是遵守规则的表现",
+    "规则只对别人有用，自己可以例外"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 社会规则维系秩序，需要人人自觉遵守。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列属于公民基本义务的有？",
+   "a": [
+    "遵守宪法和法律",
+    "依法纳税",
+    "爱护公共财产",
+    "随意丢弃垃圾"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 遵守宪法法律、依法纳税、爱护公共财产都是公民应有的义务。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列行为中，体现诚实守信的有？",
+   "a": [
+    "答应别人的事努力做到",
+    "考试时独立完成不作弊",
+    "拾到东西主动归还",
+    "为掩饰错误而撒谎"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 守信、不作弊、拾金不昧都是诚实守信的表现。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列设备中，属于计算机输出设备的有？",
+   "a": [
+    "显示器",
+    "打印机",
+    "音箱",
+    "扫描仪"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 显示器、打印机、音箱属于输出设备，扫描仪属于输入设备。"
+  },
+  {
+   "type": "multiple",
+   "q": "关于文件和文件夹，下列做法正确的有？",
+   "a": [
+    "给文件起能反映内容的名字",
+    "把同类文件放进同一个文件夹",
+    "定期整理不需要的文件",
+    "把所有文件都堆在桌面且从不整理"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 规范命名、分类存放、定期整理有助于管理文件。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列做法有助于保护个人信息安全的有？",
+   "a": [
+    "不随意在陌生网站填写家庭住址",
+    "设置较复杂的密码并定期更换",
+    "不轻易点开来历不明的链接",
+    "把账号密码写在纸条上贴在显示器旁"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 避免填写住址、设置复杂密码、慎点陌生链接能减少信息泄露。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列描述中，属于情绪的有？",
+   "a": [
+    "考试前感到紧张",
+    "被误解时觉得委屈",
+    "收到礼物很开心",
+    "一米等于一百厘米"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 紧张、委屈、开心都是情绪，长度换算属于知识。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列做法有助于合理安排学习时间的有？",
+   "a": [
+    "列出任务并分清轻重缓急",
+    "给每项任务大致安排时间",
+    "先完成重要任务再休息",
+    "把所有作业都拖到睡前才做"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 列清单、分主次、及时开始有助于合理安排时间。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于常见球类比赛的说法，正确的有？",
+   "a": [
+    "篮球比赛每队上场5人",
+    "足球比赛每队上场11人（含守门员）",
+    "排球比赛每队上场6人",
+    "篮球比赛每队上场11人"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 篮球五人、足球十一人、排球六人是常见的上场人数。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列乐器中，属于中国传统民族乐器的有？",
+   "a": [
+    "二胡",
+    "古筝",
+    "笛子",
+    "钢琴"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 二胡、古筝、笛子是中国民族乐器，钢琴是西洋乐器。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列说法中，正确的有？",
+   "a": [
+    "“文房四宝”指笔、墨、纸、砚",
+    "楷书笔画端正、结构规整",
+    "国画常用毛笔和墨在宣纸上作画",
+    "油画是使用毛笔和宣纸完成的"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 油画使用画布与油彩，与国画所用笔墨纸砚不同。"
+  },
+  {
+   "type": "boolean",
+   "q": "水在标准大气压下，温度降到0摄氏度时会开始结冰。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 标准大气压下水的凝固点是零摄氏度。"
+  },
+  {
+   "type": "boolean",
+   "q": "声音的传播需要介质，真空中不能传播声音。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 声音靠介质传播，真空中没有介质所以不能传声。"
+  },
+  {
+   "type": "boolean",
+   "q": "光在真空中的传播速度比在空气中的传播速度慢。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 光在真空中传播最快，进入空气或水后会变慢。"
+  },
+  {
+   "type": "boolean",
+   "q": "人体和大地都是导体，所以不能用湿手接触带电的电器。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 水和人体都易导电，湿手接触带电电器有触电危险。"
+  },
+  {
+   "type": "boolean",
+   "q": "绿色植物的光合作用只在夜晚进行。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 光合作用需要光能，主要在有光照时进行。"
+  },
+  {
+   "type": "boolean",
+   "q": "在“草→兔→狐”这条食物链中，草属于生产者。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I01 https://www.tiku.cn/chapterq?cid=10&cno=1 绿色植物能自己制造有机物，属于生产者。"
+  },
+  {
+   "type": "boolean",
+   "q": "所有的经线都指示南北方向，并且长度大致相等。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 经线是连接南北两极的半圆，长度大致相等。"
+  },
+  {
+   "type": "boolean",
+   "q": "地球是一个正圆形的平面。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 地球是两极稍扁、赤道略鼓的不规则球体。"
+  },
+  {
+   "type": "boolean",
+   "q": "我国地势西高东低，使得许多大河自西向东流入海洋。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：E17 https://tiku.zujuan.com/map/paper-5113328.shtml 西高东低的地势使长江黄河等大河大多东流入海。"
+  },
+  {
+   "type": "boolean",
+   "q": "宪法是国家的根本法，具有最高的法律效力。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 宪法是根本法，是其他法律的立法基础和依据。"
+  },
+  {
+   "type": "boolean",
+   "q": "公民在享有权利的同时，也必须履行相应的义务。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 权利与义务相统一，享有权利的同时须履行义务。"
+  },
+  {
+   "type": "boolean",
+   "q": "在网络上可以随意发布侮辱他人的言论，因为网络是虚拟的、不用负责。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I10 https://ananedu.com/ananexam/examfile/7128.htm 网络空间同样要遵守法律与道德，发言需要负责。"
+  },
+  {
+   "type": "boolean",
+   "q": "操作系统属于计算机的硬件。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 操作系统是系统软件，不是硬件。"
+  },
+  {
+   "type": "boolean",
+   "q": "在多数文字编辑软件中，按 Ctrl+V 可以粘贴已复制的内容。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ Ctrl+V 是常用粘贴快捷键，Ctrl+C 用于复制。"
+  },
+  {
+   "type": "boolean",
+   "q": "把自己的生日当作所有账号的密码，存在被他人猜到的风险。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 生日等公开信息容易被猜到，不宜作为密码。"
+  },
+  {
+   "type": "boolean",
+   "q": "遇到挫折时感到难过或失落，是一种正常的情绪反应。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 面对挫折产生难过情绪是常见的正常反应。"
+  },
+  {
+   "type": "boolean",
+   "q": "把所有任务都留到最后一刻再做，是最有效的时间管理方式。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965 拖延容易导致匆忙和焦虑，提前规划更有效。"
+  },
+  {
+   "type": "boolean",
+   "q": "运动前做适当的热身活动，有助于减少运动损伤。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 热身能让身体逐步适应运动，降低损伤风险。"
+  },
+  {
+   "type": "boolean",
+   "q": "在简谱中，数字0表示一个要唱出来的音。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 简谱中的零表示休止符，不发出声音。"
+  },
+  {
+   "type": "boolean",
+   "q": "红、黄、蓝是美术（颜料）中常说的三原色，它们可以调配出许多其他颜色。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 颜料三原色按不同比例混合可调配出许多颜色。"
+  },
+  {
+   "type": "single",
+   "q": "绿色植物进行光合作用主要吸收哪种气体？",
+   "a": [
+    "氧气",
+    "二氧化碳",
+    "氮气",
+    "水蒸气"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  },
+  {
+   "type": "single",
+   "q": "人体面积最大的器官是？",
+   "a": [
+    "心脏",
+    "皮肤",
+    "肝脏",
+    "肺"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  },
+  {
+   "type": "single",
+   "q": "下列属于可再生能源的是？",
+   "a": [
+    "煤炭",
+    "石油",
+    "太阳能",
+    "天然气"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  },
+  {
+   "type": "single",
+   "q": "用灭火器扑救初期火灾时，喷嘴应对准火焰的哪个部位？",
+   "a": [
+    "火焰上部",
+    "火焰中部",
+    "火焰根部",
+    "任意位置"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  }
+ ]
+}

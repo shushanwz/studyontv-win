@@ -1,0 +1,786 @@
+{
+  "name": "六年级至初一题库·数学（2026-11-10）",
+  "version": 2,
+  "items": [
+    {
+      "type": "single",
+      "q": "一个平行四边形底缩小10倍，高扩大10倍，这个平行四边形的面积?",
+      "a": ["大小与原来相等", "缩小10倍", "扩大10倍", "不知道"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Primary school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "将一个长方形拉成一个平行四边形（四条边长度不变），它的面积?",
+      "a": ["比原来小", "比原来大", "与原来相等", "不知道"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Primary school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "梯形有_____条高。",
+      "a": ["无数", "1", "1900-01-02 00:00:00", "3"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Primary school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "把三根同样长的铁丝分别围成长方形，正方形和平行四边形，围成图形的面积?",
+      "a": ["正方形大", "长方形大", "平行四边形大", "不知道"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Primary school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "一个平行四边形，底边不变，高扩大3倍，它的面积?",
+      "a": ["扩大3倍", "扩大9倍", "缩小3倍", "不知道"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Primary school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "数轴上一点A，一蚂蚁从A 出发爬了5个单位长度到了原点，则点A所表示的数是?",
+      "a": ["5", "±5", "–5", "±10"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "下列说法正确的是?",
+      "a": ["0既不是正数，也不是负数，所以0不是有理数", "在﹣3与﹣1之间仅有一个有理数", "一个负数的倒数一定还是负数", "一个数的绝对值越大，表示它的点在数轴上越靠右"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "|﹣1/5|的相反数是　　?",
+      "a": ["44960", "﹣1/5", "3", "-3"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "下列说法中，错误的是?",
+      "a": ["若n个有理数的积是0，则其中至少有一个数为0", "倒数等于它本身的有理数是±1", "任何有理数的平方都大于0", "－1的奇数次幂等于－1"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "下列命题：①若|a|＞|b|，则a＞b；②若a+b＝0，则|a|≠|b|；③等边三角形的三个内角都相等.④线段垂直平分线上的点到线段两个端点的距离相等.以上命题的逆命题是真命题的有?",
+      "a": ["0 个", "1 个", "2 个", "3 个"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev Math-Natural Sciences-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "计算 1/2 + 1/3 = ?",
+      "a": ["5/6", "2/5", "1/6", "1"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "计算 3/4 - 1/4 = ?",
+      "a": ["1/2", "1/4", "3/8", "1"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "计算 2/3 × 3/4 = ?",
+      "a": ["1/2", "8/9", "1/6", "5/7"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "计算 3/5 ÷ 3/10 = ?",
+      "a": ["2", "1/2", "9/50", "3/2"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "计算 1 - 2/5 = ?",
+      "a": ["3/5", "2/5", "1/5", "4/5"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "计算 5/6 × 2/5 = ?",
+      "a": ["1/3", "7/11", "10/11", "5/6"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "把 12 : 18 化成最简整数比是?",
+      "a": ["2:3", "3:2", "1:2", "1:3"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "求比值 0.6 : 0.2 = ?",
+      "a": ["3", "0.3", "1/3", "0.12"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "把 60 按 2:3 分成两份，较大的一份是多少?",
+      "a": ["36", "24", "30", "40"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "如果 a : b = 3 : 4，那么 b : a = ?",
+      "a": ["4:3", "3:4", "1:1", "9:16"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "25% 化成最简分数是?",
+      "a": ["1/4", "1/25", "25", "1/5"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "一个数的 20% 是 40，这个数是多少?",
+      "a": ["200", "8", "20", "80"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "50 的 30% 是多少?",
+      "a": ["15", "1.5", "150", "30"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "一件商品原价 200 元，打八折后的售价是多少元?",
+      "a": ["160", "180", "80", "40"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "某班有 50 人，今天出勤 48 人，出勤率是多少?",
+      "a": ["96%", "48%", "98%", "92%"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "半径为 2 的圆，面积是多少?（取 π = 3.14）",
+      "a": ["12.56", "6.28", "25.12", "4π"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "直径为 10 的圆，周长是多少?（取 π = 3.14）",
+      "a": ["31.4", "15.7", "78.5", "62.8"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "半径为 3 的圆，面积是多少?（取 π = 3.14）",
+      "a": ["28.26", "18.84", "9.42", "113.04"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "圆心角为 90°、半径为 2 的扇形面积是多少?（取 π = 3.14）",
+      "a": ["3.14", "12.56", "6.28", "1.57"],
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "一个圆的半径扩大到原来的 2 倍，面积扩大到原来的几倍?",
+      "a": ["4倍", "2倍", "8倍", "不变"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "等底等高的圆锥体积是圆柱体积的几分之几?",
+      "a": ["1/3", "3倍", "1/2", "2/3"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "一个圆柱底面积是 10 平方厘米，高 5 厘米，体积是多少立方厘米?",
+      "a": ["50", "15", "25", "100"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "解方程 2x + 6 = 16，x = ?",
+      "a": ["5", "11", "8", "10"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "解方程 3x - 4 = 11，x = ?",
+      "a": ["5", "7", "15/4", "15"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "解方程 x/4 = 3，x = ?",
+      "a": ["12", "7", "3/4", "1"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "在比例尺 1:1000 的地图上，量得两地距离 5 厘米，实际距离是多少米?",
+      "a": ["50米", "500米", "5米", "5000米"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "比例尺 1:200000 表示图上 1 厘米相当于实际多少千米?",
+      "a": ["2千米", "20千米", "0.2千米", "200千米"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "single",
+      "q": "在扇形统计图中，某部分占 25%，它对应的圆心角是多少度?",
+      "a": ["90°", "25°", "180°", "45°"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "要清楚地表示某地区一年中每月气温的变化情况，最适合的统计图是?",
+      "a": ["折线统计图", "条形统计图", "扇形统计图", "统计表"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "single",
+      "q": "要直观比较五个班级人数的多少，最适合的统计图是?",
+      "a": ["条形统计图", "折线统计图", "扇形统计图", "复式统计表"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "计算 -3 + 5 = ?",
+      "a": ["2", "-2", "8", "-8"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "计算 -2 - 4 = ?",
+      "a": ["-6", "2", "6", "-2"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "计算 (-3) × (-4) = ?",
+      "a": ["12", "-12", "7", "-7"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "计算 (-12) ÷ 3 = ?",
+      "a": ["-4", "4", "-9", "-15"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "计算 -2³ = ?",
+      "a": ["-8", "8", "-6", "6"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "比较 -3 与 -5 的大小，正确的是?",
+      "a": ["-3 > -5", "-3 < -5", "-3 = -5", "无法比较"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "-7 的相反数是?",
+      "a": ["7", "-7", "1/7", "-1/7"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "计算 |-5| = ?",
+      "a": ["5", "-5", "1/5", "0"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "绝对值等于 3 的数是?",
+      "a": ["3和-3", "只有3", "只有-3", "9"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "化简 -(-3) = ?",
+      "a": ["3", "-3", "0", "1/3"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "合并同类项 3a + 2a = ?",
+      "a": ["5a", "6a", "5a²", "a"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "单项式 -3x²y 的次数是?",
+      "a": ["3", "2", "-3", "4"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "单项式 2x²y 的系数是?",
+      "a": ["2", "3", "2x", "-2"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "去括号：-(a - b) = ?",
+      "a": ["-a + b", "-a - b", "a - b", "a + b"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "解方程 3x + 5 = 14，x = ?",
+      "a": ["3", "9", "19/3", "5"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "解方程 2(x - 1) = 8，x = ?",
+      "a": ["5", "4", "3", "10"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "30° 角的余角是多少度?",
+      "a": ["60°", "150°", "30°", "90°"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "single",
+      "q": "120° 角的补角是多少度?",
+      "a": ["60°", "30°", "240°", "90°"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "正方体有多少个面?",
+      "a": ["6", "4", "8", "12"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "single",
+      "q": "经过平面上的两个点可以画几条直线?",
+      "a": ["1条", "2条", "无数条", "0条"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "multiple",
+      "q": "下列分数中，哪些是真分数?",
+      "a": ["1/2", "3/5", "5/3", "7/7"],
+      "correctIndices": [0, 1],
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各数中，哪些是 2 的倍数（偶数）?",
+      "a": ["14", "27", "30", "45"],
+      "correctIndices": [0, 2],
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各组数中，哪些互为相反数?",
+      "a": ["3与-3", "-5与5", "2与1/2", "6与-6"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各数中，哪些是有理数?",
+      "a": ["-3", "0", "1/2", "π"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "multiple",
+      "q": "下列式子中，哪些是一元一次方程?",
+      "a": ["2x + 1 = 5", "x² = 4", "3x - 2", "x/2 = 6"],
+      "correctIndices": [0, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各组单项式中，哪些是同类项?",
+      "a": ["3a与5a", "2x²y与-4x²y", "2a与3b", "5xy与5x"],
+      "correctIndices": [0, 1],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "multiple",
+      "q": "下列等式中，成立的有哪些?",
+      "a": ["1/2 + 1/2 = 1", "0.5 = 50%", "2³ = 6", "|-3| = 3"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "multiple",
+      "q": "下列图形中，哪些是轴对称图形?",
+      "a": ["正方形", "圆", "平行四边形", "等边三角形"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各数中，哪些数的绝对值等于它本身?",
+      "a": ["0", "5", "-2", "1/3"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "multiple",
+      "q": "下列运算中，结果为正数的有哪些?",
+      "a": ["(-2) × (-3)", "5 - 8", "(-6) ÷ (-2)", "-1 + 4"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各数中，哪些是负数?",
+      "a": ["-5", "0", "-1/2", "|-3|"],
+      "correctIndices": [0, 2],
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "multiple",
+      "q": "下列比中，哪些化简后等于 2:3?",
+      "a": ["4:6", "8:12", "6:9", "2:5"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "multiple",
+      "q": "关于百分数，下列说法正确的有哪些?",
+      "a": ["50% = 1/2", "百分数又叫百分率", "120% 可以表示增长率", "百分号前面的数只能是整数"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "multiple",
+      "q": "下列式子中，哪些是整式?",
+      "a": ["3x", "-2", "1/x", "a + b"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "multiple",
+      "q": "下列角中，哪些是锐角?",
+      "a": ["30°", "89°", "90°", "120°"],
+      "correctIndices": [0, 1],
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "multiple",
+      "q": "关于圆柱和圆锥，下列说法正确的有哪些?",
+      "a": ["圆柱有两个底面", "圆锥只有一个底面", "等底等高时圆柱体积是圆锥的3倍", "圆柱的侧面展开一定是正方形"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "multiple",
+      "q": "下列各数中，哪些满足 |x| = 2?",
+      "a": ["2", "-2", "0", "4"],
+      "correctIndices": [0, 1],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "multiple",
+      "q": "下列分数中，哪些大于 1/2?",
+      "a": ["2/3", "3/5", "1/3", "5/8"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "multiple",
+      "q": "关于圆，下列说法正确的有哪些?",
+      "a": ["直径是半径的2倍", "圆有无数条对称轴", "π约等于3.14", "半径越大圆周率越大"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "multiple",
+      "q": "关于统计图，下列说法正确的有哪些?",
+      "a": ["扇形统计图能看出部分与总体的百分比", "折线统计图能看出数量增减变化", "条形统计图便于比较数量多少", "扇形统计图中各部分圆心角之和是180°"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "boolean",
+      "q": "0 是最小的有理数。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "boolean",
+      "q": "圆的周长总是它直径的 π 倍。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "boolean",
+      "q": "两个负数相加，和一定还是负数。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "boolean",
+      "q": "1 的倒数是 1。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "boolean",
+      "q": "绝对值相等的两个数一定相等。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "boolean",
+      "q": "等底等高的圆柱体积是圆锥体积的 3 倍。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "boolean",
+      "q": "百分数可以大于 100%。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "boolean",
+      "q": "-a 一定是负数。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "boolean",
+      "q": "所有的质数都是奇数。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "boolean",
+      "q": "扇形统计图能清楚地表示出各部分数量与总数之间的关系。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "boolean",
+      "q": "方程一定是等式。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "boolean",
+      "q": "等式一定是方程。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "boolean",
+      "q": "圆的大小由半径决定。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "boolean",
+      "q": "0 没有倒数。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "boolean",
+      "q": "所含字母相同、并且相同字母的指数也相同的项叫同类项。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    },
+    {
+      "type": "boolean",
+      "q": "任意两条射线都能组成一个角。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B03 https://zy.21cnjy.com/25137348"
+    },
+    {
+      "type": "boolean",
+      "q": "互为补角的两个角一定是一个锐角和一个钝角。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B08 http://www.yuerzaixian.com/html/sj/670.htm"
+    },
+    {
+      "type": "boolean",
+      "q": "两个真分数相乘，积一定小于 1。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：D12 https://www.tiku.cn/paper/detail/78965"
+    },
+    {
+      "type": "boolean",
+      "q": "圆周率 π 就等于 3.14。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "boolean",
+      "q": "正方体有 6 个面、12 条棱、8 个顶点。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：B01 http://xiaoxue.eol.cn/jia_jiao_fu_dao_9130/"
+    }
+  ]
+}

@@ -24,6 +24,7 @@
 from __future__ import annotations
 
 import json
+import re
 import uuid
 from pathlib import Path
 from typing import Any, Iterable
@@ -42,6 +43,40 @@ LETTERS = "ABCDEFGH"
 
 def new_id() -> str:
     return "q_" + uuid.uuid4().hex
+
+
+def loads_lenient(text: str) -> Any:
+    """解析题库 JSON，容忍 AI 输出常见的包装。
+
+    大模型给出的 JSON 常带三层壳：```json 代码块、前后一段解释、首尾杂字。
+    直接 json.loads 会失败，而用户看不出是自己保存方式的问题还是格式问题，
+    所以这里按「原样 → 剥代码块 → 截取首尾括号」的顺序试。
+    """
+    raw = str(text or "").lstrip("\ufeff").strip()
+    if not raw:
+        raise ValueError("文件是空的")
+
+    candidates: list[str] = [raw]
+    fence = re.search(r"```(?:json|JSON)?\s*(.+?)```", raw, re.S)
+    if fence:
+        candidates.append(fence.group(1).strip())
+
+    first_obj, first_arr = raw.find("{"), raw.find("[")
+    starts = [i for i in (first_obj, first_arr) if i >= 0]
+    if starts:
+        start = min(starts)
+        closer = "}" if raw[start] == "{" else "]"
+        end = raw.rfind(closer)
+        if end > start:
+            candidates.append(raw[start : end + 1])
+
+    last_error: Exception | None = None
+    for candidate in candidates:
+        try:
+            return json.loads(candidate)
+        except json.JSONDecodeError as exc:
+            last_error = exc
+    raise ValueError(f"不是有效的 JSON：{last_error}")
 
 
 def _as_int(value: Any, default: int = 0) -> int:
@@ -219,7 +254,7 @@ class Bank:
     @classmethod
     def load(cls, path: Path) -> "Bank":
         path = Path(path)
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload = loads_lenient(path.read_text(encoding="utf-8"))
         name, items = cls.parse_payload(payload)
         if isinstance(payload, dict) and payload.get("name"):
             name = str(payload["name"])
@@ -230,10 +265,12 @@ class Bank:
     # ---------- 写入 ----------
 
     def to_payload(self) -> dict:
+        # for_export=False：enabled / created_at 也要写进文件。否则「暂停某题」
+        # 保存后重开又变回启用，用户会以为暂停按钮失效。
         return {
             "name": self.name,
             "version": 2,
-            "items": [q.to_dict() for q in self.items],
+            "items": [q.to_dict(for_export=False) for q in self.items],
         }
 
     def save(self, path: Path | None = None) -> Path:

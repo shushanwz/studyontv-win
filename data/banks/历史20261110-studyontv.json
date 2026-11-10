@@ -1,0 +1,786 @@
+{
+  "name": "六年级至初一题库·历史（2026-11-10）",
+  "version": 2,
+  "items": [
+    {
+      "type": "single",
+      "q": "河姆渡和半坡原始居民过上定居生活的最主要原因?",
+      "a": ["农业生产的出现", "火的使用", "建造房屋", "使用陶器"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev History-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "我国是世界最早种植蔬菜的国家。下列遗址的考古发现中可为这一论断提供证据的是?",
+      "a": ["元谋人遗址", "北京人遗址", "河姆渡人遗址", "半坡人遗址"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev History-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "相传，造出衣裳 舟车 宫室等，为后世的衣食住行奠定基础的“人文始祖是？",
+      "a": ["黄帝", "尧", "舜", "禹"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev History-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "在古希腊神话中，众神经常参加人间战争。传说中国古代也有一场“风伯御风 雨神行雨”的战役。在这场战役中，炎帝 黄帝部落大败蚩尤部落。该战役发生在?",
+      "a": ["牧野", "逐鹿", "长平", "城濮"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev History-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "以下哪个事件是中国历史上“文化大革命”期间的一部分？",
+      "a": ["五四运动", "抗日战争", "四人帮”被逮捕", "中共一大召开"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[原题] J01 M3KE dev History-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "single",
+      "q": "我国境内目前已确认的最早的古人类是？",
+      "a": ["元谋人", "北京人", "山顶洞人", "半坡人"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "北京人制作和使用的工具主要是？",
+      "a": ["磨制石器", "打制石器", "青铜农具", "铁制农具"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "会建造干栏式房屋的原始居民是？",
+      "a": ["半坡人", "北京人", "河姆渡人", "山顶洞人"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "半坡居民主要种植的粮食作物是？",
+      "a": ["水稻", "小麦", "玉米", "粟"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "河姆渡居民主要种植的粮食作物是？",
+      "a": ["水稻", "粟", "小麦", "黍"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "我国历史上第一个王朝是？",
+      "a": ["商朝", "夏朝", "周朝", "秦朝"],
+      "k": 1,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "约公元前2070年，建立夏朝的是？",
+      "a": ["启", "汤", "禹", "桀"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "公天下变为家天下、世袭制代替禅让制，始于哪一事件？",
+      "a": ["禹治理洪水", "汤灭夏建商", "武王伐纣", "启继承禹的王位"],
+      "k": 3,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "灭掉夏朝、建立商朝的是？",
+      "a": ["汤", "桀", "纣", "盘庚"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "把都城迁到殷、使商朝此后保持稳定的商王是？",
+      "a": ["汤", "盘庚", "纣", "武丁"],
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "我国有文字可考的历史开始于哪个朝代？",
+      "a": ["夏朝", "西周", "商朝", "春秋"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "刻写在龟甲和兽骨上的文字是？",
+      "a": ["金文", "小篆", "隶书", "甲骨文"],
+      "k": 3,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "迄今世界上出土的最重的青铜器是？",
+      "a": ["司母戊鼎", "四羊方尊", "青铜立人像", "毛公鼎"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "以四只羊为装饰、造型精美的商朝青铜器是？",
+      "a": ["司母戊鼎", "四羊方尊", "利簋", "曾侯乙编钟"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "西周为稳定政局、巩固疆土而实行的制度是？",
+      "a": ["郡县制", "禅让制", "分封制", "世袭制"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "春秋时期第一位称霸的诸侯是？",
+      "a": ["晋文公", "楚庄王", "秦穆公", "齐桓公"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "在城濮大败楚军、后来成为霸主的是？",
+      "a": ["晋文公", "齐桓公", "宋襄公", "越王勾践"],
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "战国七雄中位于最西边的诸侯国是？",
+      "a": ["齐国", "秦国", "楚国", "燕国"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "使秦国国力大增、为统一六国奠定基础的变法是？",
+      "a": ["吴起变法", "李悝变法", "商鞅变法", "王安石变法"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "任用商鞅主持变法的秦国国君是？",
+      "a": ["秦穆公", "秦始皇", "秦惠文王", "秦孝公"],
+      "k": 3,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "战国时期秦国蜀郡太守李冰主持修建的水利工程是？",
+      "a": ["都江堰", "郑国渠", "灵渠", "大运河"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "百家争鸣的局面出现在哪一时期？",
+      "a": ["夏商时期", "春秋战国时期", "秦汉时期", "三国时期"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "儒家学派的创始人是？",
+      "a": ["孟子", "老子", "孔子", "墨子"],
+      "k": 2,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "孔子的核心思想是？",
+      "a": ["兼爱", "无为而治", "以法治国", "仁"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "记录孔子及其弟子言行的书是？",
+      "a": ["《论语》", "《道德经》", "《墨子》", "《孟子》"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "道家学派的创始人是？",
+      "a": ["孔子", "老子", "庄子", "韩非"],
+      "k": 1,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "老子的学说主要集中在哪一部书中？",
+      "a": ["《论语》", "《孙子兵法》", "《道德经》", "《韩非子》"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "主张兼爱、非攻，反对不义战争的学派代表人物是？",
+      "a": ["孟子", "庄子", "韩非", "墨子"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "战国时期主张仁政、提出民贵君轻的儒家代表人物是？",
+      "a": ["孟子", "孔子", "荀子", "墨子"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "法家学派的集大成者、主张以法治国的是？",
+      "a": ["商鞅", "韩非", "申不害", "李斯"],
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "知己知彼，百战不殆出自哪一部兵书？",
+      "a": ["《孙膑兵法》", "《吴子》", "《孙子兵法》", "《六韬》"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "秦王嬴政完成统一、建立秦朝是在哪一年？",
+      "a": ["公元前2070年", "公元前202年", "公元前1046年", "公元前221年"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "秦朝统一后，作为全国通用标准文字的是？",
+      "a": ["小篆", "隶书", "甲骨文", "楷书"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "秦朝统一后，全国统一流通的货币是？",
+      "a": ["刀币", "圆形方孔半两钱", "布币", "五铢钱"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "秦始皇为加强中央集权，在地方上推行的是？",
+      "a": ["分封制", "行省制", "郡县制", "禅让制"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "秦长城的西端起点是？",
+      "a": ["辽东", "山海关", "嘉峪关", "临洮"],
+      "k": 3,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "中国历史上第一次大规模农民起义是？",
+      "a": ["陈胜、吴广起义", "黄巾起义", "黄巢起义", "李自成起义"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "成语破釜沉舟出自哪一场战役？",
+      "a": ["垓下之战", "巨鹿之战", "官渡之战", "赤壁之战"],
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "建立西汉、史称汉高祖的是？",
+      "a": ["刘彻", "刘秀", "刘邦", "刘备"],
+      "k": 2,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "颁布推恩令、巧妙削弱诸侯王势力的是？",
+      "a": ["汉高祖", "汉文帝", "汉景帝", "汉武帝"],
+      "k": 3,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "汉武帝接受董仲舒的建议，在思想上实行的措施是？",
+      "a": ["罢黜百家，独尊儒术", "焚书坑儒", "无为而治", "百家争鸣"],
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "汉武帝时期两次出使西域、为丝绸之路开通作出重大贡献的是？",
+      "a": ["班超", "张骞", "玄奘", "鉴真"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "汉代丝绸之路的东端起点是？",
+      "a": ["洛阳", "咸阳", "长安", "敦煌"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "公元前60年，西汉设置哪一机构，标志西域正式归属中央政权？",
+      "a": ["安西都护府", "伊犁将军", "宣政院", "西域都护"],
+      "k": 3,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "single",
+      "q": "东汉时期改进造纸术、使纸得以广泛使用的人是？",
+      "a": ["蔡伦", "毕昇", "张衡", "华佗"],
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "single",
+      "q": "建立东汉、开创光武中兴的是？",
+      "a": ["刘邦", "刘秀", "刘彻", "刘协"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "我国第一部纪传体通史《史记》的作者是？",
+      "a": ["司马光", "班固", "司马迁", "司马相如"],
+      "k": 2,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "《史记》记述的历史，下限到哪一时期？",
+      "a": ["秦始皇时期", "汉高祖时期", "三国时期", "汉武帝时期"],
+      "k": 3,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "官渡之战中以少胜多、击败袁绍的是？",
+      "a": ["曹操", "刘备", "孙权", "袁绍"],
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "208年孙刘联军以火攻大败曹操、奠定三国鼎立基础的战役是？",
+      "a": ["官渡之战", "赤壁之战", "巨鹿之战", "淝水之战"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "220年废掉汉献帝、建立魏国的是？",
+      "a": ["曹操", "刘备", "曹丕", "孙权"],
+      "k": 2,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "灭掉吴国、结束三国鼎立而短暂统一全国的朝代是？",
+      "a": ["东汉", "东晋", "北魏", "西晋"],
+      "k": 3,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "把都城从平城迁到洛阳并推行汉化改革的北魏皇帝是？",
+      "a": ["孝文帝", "秦始皇", "汉武帝", "汉光武帝"],
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "被后人誉为书圣、代表作是《兰亭集序》的书法家是？",
+      "a": ["颜真卿", "王羲之", "柳公权", "顾恺之"],
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "single",
+      "q": "南朝时把圆周率精确到小数点以后第七位数字的科学家是？",
+      "a": ["张衡", "蔡伦", "祖冲之", "贾思勰"],
+      "k": 2,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于战国七雄的诸侯国有哪些？",
+      "a": ["齐国", "晋国", "楚国", "秦国"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "multiple",
+      "q": "下列人物中属于儒家学派代表的是？",
+      "a": ["孔子", "孟子", "老子", "庄子"],
+      "correctIndices": [0, 1],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G01 https://lcsjyy.lcedu.cn/studio/index.php?id=112581&r=studio/post/view&sid=1257"
+    },
+    {
+      "type": "multiple",
+      "q": "下列人物中属于道家学派代表的是？",
+      "a": ["墨子", "老子", "庄子", "韩非"],
+      "correctIndices": [1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G01 https://lcsjyy.lcedu.cn/studio/index.php?id=112581&r=studio/post/view&sid=1257"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于秦始皇巩固统一措施的是？",
+      "a": ["统一文字", "统一货币", "统一度量衡", "实行分封制"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于中国古代四大发明的是？",
+      "a": ["造纸术", "指南针", "地动仪", "火药"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G01 https://lcsjyy.lcedu.cn/studio/index.php?id=112581&r=studio/post/view&sid=1257"
+    },
+    {
+      "type": "multiple",
+      "q": "下列典籍中属于四书的是？",
+      "a": ["《论语》", "《孟子》", "《大学》", "《诗经》"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G01 https://lcsjyy.lcedu.cn/studio/index.php?id=112581&r=studio/post/view&sid=1257"
+    },
+    {
+      "type": "multiple",
+      "q": "下列典籍中属于五经的是？",
+      "a": ["《诗经》", "《论语》", "《尚书》", "《礼记》"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G01 https://lcsjyy.lcedu.cn/studio/index.php?id=112581&r=studio/post/view&sid=1257"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于中国传统节日的是？",
+      "a": ["春节", "圣诞节", "端午节", "中秋节"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于端午节常见习俗的是？",
+      "a": ["吃粽子", "赛龙舟", "挂艾草", "赏月"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列关于古代年龄称谓的对应，正确的是？",
+      "a": ["而立指三十岁", "不惑指四十岁", "花甲指六十岁", "古稀指五十岁"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于商鞅变法内容的是？",
+      "a": ["奖励耕织", "奖励军功", "允许土地自由买卖", "实行分封制"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于汉武帝巩固大一统措施的是？",
+      "a": ["颁布推恩令", "罢黜百家，独尊儒术", "统一铸造五铢钱", "焚书坑儒"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "multiple",
+      "q": "经丝绸之路从西域传入中原的物产有？",
+      "a": ["葡萄", "水稻", "核桃", "石榴"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "multiple",
+      "q": "下列战役中以少胜多而著称的有？",
+      "a": ["巨鹿之战", "长平之战", "官渡之战", "赤壁之战"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于三国鼎立时期政权的是？",
+      "a": ["魏", "蜀", "吴", "西晋"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于北魏孝文帝改革中汉化措施的是？",
+      "a": ["改鲜卑姓为汉姓", "穿汉服", "实行分封制", "说汉语"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列属于文房四宝的是？",
+      "a": ["笔", "墨", "印泥", "纸"],
+      "correctIndices": [0, 1, 3],
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列人物中以书法著称的有？",
+      "a": ["王羲之", "顾恺之", "颜真卿", "柳公权"],
+      "correctIndices": [0, 2, 3],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列人物与其成果的对应，正确的是？",
+      "a": ["蔡伦—改进造纸术", "张衡—地动仪", "祖冲之—圆周率", "司马迁—《资治通鉴》"],
+      "correctIndices": [0, 1, 2],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "multiple",
+      "q": "下列战役中发生在战国时期的是？",
+      "a": ["城濮之战", "桂陵之战", "马陵之战", "长平之战"],
+      "correctIndices": [1, 2, 3],
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "元谋人是我国境内目前已确认的最早的古人类。",
+      "k": 0,
+      "difficulty": 1,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "北京人已经懂得人工取火。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "半坡原始居民居住的是干栏式房屋。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "启继承禹的王位，标志着世袭制代替了禅让制。",
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "甲骨文是铸刻在青铜器上的文字。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "商朝因盘庚迁都到殷，所以又被称为殷朝。",
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "西周实行郡县制来巩固统治。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "春秋时期第一位称霸的诸侯是齐桓公。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "春秋战国时期，铁制农具和牛耕的出现与推广促进了生产力发展。",
+      "k": 0,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "老子是儒家学派的创始人。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "兼爱、非攻是法家学派的主张。",
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "百家争鸣的局面出现在秦汉时期。",
+      "k": 1,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "秦始皇统一六国后，把小篆定为全国通用的标准文字。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "焚书坑儒是汉武帝为加强思想控制而采取的措施。",
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "汉武帝颁布推恩令，削弱了诸侯王的势力。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "张骞出使西域发生在汉武帝时期。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G03 https://www.tiku.cn/chapterq?cid=18&cno=1&p=9"
+    },
+    {
+      "type": "boolean",
+      "q": "蔡伦在西汉时期发明了造纸术。",
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "《史记》是我国第一部编年体通史。",
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    },
+    {
+      "type": "boolean",
+      "q": "赤壁之战中，孙刘联军以火攻大败曹操。",
+      "k": 0,
+      "difficulty": 2,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G04 https://www.shijuan.net/qinianji/lishi/38889.html"
+    },
+    {
+      "type": "boolean",
+      "q": "北魏孝文帝把都城从洛阳迁到了平城。",
+      "k": 1,
+      "difficulty": 3,
+      "tip": "[整理] 依据公开教材与权威常识；参考：G06 https://mxx.chazidian.com/zonghefudao/76851"
+    }
+  ]
+}

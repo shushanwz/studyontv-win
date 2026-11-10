@@ -1,0 +1,1261 @@
+{
+ "name": "六年级至初一题库·常识（2026-11-10）",
+ "version": 2,
+ "items": [
+  {
+   "type": "single",
+   "q": "假设A1、A2单元格中数据分别为数值4,5其它单元格均无数据；若B1单元格内容为公式：=4+A1。单击B1后复制到C2中，则C2显示结果为？",
+   "a": [
+    "4",
+    "5",
+    "8",
+    "9"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Fundamentals-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "在Excel中，选中某列后，再按Delete键。关于该操作完成的功能说法正确的是？",
+   "a": [
+    "该列被删除",
+    "只删除了该列的数据内容，其它均保留",
+    "清除了该列所有数据及格式",
+    "清除了该列所有数据，格式保留"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Fundamentals-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "小李有一工作表，已经制作好数据表为A1:D3区域。现在他把该数据进行了“转置”操作后，放置于该工作表的E8单元格开始处。关于转置后的数据表，以下说法正确的是？",
+   "a": [
+    "转置后的数据表是3行4列",
+    "转置后的数据表所占用的单元格区域是E8:H11",
+    "转置后的数据表所占用的单元格区域是E8:G11",
+    "转置后的数据表所占用的单元格区域是E8:H10"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Fundamentals-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "小李在工作表中选择了连续区域B3:C4，且当前活动单元格是C4。若此时，小李按了右箭头键（→），那么当前活动单元格是？",
+   "a": [
+    "B3",
+    "B4",
+    "D4",
+    "C3"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Fundamentals-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "现有“文本数字”序列123，2，13，99，9；则该序列的升序结果是？",
+   "a": [
+    "2，9，13，99，123",
+    "123，13，2，99，9",
+    "123，13，2，9，99",
+    "13，123，2，99，9"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Fundamentals-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "以下属于Python机器学习领域第三方库的是？",
+   "a": [
+    "Scikit-learn",
+    "numpy",
+    "pygame",
+    "pandas"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Programming Language-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "在Python语言中，读入CSV文件保存的二维数据，按特定分隔符抽取信息，最可能用到的函数是？",
+   "a": [
+    "split()",
+    "replace()",
+    "join()",
+    "format()"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Programming Language-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列选项中，用于创建目录的是？",
+   "a": [
+    "os.rename()",
+    "os.remove()",
+    "os.mkdir()",
+    "os.listdir()"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Programming Language-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "在Python中，函数？",
+   "a": [
+    "不可以嵌套定义",
+    "不可以嵌套调用",
+    "不可以递归调用",
+    "以上都不对"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Programming Language-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "以下关于Python全局变量和局部变量的描述中，不正确的是？",
+   "a": [
+    "局部变量在函数内部创建和使用，函数退出后变量被释放",
+    "全局变量一般指定义在函数之外的变量",
+    "使用global保留字声明后，变量可以作为全局变量使用",
+    "当函数退出时，局部变量依然存在，下次函数调用可以继续使用"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Computer Programming Language-Natural Sciences-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "发源于欧洲中世纪的爱情歌曲，通常在黄昏或夜晚演唱，流行于西班牙、意大利等国，是下列哪种体裁？",
+   "a": [
+    "夜曲",
+    "小夜曲",
+    "前奏曲",
+    "无言歌"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Music-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列属于多乐章结构的乐曲体裁是？",
+   "a": [
+    "练习曲",
+    "交响曲",
+    "交响诗",
+    "序曲"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Music-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列属门德尔松作品的是？",
+   "a": [
+    "仲夏夜之梦",
+    "六月船歌",
+    "蓝色多瑙河",
+    "土耳其进行曲"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Music-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列属柴可夫斯基作品的是？",
+   "a": [
+    "悲伦奏鸣曲",
+    "1812序曲",
+    "军队进行曲",
+    "欢乐岛"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Music-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列曲目中那首是属于钢琴曲？",
+   "a": [
+    "《1812序曲》",
+    "李斯特《前奏曲》",
+    "德彪西《大海》",
+    "贝多芬《月光奏鸣曲》"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Music-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下面属魏晋南北朝时期画家的有?",
+   "a": [
+    "卫协,顾恺之",
+    "吴道子,杨子华",
+    "陆探微,赵霖",
+    "展子虔,王蒙"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Fine Arts-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "“近代丹青维最豪,南有赵魏北有高。”指和____高克恭齐名。",
+   "a": [
+    "赵孟坚",
+    "赵孟頫",
+    "赵之谦",
+    "赵左"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Fine Arts-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "阎立本的代表作有?",
+   "a": [
+    "《女史箴图》",
+    "《历代帝王图》",
+    "《洛神赋图》",
+    "《列女图》"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Fine Arts-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "展子虔被称作“唐画之祖”,代表作品有?",
+   "a": [
+    "《步辇图》",
+    "《游春图》",
+    "《五马图》",
+    "《伏生授经图》"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Fine Arts-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "《历代名画记》作者为?",
+   "a": [
+    "朱景玄",
+    "裴孝源",
+    "张彦远",
+    "李重润"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Fine Arts-Arts & Humanities-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "太阳系八大行星中，离太阳最近的是哪一颗？",
+   "a": [
+    "水星",
+    "金星",
+    "地球",
+    "火星"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 由近到远依次是水星、金星、地球、火星、木星、土星、天王星、海王星。"
+  },
+  {
+   "type": "single",
+   "q": "农历十五、十六前后，夜空中通常看到的月相是？",
+   "a": [
+    "新月",
+    "上弦月",
+    "满月",
+    "下弦月"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 此时看到一轮圆月，称为满月或望月。"
+  },
+  {
+   "type": "single",
+   "q": "地球自转一周大约需要多长时间？",
+   "a": [
+    "12小时",
+    "约24小时（一天）",
+    "一个月",
+    "一年"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 地球自转一周约24小时。"
+  },
+  {
+   "type": "single",
+   "q": "地球上的昼夜交替现象主要是由什么造成的？",
+   "a": [
+    "地球自转",
+    "地球公转",
+    "月球绕地球运动",
+    "太阳自身转动"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 地球是不透明球体且不停自转，形成昼夜更替。"
+  },
+  {
+   "type": "single",
+   "q": "一年中出现春、夏、秋、冬四季，主要与什么有关？",
+   "a": [
+    "地球自转",
+    "地球绕太阳公转且地轴倾斜",
+    "月相变化",
+    "太阳每天远近变化"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 四季主要由地球公转和地轴倾斜共同形成。"
+  },
+  {
+   "type": "single",
+   "q": "我们夜晚看到的月光主要来自哪里？",
+   "a": [
+    "月球自身发光",
+    "月球反射太阳光",
+    "地球反射的光",
+    "月球表面燃烧"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 月球本身不发光，靠反射太阳光被看见。"
+  },
+  {
+   "type": "single",
+   "q": "水循环中，液态水变成水蒸气升入大气的过程叫作？",
+   "a": [
+    "蒸发",
+    "凝结",
+    "降水",
+    "径流"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 蒸发是水由液态变为气态的过程。"
+  },
+  {
+   "type": "single",
+   "q": "雨后天晴时天空出现的彩虹，主要与光的哪种现象有关？",
+   "a": [
+    "光的直线传播",
+    "光的折射和色散",
+    "光的镜面反射",
+    "光被完全吸收"
+   ],
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 阳光经小水滴折射并色散，分解成多种颜色。"
+  },
+  {
+   "type": "single",
+   "q": "为延缓食物变质，下列做法最恰当的是？",
+   "a": [
+    "放在温暖潮湿处",
+    "放入冰箱冷藏或冷冻",
+    "敞口放在阳光下",
+    "与生食混放在一起"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 低温能抑制微生物繁殖，延缓食物腐败。"
+  },
+  {
+   "type": "single",
+   "q": "发现有人触电时，首先应该怎么做？",
+   "a": [
+    "直接用手把人拉开",
+    "先切断电源再施救",
+    "用湿木棍挑开电线",
+    "立即泼水降温"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 先断电可避免施救者一并触电。"
+  },
+  {
+   "type": "single",
+   "q": "家用电器起火时，下列做法正确的是？",
+   "a": [
+    "立即用水泼灭",
+    "先切断电源再灭火",
+    "用湿手拔掉插头",
+    "打开门窗猛吹"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 带电泼水易触电，应先断电。"
+  },
+  {
+   "type": "single",
+   "q": "被开水轻度烫伤后，第一时间应采取的措施是？",
+   "a": [
+    "涂抹牙膏或酱油",
+    "用流动的冷水持续冲洗",
+    "立刻挑破水泡",
+    "用力揉搓伤处"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 冲冷水降温是烧烫伤急救的第一步。"
+  },
+  {
+   "type": "single",
+   "q": "下列作息习惯中，更有利于中小学生健康的是？",
+   "a": [
+    "经常熬夜、晚睡晚起",
+    "每天保证充足睡眠、早睡早起",
+    "长时间连续看屏幕不休息",
+    "经常不吃早餐"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 规律作息与充足睡眠有助身体发育。"
+  },
+  {
+   "type": "single",
+   "q": "在中国大陆，火警电话是？",
+   "a": [
+    "110",
+    "119",
+    "120",
+    "122"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 119为火警，110为匪警，120为急救，122为交通事故报警。"
+  },
+  {
+   "type": "single",
+   "q": "下列省（自治区）与省会（首府）对应正确的是？",
+   "a": [
+    "云南省—昆明",
+    "湖南省—武汉",
+    "广东省—南宁",
+    "山东省—郑州"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 云南省会昆明；武汉属湖北，南宁属广西，郑州属河南。"
+  },
+  {
+   "type": "single",
+   "q": "长江自西向东流，最终注入哪个海？",
+   "a": [
+    "渤海",
+    "黄海",
+    "东海",
+    "南海"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 长江在上海附近注入东海。"
+  },
+  {
+   "type": "single",
+   "q": "黄河最终注入哪个海？",
+   "a": [
+    "渤海",
+    "黄海",
+    "东海",
+    "南海"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 黄河在山东东营一带注入渤海。"
+  },
+  {
+   "type": "single",
+   "q": "在没有指向标和经纬网的一般地图上，判定方向通常采用？",
+   "a": [
+    "上北下南、左西右东",
+    "上南下北、左东右西",
+    "上东下西、左北右南",
+    "按个人习惯随意判断"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 通用规则是上北下南、左西右东。"
+  },
+  {
+   "type": "single",
+   "q": "中国四大高原中，平均海拔最高、有「世界屋脊」之称的是？",
+   "a": [
+    "内蒙古高原",
+    "黄土高原",
+    "云贵高原",
+    "青藏高原"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 青藏高原平均海拔在4000米以上。"
+  },
+  {
+   "type": "single",
+   "q": "下列地形类型中，四周高、中间低的是？",
+   "a": [
+    "山地",
+    "高原",
+    "盆地",
+    "丘陵"
+   ],
+   "k": 2,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 盆地的典型特征是四周高、中部低。"
+  },
+  {
+   "type": "single",
+   "q": "标准键盘上，通常用于输入空格、键面最长的是哪个键？",
+   "a": [
+    "Enter键",
+    "空格键（Space）",
+    "Shift键",
+    "Backspace键"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 空格键是键盘上最长的按键。"
+  },
+  {
+   "type": "single",
+   "q": "在计算机中，用来存储数据、可以命名的基本单位通常称为？",
+   "a": [
+    "文件",
+    "鼠标",
+    "显示器",
+    "电源线"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 文件是计算机中有名字的存储单位。"
+  },
+  {
+   "type": "single",
+   "q": "下列密码中，相对更安全的是？",
+   "a": [
+    "123456",
+    "abcdef",
+    "包含大小写字母、数字和符号的长密码",
+    "自己的出生日期"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 长度足够且混合字符类型的密码更难被猜解。"
+  },
+  {
+   "type": "single",
+   "q": "收到陌生人发来的「中奖」链接并要求填写银行卡号，正确做法是？",
+   "a": [
+    "立即填写以领取奖品",
+    "不轻信、不点击、不透露个人信息",
+    "转发给同学一起填写",
+    "先填假信息试探"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 不轻信陌生链接、不泄露个人金融信息。"
+  },
+  {
+   "type": "single",
+   "q": "在网络交流中，下列做法符合网络礼仪的是？",
+   "a": [
+    "随意辱骂他人",
+    "未经允许公开他人隐私",
+    "使用文明用语、尊重他人",
+    "在群里大量刷屏"
+   ],
+   "k": 2,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 文明用语、尊重他人是基本网络礼仪。"
+  },
+  {
+   "type": "single",
+   "q": "下列哪一项不属于中国古代四大发明？",
+   "a": [
+    "造纸术",
+    "印刷术",
+    "火药",
+    "地动仪"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 四大发明为造纸术、印刷术、火药、指南针。"
+  },
+  {
+   "type": "single",
+   "q": "下列传统节日与农历日期对应正确的是？",
+   "a": [
+    "春节—农历正月初一",
+    "端午节—农历八月十五",
+    "中秋节—农历五月初五",
+    "元宵节—农历九月初九"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 端午为五月初五，中秋为八月十五，元宵为正月十五，重阳为九月初九。"
+  },
+  {
+   "type": "single",
+   "q": "二十四节气中，北半球白昼最长的是哪一个？",
+   "a": [
+    "春分",
+    "夏至",
+    "秋分",
+    "冬至"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 夏至白昼最长，冬至白昼最短。"
+  },
+  {
+   "type": "single",
+   "q": "中国十二生肖中，排在第一位的是哪种动物？",
+   "a": [
+    "牛",
+    "虎",
+    "鼠",
+    "龙"
+   ],
+   "k": 2,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 顺序为鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪。"
+  },
+  {
+   "type": "single",
+   "q": "中国传统节日端午节常见的习俗是？",
+   "a": [
+    "吃月饼、赏月",
+    "赛龙舟、吃粽子",
+    "登高、插茱萸",
+    "贴春联、放鞭炮"
+   ],
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 端午赛龙舟吃粽子，中秋赏月，重阳登高，春节贴春联。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列天体中，属于太阳系八大行星的有？",
+   "a": [
+    "地球",
+    "金星",
+    "月球",
+    "冥王星"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 月球是卫星，冥王星现被归为矮行星。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列物体中，自身能够发光（属于光源）的有？",
+   "a": [
+    "太阳",
+    "点燃的蜡烛",
+    "月亮",
+    "镜子"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 月亮和镜子靠反射光，本身不发光。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列各项中，属于水循环主要环节的有？",
+   "a": [
+    "蒸发",
+    "降水",
+    "凝结",
+    "光合作用"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 光合作用是植物制造有机物的过程。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列动物中，属于哺乳动物的有？",
+   "a": [
+    "鲸",
+    "蝙蝠",
+    "鲨鱼",
+    "青蛙"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 鲸和蝙蝠胎生哺乳，鲨鱼是鱼类，青蛙是两栖类。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于力的说法，正确的有？",
+   "a": [
+    "力可以改变物体的运动状态",
+    "力可以使物体发生形变",
+    "物体间力的作用是相互的",
+    "只有相互接触的物体之间才有力"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 重力、磁力等不接触也能产生作用。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列做法有助于食品安全与身体健康的有？",
+   "a": [
+    "饭前便后洗手",
+    "生熟食物分开处理",
+    "食用过期变质食品",
+    "长期不吃早餐"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 洗手、生熟分开可减少病从口入。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于家庭用电的做法，安全的有？",
+   "a": [
+    "不用湿手插拔电器插头",
+    "多个大功率电器共用一个插线板",
+    "发现电线老化及时更换",
+    "电器长期不用时拔下插头"
+   ],
+   "correctIndices": [
+    0,
+    2,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 大功率电器共用一个插线板易过载发热。"
+  },
+  {
+   "type": "multiple",
+   "q": "遇到火灾时，下列逃生做法正确的有？",
+   "a": [
+    "用湿毛巾捂住口鼻、低姿撤离",
+    "乘坐电梯快速下楼",
+    "沿安全通道有序疏散",
+    "身上着火时就地打滚压灭火苗"
+   ],
+   "correctIndices": [
+    0,
+    2,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 火灾时不能乘电梯，应走安全通道。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列做法有助于保护视力的有？",
+   "a": [
+    "读写时保持正确姿势和充足光线",
+    "连续用眼一段时间后远眺休息",
+    "躺着或在晃动的车上看书",
+    "每天认真做眼保健操"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 躺着或乘车看书容易加重眼睛负担。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列属于中国四大高原的有？",
+   "a": [
+    "青藏高原",
+    "内蒙古高原",
+    "华北平原",
+    "云贵高原"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 四大高原为青藏、内蒙古、黄土、云贵；华北平原是平原。"
+  },
+  {
+   "type": "multiple",
+   "q": "关于长江与黄河，下列说法正确的有？",
+   "a": [
+    "都发源于青藏高原",
+    "总体上都自西向东流",
+    "长江注入东海",
+    "黄河注入黄海"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 黄河注入的是渤海，不是黄海。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于地图方向的说法，正确的有？",
+   "a": [
+    "一般地图默认上北下南、左西右东",
+    "有指向标的地图要按指向标判断方向",
+    "经纬网地图上经线指示南北方向",
+    "所有地图一律是上南下北"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 有指向标或经纬网时要按各自规则判断。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列省与省会对应正确的有？",
+   "a": [
+    "四川省—成都",
+    "湖北省—武汉",
+    "广东省—广州",
+    "江苏省—杭州"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 江苏省会是南京，杭州是浙江省会。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列设备中，属于计算机输入设备的有？",
+   "a": [
+    "键盘",
+    "鼠标",
+    "显示器",
+    "打印机"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE 显示器和打印机属于输出设备。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列做法有利于账号与信息安全的有？",
+   "a": [
+    "不同网站使用不同密码",
+    "定期更换重要账号的密码",
+    "把密码写在便签贴在显示器上",
+    "不向他人透露短信验证码"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 密码外露、验证码外泄都容易导致账号被盗。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列行为符合网络礼仪与规范的有？",
+   "a": [
+    "引用他人内容时注明出处",
+    "不传播未经核实的消息",
+    "尊重他人、不使用侮辱性语言",
+    "随意公开同学的住址和电话"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 公开他人住址电话属于侵犯隐私。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列属于中国古代四大发明的有？",
+   "a": [
+    "造纸术",
+    "指南针",
+    "火药",
+    "地动仪"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906 四大发明含印刷术，地动仪不在其中。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列节日与习俗对应正确的有？",
+   "a": [
+    "春节—贴春联",
+    "端午节—吃粽子",
+    "中秋节—赏月",
+    "重阳节—赛龙舟"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 赛龙舟是端午习俗，重阳多登高敬老。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列属于二十四节气的有？",
+   "a": [
+    "立春",
+    "夏至",
+    "清明",
+    "圣诞节"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 清明既是节气也是传统节日，圣诞节不是节气。"
+  },
+  {
+   "type": "multiple",
+   "q": "下列关于十二生肖的说法，正确的有？",
+   "a": [
+    "共有十二种动物",
+    "鼠排在第一位",
+    "猪排在最后一位",
+    "每六年循环一次"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 生肖每十二年循环一次。"
+  },
+  {
+   "type": "boolean",
+   "q": "太阳系共有八大行星。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "boolean",
+   "q": "地球自转一周大约需要一天（24小时）。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "月相的变化主要是月球绕地球公转形成的。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "boolean",
+   "q": "一年有四季，主要是由于地球绕太阳公转并伴随地轴倾斜。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "绿色植物的光合作用会吸收二氧化碳，并释放氧气。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "boolean",
+   "q": "把食物放进冰箱冷藏就能永久保鲜，永远不会变质。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 低温只能延缓变质。"
+  },
+  {
+   "type": "boolean",
+   "q": "发现有人触电时，应立即用手直接把人拉开。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 应先切断电源再施救。"
+  },
+  {
+   "type": "boolean",
+   "q": "饭后立即进行剧烈运动不利于消化。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "boolean",
+   "q": "长时间近距离看电子屏幕、缺少户外活动，容易增加近视风险。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "我国地势总体西高东低，大致呈三级阶梯状分布。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "长江是我国最长的河流。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "我国位于亚洲西部、大西洋东岸。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 我国位于亚洲东部、太平洋西岸。"
+  },
+  {
+   "type": "boolean",
+   "q": "四大高原中，黄土高原以水土流失、地表沟壑纵横著称。",
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "键盘上的 Caps Lock 键用于切换英文字母的大小写锁定状态。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  },
+  {
+   "type": "boolean",
+   "q": "把所有账号都设成同一个简单密码「123456」既好记又安全。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html 简单且重复使用的密码风险很高。"
+  },
+  {
+   "type": "boolean",
+   "q": "电子邮件附件可能携带病毒，打开陌生附件前应谨慎。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F03 http://m.cooco.net.cn/article/84029.html"
+  },
+  {
+   "type": "boolean",
+   "q": "造纸术、印刷术、火药、指南针合称中国古代四大发明。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "boolean",
+   "q": "重阳节有登高、敬老的习俗。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  },
+  {
+   "type": "boolean",
+   "q": "春节是农历八月十五，主要习俗是赏月、吃月饼。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/ 那是中秋节，春节在正月初一。"
+  },
+  {
+   "type": "boolean",
+   "q": "十二生肖共有十二种动物，每十二年循环一次。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：I06 https://www.qingsuyun.com/lib/d/600120370001000600040022/"
+  },
+  {
+   "type": "single",
+   "q": "太阳系八大行星中，离太阳最近的是？",
+   "a": [
+    "金星",
+    "水星",
+    "地球",
+    "火星"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "北半球白昼最长的一天通常出现在哪个节气？",
+   "a": [
+    "春分",
+    "夏至",
+    "秋分",
+    "冬至"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "端午节吃粽子、赛龙舟的习俗主要与哪位历史人物有关？",
+   "a": [
+    "屈原",
+    "岳飞",
+    "孔子",
+    "诸葛亮"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "世界上面积最大的海洋是？",
+   "a": [
+    "大西洋",
+    "印度洋",
+    "北冰洋",
+    "太平洋"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "在标准大气压下，纯水结冰的温度是？",
+   "a": [
+    "-10℃",
+    "0℃",
+    "4℃",
+    "100℃"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "雨后彩虹的形成主要与哪种光学现象有关？",
+   "a": [
+    "光的直线传播",
+    "光的色散",
+    "光的反射",
+    "光的吸收"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "“文房四宝”指的是？",
+   "a": [
+    "琴、棋、书、画",
+    "笔、墨、纸、砚",
+    "梅、兰、竹、菊",
+    "经、史、子、集"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "计算机中用于长期存放文件与系统数据的设备是？",
+   "a": [
+    "内存",
+    "硬盘",
+    "CPU",
+    "显示器"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "二十四节气中，标志着春季开始的是？",
+   "a": [
+    "立春",
+    "雨水",
+    "春分",
+    "清明"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  },
+  {
+   "type": "single",
+   "q": "在没有指向标的普通地图上，通常按什么方向判读？",
+   "a": [
+    "上南下北、左东右西",
+    "上北下南、左西右东",
+    "上东下西、左北右南",
+    "按图例随意判读"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：F04 https://www.kepuchina.cn/article/articleinfo?business_type=100&classify=0&ar_id=655906"
+  }
+ ]
+}

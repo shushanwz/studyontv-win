@@ -1,0 +1,1260 @@
+{
+ "name": "六年级至初一题库·语文（2026-11-10）",
+ "version": 2,
+ "items": [
+  {
+   "type": "single",
+   "q": "你知道对联“四面湖山归眼底，万家忧乐到心头。”所写的人物是谁吗？",
+   "a": [
+    "李白",
+    "范仲淹",
+    "文天祥",
+    "蒲松龄"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Primary school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "你知道对联“鬼狐有性格，笑骂成文章。”所写的人物是谁吗？",
+   "a": [
+    "李白",
+    "范仲淹",
+    "蒲松龄",
+    "文天祥"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Primary school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "你知道对联“酌酒花间，磨针石上；倚剑天外，挂弓扶桑。”所写的人物是谁吗？",
+   "a": [
+    "文天祥",
+    "范仲淹",
+    "蒲松龄",
+    "李白"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Primary school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中没有语病的一项是？",
+   "a": [
+    "把北山建设成省级森林公园，是当地政府实施可持续发展的一项重要工程。",
+    "发电站每年的发电量，除了供应给杭州使用外，还向上海、南京等地输送。",
+    "自编自演的课本剧在发展个性、引导学生阅读名著，都有一定的作用。",
+    "街道希望通过多种渠道，大力开展法制教育，防止青少年不违法犯法"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Primary school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中说话得体的一项是?",
+   "a": [
+    "我在这个问题上请教了很多人，都得不到解决，于是不耻下问，向叶先生请教。",
+    "在座的不是董事长，就是总经理，现在请大家出钱出物，为国家尽匹夫之责。",
+    "我们家家教很严，令尊常常告诫我们到社会上要清清白白做人。",
+    "马老师端起酒杯说：“黄老先生，今天是您的寿诞之日，我祝您健康长寿！”"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Primary school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "《昆虫记》中蟹蛛爱吃?。",
+   "a": [
+    "蜜蜂",
+    "蝎子",
+    "蝴蝶",
+    "不知道"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "法布尔的昆虫记曾获得?",
+   "a": [
+    "普利策奖",
+    "诺贝尔奖提名",
+    "安徒生奖",
+    "诺贝尔奖"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列作家、作品连线有误的一项是?",
+   "a": [
+    "贾平凹——现代作家——《满月儿》获得施耐庵文学奖",
+    "普希金——俄国诗人——《假如生活欺骗了你》",
+    "陈子昂——字伯玉——唐代文学家",
+    "陆游——宋代爱国诗人——《游山西村》"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列文章中不曾提及“长妈妈”的篇目是?",
+   "a": [
+    "猫鼠",
+    "五猖会",
+    "孝图",
+    "琐记"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Chinese-Arts & Humanities-Junior high school https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "《昆虫记》的作者是哪位法国昆虫学家？",
+   "a": [
+    "法布尔",
+    "达尔文",
+    "布封",
+    "列文虎克"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/ ；六年级名著导读常识"
+  },
+  {
+   "type": "single",
+   "q": "关于弗兰肯斯坦这本小说.本书的写作风格",
+   "a": [
+    "幽默",
+    "悲痛",
+    "哥特式",
+    "清新"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Novels-Other-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "关于长安的荔枝这本小说.下列那句话体现书中对为官之道的描写",
+   "a": [
+    "和光同尘，好处均沾，花花轿子众人抬",
+    "就算失败，我也想知道，自己倒在距离终点多远的地方",
+    "跳胡旋舞的要诀，不是随乐班而动，而是旋出自己的节奏。",
+    "有些冲动是苟且不了的，有些心思是藏不住的"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Novels-Other-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "关于水浒传这本小说.小说中绰号九纹龙的是",
+   "a": [
+    "柴进",
+    "史进",
+    "鲁智深",
+    "燕青"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Novels-Other-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "关于水浒传这本小说.拳打镇关西和倒拔垂杨柳的是",
+   "a": [
+    "鲁智深",
+    "戴宗",
+    "关胜",
+    "林冲"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Novels-Other-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "关于水浒传这本小说.善于偷盗的梁山好汉是",
+   "a": [
+    "时迁",
+    "鲁智深",
+    "吴用",
+    "宋江"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[原题] J01 M3KE dev Novels-Other-Other https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列词语中，字形完全正确的一项是？",
+   "a": [
+    "渲染　勾勒　襟飘带舞",
+    "辨论　沸腾　斩钉截铁",
+    "磅礴　悬涯　排山倒海",
+    "毫迈　攀登　居高临下"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "下列词语中，括号内注音完全正确的一项是？",
+   "a": [
+    "参差（cēn cī）　婆娑（suō）　苍穹（qióng）",
+    "摇曳（yì）　旖旎（qí nǐ）　冠冕（guàn）",
+    "逶迤（wěi yí）　磅礴（bàng bó）　岷山（mǐn）",
+    "渲染（xuān）　勾勒（lè）　蒙古包（méng）"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "下列成语书写完全正确的一项是？",
+   "a": [
+    "全神贯注　别出心裁　技高一筹",
+    "忘乎所已　念念有词　暴露无遗",
+    "大步留星　呆头呆脑　轻手轻脚",
+    "化为乌有　沧海一栗　井然有序"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "下列词语中，没有错别字的一项是？",
+   "a": [
+    "咆哮　拥戴　跌跌撞撞　心惊肉跳",
+    "沙哑　呻吟　自做自受　忐忑不安",
+    "废话　搀扶　汹涌彭湃　势不可当",
+    "抱怨　倾听　寒风呼笑　魁梧黧黑"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "下列词语中，括号内注音有误的一项是？",
+   "a": [
+    "闰土（rùn）　秕谷（bǐ）　獾猪（huān）",
+    "祭祀（sì）　装弶（jiàng）　竹匾（biǎn）",
+    "正月（zhèng）　供品（gòng）　畜生（chù）",
+    "猹（chá）　胯下（kuà）　一匹猹（pǐ）"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，加引号的成语使用不恰当的一项是？",
+   "a": [
+    "焰火晚会上，五彩缤纷的烟花「络绎不绝」，把夜空装点得格外美丽。",
+    "面对突如其来的洪水，战士们「奋不顾身」地冲向堤坝。",
+    "他「全神贯注」地盯着棋盘，连有人叫他都没听见。",
+    "这幅山水画「惟妙惟肖」，仿佛能让人走进画中的世界。"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，加引号的成语使用正确的一项是？",
+   "a": [
+    "运动会上，同学们「蠢蠢欲动」，争着为班级出力。",
+    "看到「栩栩如生」的剪纸作品，大家都赞叹不已。",
+    "班长「处心积虑」地为大家策划了一次难忘的班会。",
+    "这道数学题太简单了，他「绞尽脑汁」也没做出来。"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "填入下面句子横线处最恰当的成语是：这篇文章____，寥寥数语就把道理讲得清清楚楚。",
+   "a": [
+    "言简意赅",
+    "长篇大论",
+    "夸夸其谈",
+    "络绎不绝"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "下列词语中，与「忐忑不安」意思最接近的一项是？",
+   "a": [
+    "心安理得",
+    "惊慌失措",
+    "七上八下",
+    "镇定自若"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，没有语病的一项是？",
+   "a": [
+    "通过这次活动，使我明白了团结的重要。",
+    "能否坚持锻炼，是身体健康的重要保证。",
+    "我们要及时发现并改正作业中的错误。",
+    "教室里飘出阵阵悦耳的歌声和欢快的舞蹈。"
+   ],
+   "k": 2,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，有语病的一项是？",
+   "a": [
+    "他那亲切的话语和慈祥的面容，时时回响在我耳边。",
+    "同学们认真听取并讨论了班主任的建议。",
+    "这本书的内容丰富，插图也很精美。",
+    "养成良好的阅读习惯，对提高写作水平很有帮助。"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，没有语病且表意明确的一项是？",
+   "a": [
+    "三个学校的老师来我们班听课。",
+    "他背着老师和班长偷偷把教室打扫干净了。",
+    "看到老师们辛勤工作，使我很受感动。",
+    "《丁香结》这篇课文，让我懂得了对待人生中的「结」要坦然。"
+   ],
+   "k": 3,
+   "difficulty": 4,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，成分残缺（缺少主语）的一项是？",
+   "a": [
+    "参观了革命烈士纪念馆，受到了深刻的教育。",
+    "清晨，同学们在操场上整齐地做早操。",
+    "《穷人》这篇小说，塑造了桑娜善良的形象。",
+    "经过反复练习，他终于学会了骑自行车。"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，使用了比喻修辞的一项是？",
+   "a": [
+    "月亮越升越高，穿过一缕一缕轻纱似的微云。",
+    "风儿轻轻地唱着歌，唤醒了沉睡的大地。",
+    "危楼高百尺，手可摘星辰。",
+    "海底的动物常常在窃窃私语。"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，使用了拟人修辞的一项是？",
+   "a": [
+    "弯弯的月亮像一条小船挂在夜空中。",
+    "松树像哨兵一样挺立在路旁。",
+    "秋天到了，高粱涨红了脸，稻子笑弯了腰。",
+    "他的心眼比针尖还小。"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，标点符号使用正确的一项是？",
+   "a": [
+    "「你过来，」妈妈说：「我有话跟你说。」",
+    "我喜欢读《西游记》、《水浒传》和《朝花夕拾》。",
+    "「你知道吗？」他神秘地说，「明天我们要去春游。」",
+    "操场上有跑步的、跳绳的、打球的……等同学。"
+   ],
+   "k": 2,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "下列句子中，破折号表示解释说明的一项是？",
+   "a": [
+    "「呜——」火车缓缓开动了。",
+    "我永远忘不了那个地方——故乡的小河边。",
+    "「今天好热啊！——你什么时候去图书馆？」小明问。",
+    "「班长他——」话没说完，他就哽咽了。"
+   ],
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "「金沙水拍云崖暖，大渡桥横铁索寒。」这两句主要运用的修辞是？",
+   "a": [
+    "比喻",
+    "对偶",
+    "拟人",
+    "反复"
+   ],
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "下列作家与作品对应有误的一项是？",
+   "a": [
+    "老舍——《草原》",
+    "鲁迅——《少年闰土》",
+    "列夫·托尔斯泰——《穷人》",
+    "沈从文——《北京的春节》"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "《浪淘沙》（其一）「九曲黄河万里沙」的作者是？",
+   "a": [
+    "刘禹锡",
+    "李白",
+    "杜甫",
+    "白居易"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "《朝花夕拾》的作者是？",
+   "a": [
+    "鲁迅",
+    "老舍",
+    "巴金",
+    "朱自清"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "下列文学常识表述有误的一项是？",
+   "a": [
+    "《论语》是记录孔子及其弟子言行的一部书，是儒家经典。",
+    "《世说新语》是南朝宋刘义庆组织编写的一部志人小说集。",
+    "《诫子书》的作者是三国时期蜀汉的诸葛亮。",
+    "《吕氏春秋》又称《吕览》，是战国时期吕不韦独自撰写的一部著作。"
+   ],
+   "k": 3,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "散文《春》的作者是？",
+   "a": [
+    "朱自清",
+    "老舍",
+    "郭沫若",
+    "茅盾"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "下列说法有误的一项是？",
+   "a": [
+    "《西游记》的作者是明代的吴承恩。",
+    "《水浒传》是我国第一部以农民起义为题材的长篇章回体小说。",
+    "《论语》与《大学》《中庸》《孟子》合称「四书」。",
+    "《史记》是我国第一部编年体通史，作者是司马迁。"
+   ],
+   "k": 3,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "「伯牙破琴绝弦，终身不复鼓琴」中「复」的意思是？",
+   "a": [
+    "再，又",
+    "恢复",
+    "回答",
+    "重复"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "《〈论语〉十二章》中，阐述「只学习不思考就会迷茫，只思考不学习就会疑惑」这一道理的句子是？",
+   "a": [
+    "学而时习之，不亦说乎",
+    "温故而知新，可以为师矣",
+    "学而不思则罔，思而不学则殆",
+    "知之者不如好之者，好之者不如乐之者"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "「非淡泊无以明志，非宁静无以致远」出自？",
+   "a": [
+    "《诫子书》",
+    "《论语》",
+    "《世说新语》",
+    "《陋室铭》"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "对《世说新语·咏雪》中「未若柳絮因风起」理解正确的一项是？",
+   "a": [
+    "不如比作柳絮乘风飞舞",
+    "不像柳絮被风吹起",
+    "没有像柳絮那样因风而起",
+    "不如把柳絮趁风撒出去"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "对「温故而知新，可以为师矣」翻译最准确的一项是？",
+   "a": [
+    "温习学过的知识，从而获得新的理解与体会，就可以凭借这一点做老师了。",
+    "温习旧知识，就能认识一位新老师。",
+    "既要复习旧课，又要学习新课，才可以当老师。",
+    "把旧书温热了，就能明白新的道理，然后去教别人。"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "《穿井得一人》中，「国人道之，闻之于宋君」的「闻」意思是？",
+   "a": [
+    "使……听到，报告给",
+    "用鼻子嗅",
+    "名声",
+    "见闻"
+   ],
+   "k": 0,
+   "difficulty": 4,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "补全诗句：「移舟泊烟渚，________。」",
+   "a": [
+    "日暮客愁新",
+    "江清月近人",
+    "野旷天低树",
+    "白雨跳珠乱入船"
+   ],
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "「黑云翻墨未遮山，白雨跳珠乱入船」描写的是？",
+   "a": [
+    "夏日西湖上突如其来的阵雨",
+    "春日绵绵的细雨",
+    "秋夜淅沥的冷雨",
+    "冬日纷飞的大雪"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "「稻花香里说丰年，听取蛙声一片」出自辛弃疾的？",
+   "a": [
+    "《西江月·夜行黄沙道中》",
+    "《清平乐·村居》",
+    "《破阵子·为陈同甫赋壮词以寄之》",
+    "《永遇乐·京口北固亭怀古》"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "「日月之行，若出其中；星汉灿烂，若出其里」出自曹操的？",
+   "a": [
+    "《观沧海》",
+    "《龟虽寿》",
+    "《短歌行》",
+    "《蒿里行》"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "「我寄愁心与明月，随君直到夜郎西」中，诗人借「明月」主要表达的是？",
+   "a": [
+    "对友人被贬远行的牵挂与慰藉",
+    "对边塞风光的赞美",
+    "对田园生活的向往",
+    "对时光流逝的感慨"
+   ],
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "「夕阳西下，断肠人在天涯」中，「断肠人」指的是？",
+   "a": [
+    "漂泊在外、思乡愁苦的游子",
+    "驻守边关的将士",
+    "田间劳作的农人",
+    "进京赶考的书生"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "《草原》一课中，「蒙汉情深何忍别，天涯碧草话斜阳」表达的是？",
+   "a": [
+    "蒙汉两族人民深厚的情谊与依依惜别之情",
+    "草原景色的辽阔壮美",
+    "对城市生活的厌倦",
+    "旅途的疲惫与艰辛"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "single",
+   "q": "《狼牙山五壮士》中，五壮士最后选择跳下悬崖，主要表现了他们怎样的精神？",
+   "a": [
+    "英勇顽强、宁死不屈的精神",
+    "机智灵活、善于周旋",
+    "勤俭节约、艰苦朴素",
+    "勤奋好学、刻苦钻研"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "single",
+   "q": "《穷人》一课中，桑娜把邻居的两个孤儿抱回家后「忐忑不安」，她忐忑的主要原因是？",
+   "a": [
+    "担心丈夫不同意、自家生活会更艰难，却又舍不得丢下孩子",
+    "害怕邻居回来讨要孩子",
+    "担心孩子调皮弄坏家里的东西",
+    "后悔自己不该出门"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "single",
+   "q": "《少年闰土》中，闰土给「我」讲的「新鲜事」不包括下列哪一项？",
+   "a": [
+    "雪地捕鸟",
+    "海边拾贝",
+    "看瓜刺猹",
+    "进城求学"
+   ],
+   "k": 3,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "multiple",
+   "q": "下列词语中，书写完全正确的有？",
+   "a": [
+    "酝酿　抖擞　呼朋引伴",
+    "贮蓄　澄清　咄咄逼人",
+    "决别　烂漫　翻来复去",
+    "分岐　憔悴　喜出忘外"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列句子中，没有语病的有？",
+   "a": [
+    "《草原》的作者是老舍。",
+    "通过这次参观，同学们开阔了眼界。",
+    "能否认真复习，是取得好成绩的关键。",
+    "我们要及时发现并改正缺点。"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "multiple",
+   "q": "下列作品中，作者是鲁迅的有？",
+   "a": [
+    "《朝花夕拾》",
+    "《故乡》",
+    "《骆驼祥子》",
+    "《背影》"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列成语中，含有反义词的有？",
+   "a": [
+    "左顾右盼",
+    "大惊小怪",
+    "自言自语",
+    "东张西望"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列诗句中，出自李白笔下的有？",
+   "a": [
+    "举头望明月，低头思故乡",
+    "飞流直下三千尺，疑是银河落九天",
+    "两个黄鹂鸣翠柳，一行白鹭上青天",
+    "我寄愁心与明月，随君直到夜郎西"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "multiple",
+   "q": "下列词语中，形容人心情紧张、不安的有？",
+   "a": [
+    "忐忑不安",
+    "心惊肉跳",
+    "心安理得",
+    "镇定自若"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列作品中，属于鲁迅《朝花夕拾》的篇目有？",
+   "a": [
+    "《从百草园到三味书屋》",
+    "《阿长与〈山海经〉》",
+    "《社戏》",
+    "《藤野先生》"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "multiple",
+   "q": "下列诗句中，描写春天景色的有？",
+   "a": [
+    "等闲识得东风面，万紫千红总是春",
+    "接天莲叶无穷碧，映日荷花别样红",
+    "两个黄鹂鸣翠柳，一行白鹭上青天",
+    "停车坐爱枫林晚，霜叶红于二月花"
+   ],
+   "correctIndices": [
+    0,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列《论语》语句中，主要谈学习方法的有？",
+   "a": [
+    "学而时习之，不亦说乎",
+    "温故而知新，可以为师矣",
+    "三人行，必有我师焉",
+    "学而不思则罔，思而不学则殆"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列词语中，属于褒义词的有？",
+   "a": [
+    "舍己为人",
+    "一丝不苟",
+    "处心积虑",
+    "蠢蠢欲动"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "multiple",
+   "q": "下列句子中，关联词语使用正确的有？",
+   "a": [
+    "「虽然」山路崎岖，「但是」我们还是按时登顶。",
+    "「只有」肯下功夫，「才」能把字写好。",
+    "「只有」肯下功夫，「就」能把字写好。",
+    "「因为」连日降雨，「所以」河水上涨。"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列故事情节中，出自《西游记》的有？",
+   "a": [
+    "三打白骨精",
+    "大闹天宫",
+    "拳打镇关西",
+    "三借芭蕉扇"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "multiple",
+   "q": "下列词语中，含有「说」的意思的有？",
+   "a": [
+    "窃窃私语",
+    "七嘴八舌",
+    "自言自语",
+    "目瞪口呆"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列诗句（词句）与作者对应正确的有？",
+   "a": [
+    "《宿建德江》——孟浩然",
+    "《六月二十七日望湖楼醉书》——苏轼",
+    "《西江月·夜行黄沙道中》——辛弃疾",
+    "《浪淘沙》（其一）——杜甫"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列句子中，有语病的有？",
+   "a": [
+    "他的写作水平明显改进了。",
+    "秋天的北京是一年中最美的季节。",
+    "为了防止溺水事故不再发生，学校加强了安全教育。",
+    "《丁香结》这篇课文给了我很多启发。"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "multiple",
+   "q": "下列成语与所形容的对象搭配恰当的有？",
+   "a": [
+    "惟妙惟肖——形容描写或模仿非常逼真",
+    "栩栩如生——形容艺术形象生动逼真",
+    "美轮美奂——形容歌声婉转动听",
+    "络绎不绝——形容行人车马来往不断"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    3
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列句子中，使用了夸张修辞的有？",
+   "a": [
+    "危楼高百尺，手可摘星辰。",
+    "飞流直下三千尺，疑是银河落九天。",
+    "桃花潭水深千尺，不及汪伦送我情。",
+    "平静的湖面像一面硕大的银镜。"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "multiple",
+   "q": "下列文学常识表述正确的有？",
+   "a": [
+    "《春》的作者是朱自清。",
+    "《济南的冬天》的作者是老舍。",
+    "《朝花夕拾》是鲁迅的散文集。",
+    "《西游记》的作者是罗贯中。"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列诗句中，表达思乡之情的有？",
+   "a": [
+    "举头望明月，低头思故乡",
+    "夕阳西下，断肠人在天涯",
+    "独在异乡为异客，每逢佳节倍思亲",
+    "等闲识得东风面，万紫千红总是春"
+   ],
+   "correctIndices": [
+    0,
+    1,
+    2
+   ],
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "multiple",
+   "q": "下列词语中，括号内注音正确的有？",
+   "a": [
+    "菜畦（qí）",
+    "确凿（záo）",
+    "倜傥（tì dǎng）",
+    "盔甲（huī jiǎ）"
+   ],
+   "correctIndices": [
+    0,
+    1
+   ],
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "boolean",
+   "q": "《草原》的作者是老舍，课文描绘了草原风光和蒙汉同胞的深情厚谊。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "boolean",
+   "q": "《北京的春节》的作者是鲁迅。",
+   "k": 1,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "boolean",
+   "q": "「蒙汉情深何忍别，天涯碧草话斜阳」出自老舍的《草原》。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "boolean",
+   "q": "《书戴嵩画牛》的作者是唐代画家戴嵩。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "boolean",
+   "q": "《少年闰土》节选自鲁迅的小说《故乡》。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "boolean",
+   "q": "《朝花夕拾》是鲁迅的一部小说集。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "boolean",
+   "q": "《论语》是记录孔子及其弟子言行的一部书，属于儒家经典。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "boolean",
+   "q": "「温故而知新，可以为师矣」出自《孟子》。",
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "boolean",
+   "q": "《诫子书》是三国时期蜀汉丞相诸葛亮写给儿子的家书。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "boolean",
+   "q": "《世说新语·咏雪》中，把雪比作「撒盐空中」的是谢道韫。",
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "boolean",
+   "q": "《陈太丘与友期行》中，元方指出友人「无信」「无礼」，表现得明白事理、落落大方。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "boolean",
+   "q": "《穿井得一人》告诉我们：传言一定都是真实可信的。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "boolean",
+   "q": "「野旷天低树，江清月近人」出自孟浩然的《宿建德江》。",
+   "k": 0,
+   "difficulty": 1,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "boolean",
+   "q": "《六月二十七日望湖楼醉书》的作者是唐代诗人白居易。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "boolean",
+   "q": "《西江月·夜行黄沙道中》中的「西江月」是词牌名，「夜行黄沙道中」是词题。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "boolean",
+   "q": "《天净沙·秋思》的作者是唐代诗人马致远。",
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "boolean",
+   "q": "《闻王昌龄左迁龙标遥有此寄》中，「左迁」指的是降职、贬官。",
+   "k": 0,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A02 https://www.euzw.net/index.php?m=plugins&c=Exam&a=publicDetail&id=80"
+  },
+  {
+   "type": "boolean",
+   "q": "「海日生残夜，江春入旧年」出自王维的《使至塞上》。",
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A04 https://yuwen.chazidian.com/xiangxi-364493/"
+  },
+  {
+   "type": "boolean",
+   "q": "《竹节人》一课回忆了作者童年时代做竹节人、玩竹节人的乐趣。",
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：H05 https://yuwen.chazidian.com/xiangxi-332763/"
+  },
+  {
+   "type": "boolean",
+   "q": "「比喻」就是把物当作人来写，赋予它人的动作或情感。",
+   "k": 1,
+   "difficulty": 3,
+   "tip": "[整理] 依据公开教材与权威常识；参考：J01 https://github.com/tjunlp-lab/M3KE"
+  },
+  {
+   "type": "single",
+   "q": "下列词语书写完全正确的一项是？",
+   "a": [
+    "兴高彩烈",
+    "迫不急待",
+    "再接再厉",
+    "走头无路"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/；考查常见易错成语字形"
+  },
+  {
+   "type": "single",
+   "q": "散文《草原》的作者是？",
+   "a": [
+    "老舍",
+    "茅盾",
+    "巴金",
+    "朱自清"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/；六年级上册课文"
+  },
+  {
+   "type": "single",
+   "q": "“危楼高百尺，手可摘星辰”主要运用了哪种修辞手法？",
+   "a": [
+    "比喻",
+    "夸张",
+    "拟人",
+    "对偶"
+   ],
+   "k": 1,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  },
+  {
+   "type": "single",
+   "q": "《西游记》的作者是？",
+   "a": [
+    "施耐庵",
+    "罗贯中",
+    "吴承恩",
+    "曹雪芹"
+   ],
+   "k": 2,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/；四大名著常识"
+  },
+  {
+   "type": "single",
+   "q": "“己所不欲，勿施于人”出自哪部典籍？",
+   "a": [
+    "《论语》",
+    "《孟子》",
+    "《道德经》",
+    "《庄子》"
+   ],
+   "k": 0,
+   "difficulty": 2,
+   "tip": "[整理] 依据公开教材与权威常识；参考：A01 http://xiaoxue.eol.cn/jdth_10960/"
+  }
+ ]
+}

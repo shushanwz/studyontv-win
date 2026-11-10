@@ -57,6 +57,10 @@ DEFAULT_LOCK: dict[str, Any] = {
 DEFAULT_STATE: dict[str, Any] = {
     "schema": 2,
     "active_bank": "",
+    # 参与出题的题库（文件名）。空列表 = 只用当前打开的题库，与旧行为一致。
+    "quiz_banks": [],
+    # 用户主动删掉的内置题库：下次启动不再自动补回来
+    "banks_removed": [],
     "theme": "dark",
     "rules": {},
     "today": {"day": "", "credit_ms": 0, "used_ms": 0, "rounds_done": 0},
@@ -75,6 +79,20 @@ def _safe_int(value: Any, default: int = 0) -> int:
         return int(value)
     except (TypeError, ValueError):
         return default
+
+
+def _str_list(value: Any) -> list[str]:
+    """把可能被写坏的列表字段收成干净的字符串列表（去重、保序）。"""
+    if not isinstance(value, (list, tuple)):
+        return []
+    seen: set[str] = set()
+    result: list[str] = []
+    for item in value:
+        text = str(item or "").strip()
+        if text and text not in seen:
+            seen.add(text)
+            result.append(text)
+    return result
 
 
 def _deep_fill(default: dict, saved: Any) -> dict:
@@ -119,18 +137,18 @@ class BankInfo:
 
 
 class Storage:
-    def __init__(self, data_dir: Path | None = None):
+    def __init__(self, data_dir: Path | None = None, seed: bool = True):
         if data_dir is None:
             data_dir = paths.default_data_dir()
         self.data_dir = Path(data_dir)
         self.banks_dir = self.data_dir / "banks"
         self.trash_dir = self.data_dir / "trash"
         self.state_path = self.data_dir / "state.json"
-        # 首次运行把随程序分发的题库铺进来（已有题库则跳过）
-        self.seeded = paths.seed_data(self.data_dir)
         self.banks_dir.mkdir(parents=True, exist_ok=True)
         self.trash_dir.mkdir(parents=True, exist_ok=True)
         self.state: dict[str, Any] = self._load_state()
+        # 状态先读出来，才知道哪些内置题库被用户主动删过；再补缺失的内置题库
+        self.seeded = self.ensure_builtin() if seed else []
 
     # ---------------- 状态 ----------------
 
@@ -168,6 +186,8 @@ class Storage:
         }
         state.setdefault("history", {})
         state.setdefault("progress", {})
+        state["quiz_banks"] = _str_list(state.get("quiz_banks"))
+        state["banks_removed"] = _str_list(state.get("banks_removed"))
         return state
 
     def save_state(self) -> None:
@@ -244,6 +264,76 @@ class Storage:
         target = self.trash_dir / f"{path.stem}-{datetime.now().strftime('%Y%m%d-%H%M%S')}{path.suffix}"
         shutil.move(str(path), str(target))
         return target
+
+    # ---------------- 内置题库 ----------------
+
+    def builtin_names(self) -> set[str]:
+        return {item.name for item in paths.builtin_bank_files()}
+
+    def is_builtin(self, path: Path) -> bool:
+        return Path(path).name in self.builtin_names()
+
+    def ensure_builtin(self) -> list[str]:
+        """补齐被删/缺失的内置题库，跳过用户主动删过的那些。"""
+        return paths.restore_builtin(self.banks_dir, skip=set(self.state.get("banks_removed") or []))
+
+    def restore_builtin(self) -> list[str]:
+        """家长显式要求：把内置题库全部找回来。"""
+        self.state["banks_removed"] = []
+        created = paths.restore_builtin(self.banks_dir)
+        self.save_state()
+        return created
+
+    def delete_bank(self, path: Path) -> Path:
+        """删除一份题库：移入回收站、记录被删的内置题库、修正出题范围与活跃题库。"""
+        path = Path(path)
+        name = path.name
+        target = self.retire_bank(path)
+        if self.is_builtin(path):
+            removed = _str_list(self.state.get("banks_removed"))
+            if name not in removed:
+                removed.append(name)
+            self.state["banks_removed"] = removed
+        self.state["quiz_banks"] = [x for x in _str_list(self.state.get("quiz_banks")) if x != name]
+        if str(self.state.get("active_bank") or "") == name:
+            rest = self.bank_infos()
+            self.state["active_bank"] = rest[0].filename if rest else ""
+        self.save_state()
+        return target
+
+    # ---------------- 出题范围 ----------------
+
+    def selected_banks(self) -> list[str]:
+        """参与出题的题库文件名；空列表表示「只用当前打开的这一份」。"""
+        existing = {info.filename for info in self.bank_infos()}
+        return [name for name in (self.state.get("quiz_banks") or []) if name in existing]
+
+    def set_bank_selected(self, filename: str, selected: bool) -> None:
+        current = _str_list(self.state.get("quiz_banks"))
+        if selected:
+            if not current:
+                # 空集合的语义是「只有当前打开的那一份」。要加入第二份时，先把
+                # 当前这份显式写进去，否则会变成「只剩新加的那一份」。
+                active = str(self.state.get("active_bank") or "").strip()
+                if active:
+                    current = [active]
+            if filename not in current:
+                current.append(filename)
+        else:
+            current = [x for x in current if x != filename]
+        self.state["quiz_banks"] = current
+        self.save_state()
+
+    def select_all_banks(self) -> list[str]:
+        names = [info.filename for info in self.bank_infos()]
+        self.state["quiz_banks"] = names
+        self.save_state()
+        return names
+
+    def select_only_bank(self, filename: str) -> list[str]:
+        self.state["quiz_banks"] = [filename] if filename else []
+        self.save_state()
+        return list(self.state["quiz_banks"])
 
     # ---------------- 历史 ----------------
 

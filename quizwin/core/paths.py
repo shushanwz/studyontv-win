@@ -69,23 +69,36 @@ def default_data_dir() -> Path:
     return Path(local) / APP_NAME / "data"
 
 
-def seed_data(target: Path) -> list[str]:
-    """首次运行把随程序分发的题库复制过去，返回复制到的文件名。
+def builtin_banks_dir() -> Path:
+    """随程序分发的题库目录。源码运行时就是项目里的 data/banks。"""
+    return bundle_dir() / "data" / "banks"
 
-    只补空目录，绝不动已有题库——用户自己改过的内容不能被覆盖。
+
+def builtin_bank_files() -> list[Path]:
+    source = builtin_banks_dir()
+    return sorted(source.glob("*.json")) if source.is_dir() else []
+
+
+def restore_builtin(target: Path, skip: set[str] | None = None) -> list[str]:
+    """把内置题库里「缺失的」逐份补进 target/banks，返回补进来的文件名。
+
+    逐份比对而不是「只补空目录」——这样删掉一份、留着其余，下次启动也只补
+    缺的那份，不会把用户删掉的题库整批复活（要复活请走 skip 之外的显式恢复）。
+    同名文件一律不覆盖：用户改过的内容优先级最高。
     """
     created: list[str] = []
+    skip = set(skip or ())
     try:
-        banks = target / "banks"
-        source = bundle_dir() / "data" / "banks"
+        banks = target / "banks" if target.name != "banks" else target
+        source = builtin_banks_dir()
         if not source.is_dir():
             return created
         if source.resolve() == banks.resolve():
             return created  # 源码运行，源就是目标
-        if banks.exists() and any(banks.glob("*.json")):
-            return created
         banks.mkdir(parents=True, exist_ok=True)
         for item in sorted(source.glob("*.json")):
+            if item.name in skip:
+                continue
             destination = banks / item.name
             if not destination.exists():
                 shutil.copyfile(item, destination)
@@ -93,6 +106,11 @@ def seed_data(target: Path) -> list[str]:
     except OSError:
         pass
     return created
+
+
+def seed_data(target: Path) -> list[str]:
+    """首次运行把随程序分发的题库复制过去（等价于全量恢复）。"""
+    return restore_builtin(target)
 
 
 def legacy_data_dir() -> Path:

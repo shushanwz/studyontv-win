@@ -7,9 +7,11 @@ import tkinter as tk
 from pathlib import Path
 from tkinter import filedialog, messagebox, simpledialog, ttk
 
-from ..core.models import LETTERS, TYPE_LABEL, Bank, Question
+from ..core.engine import EngineError
+from ..core.models import LETTERS, TYPE_LABEL, Bank, Question, loads_lenient
+from . import bank_prompt
 from .theme import Fonts, Palette, apply_dark_title_bar, mix
-from .widgets import Button, ScrollFrame, SlimScrollbar
+from .widgets import Button, ScrollFrame, SlimScrollbar, Switch
 
 TYPE_ORDER = ("single", "multiple", "boolean", "text", "subjective")
 
@@ -68,41 +70,77 @@ def dark_scrollbar(parent: tk.Misc, theme: Palette, command) -> SlimScrollbar:
 
 
 class BankRow(tk.Frame):
-    def __init__(self, master, page: "BankPage", info, active: bool):
+    """一行题库：名称与题数、是否参与出题、删除。
+
+    左侧竖条代表「正在编辑」，右侧开关代表「参与出题」——两件事分开：
+    用户可能一边编辑「数学」，一边让「语文 / 历史」也混进来抽题。
+    """
+
+    def __init__(self, master, page: "BankPage", info, active: bool, selected: bool, builtin: bool = False):
         theme, fonts = page.app.theme, page.app.fonts
-        super().__init__(master, bg=theme.accent_soft if active else theme.surface2, cursor="hand2")
+        bg = theme.accent_soft if active else theme.surface2
+        super().__init__(master, bg=bg, cursor="hand2", height=74)
         self.page = page
         self.info = info
         self.active = active
-        height = 68
-        self.configure(height=height)
+        self.selected = selected
         self.pack_propagate(False)
+        self.grid_columnconfigure(1, weight=1)
 
-        strip = tk.Frame(self, bg=theme.accent if active else theme.surface2, width=3)
-        strip.pack(side="left", fill="y")
+        tk.Frame(self, bg=theme.accent if active else theme.surface2, width=3).grid(row=0, column=0, sticky="ns")
 
-        body = tk.Frame(self, bg=theme.accent_soft if active else theme.surface2)
-        body.pack(side="left", fill="both", expand=True, padx=12, pady=9)
-        name = info.name if len(info.name) <= 18 else info.name[:17] + "…"
-        tk.Label(
+        body = tk.Frame(self, bg=bg)
+        body.grid(row=0, column=1, sticky="ew", padx=(12, 6), pady=10)
+        name = info.name if len(info.name) <= 12 else info.name[:11] + "…"
+        name_label = tk.Label(
             body,
             text=name,
-            bg=theme.accent_soft if active else theme.surface2,
+            bg=bg,
             fg=theme.text if active else theme.text2,
             font=fonts.body_bold,
             anchor="w",
-        ).pack(anchor="w")
+            justify="left",
+        )
+        name_label.pack(anchor="w")
         count_text = f"{info.count} 题" if info.count >= 0 else "文件无法解析"
-        tk.Label(
+        if builtin:
+            count_text += " · 内置"
+        count_label = tk.Label(
             body,
             text=count_text,
-            bg=theme.accent_soft if active else theme.surface2,
+            bg=bg,
             fg=theme.accent if active else theme.text3,
             font=fonts.small,
             anchor="w",
-        ).pack(anchor="w")
+        )
+        count_label.pack(anchor="w")
 
-        for widget in (self, body, *body.winfo_children()):
+        right = tk.Frame(self, bg=bg)
+        right.grid(row=0, column=2, sticky="e", padx=(0, 8), pady=6)
+        Switch(
+            right,
+            theme,
+            checked=selected,
+            on_change=lambda value: page.toggle_bank_selected(info, value),
+            width=40,
+            height=22,
+            parent_bg=bg,
+        ).pack(anchor="e")
+        Button(
+            right,
+            theme,
+            fonts,
+            "删除",
+            lambda: page.delete_bank(info),
+            kind="quiet",
+            width=46,
+            height=24,
+            padx=0,
+            font=(fonts.family, 9),
+            parent_bg=bg,
+        ).pack(anchor="e", pady=(4, 0))
+
+        for widget in (self, body, name_label, count_label):
             widget.bind("<ButtonRelease-1>", lambda _e: page.switch_bank(info))
 
 
@@ -127,30 +165,54 @@ class BankPage(tk.Frame):
         left = tk.Frame(self, bg=theme.bg, width=280)
         left.pack(side="left", fill="y", padx=(30, 16), pady=22)
         left.pack_propagate(False)
-        left.grid_propagate(False)
-        left.grid_columnconfigure(0, weight=1)
-        left.grid_rowconfigure(2, weight=1)
 
-        tk.Label(left, text="题库", bg=theme.bg, fg=theme.text, font=fonts.h2).grid(row=0, column=0, sticky="w")
-        tk.Label(
-            left,
-            text="切换后立即生效，修改直接写入文件",
+        # 底部按钮先 pack：pack 按调用顺序分配空间，后 pack 的只能拿剩下的。
+        # 用 grid + weight 时，列表的请求高度会把这两排按钮顶到窗口外面去。
+        footer = tk.Frame(left, bg=theme.bg)
+        footer.pack(side="bottom", fill="x")
+        row_one = tk.Frame(footer, bg=theme.bg)
+        row_one.pack(fill="x")
+        Button(row_one, theme, fonts, "新建", self.create_bank, height=38, padx=14).pack(side="left")
+        Button(row_one, theme, fonts, "导入", self.import_bank, height=38, padx=14).pack(side="left", padx=(8, 0))
+
+        row_two = tk.Frame(footer, bg=theme.bg)
+        row_two.pack(fill="x", pady=(8, 0))
+        Button(row_two, theme, fonts, "自建题库", self.open_prompt, height=38, padx=14, kind="primary").pack(side="left")
+        Button(row_two, theme, fonts, "恢复内置", self.restore_builtin, height=38, padx=12).pack(
+            side="left", padx=(8, 0)
+        )
+
+        head_row = tk.Frame(left, bg=theme.bg)
+        head_row.pack(side="top", fill="x")
+        title_row = tk.Frame(head_row, bg=theme.bg)
+        title_row.pack(fill="x")
+        tk.Label(title_row, text="题库", bg=theme.bg, fg=theme.text, font=fonts.h2).pack(side="left")
+        Button(
+            title_row,
+            theme,
+            fonts,
+            "全选",
+            self.select_all_banks,
+            kind="quiet",
+            height=26,
+            padx=8,
+            font=fonts.small,
+        ).pack(side="right", pady=(6, 0))
+
+        self.scope_label = tk.Label(
+            head_row,
+            text="",
             bg=theme.bg,
             fg=theme.text3,
             font=fonts.small,
-            wraplength=280,
+            wraplength=270,
             justify="left",
-        ).grid(row=1, column=0, sticky="w", pady=(6, 16))
+        )
+        self.scope_label.pack(anchor="w", pady=(6, 10))
 
-        self.list_frame = ScrollFrame(left, theme, parent_bg=theme.bg)
-        self.list_frame.grid(row=2, column=0, sticky="nsew")
+        self.list_frame = ScrollFrame(left, theme, parent_bg=theme.bg, height=160)
+        self.list_frame.pack(side="top", fill="both", expand=True)
         self.rows_holder = self.list_frame.body
-
-        actions = tk.Frame(left, bg=theme.bg)
-        actions.grid(row=3, column=0, sticky="ew", pady=(14, 0))
-        Button(actions, theme, fonts, "新建", self.create_bank, height=38, padx=16).pack(side="left")
-        Button(actions, theme, fonts, "导入", self.import_bank, height=38, padx=16).pack(side="left", padx=(8, 0))
-        Button(actions, theme, fonts, "导出", self.export_bank, height=38, padx=16).pack(side="left", padx=(8, 0))
 
         right = tk.Frame(self, bg=theme.bg)
         right.pack(side="left", fill="both", expand=True, padx=(0, 30), pady=22)
@@ -163,13 +225,17 @@ class BankPage(tk.Frame):
 
         title_row = tk.Frame(head, bg=theme.bg)
         title_row.grid(row=0, column=0, sticky="ew")
-        self.title_label = tk.Label(title_row, text="题库", bg=theme.bg, fg=theme.text, font=fonts.h2, anchor="w")
-        self.title_label.pack(side="left")
-
+        # 右侧按钮先 pack：标题文字长的时候，Label 会按文本宽度抢占空间，
+        # 把按钮挤出窗口（曾出现「重命名」只露出半截）
         head_actions = tk.Frame(title_row, bg=theme.bg)
         head_actions.pack(side="right")
+        self.title_label = tk.Label(title_row, text="题库", bg=theme.bg, fg=theme.text, font=fonts.h2, anchor="w")
+        self.title_label.pack(side="left", fill="x", expand=True)
         Button(head_actions, theme, fonts, "重命名", self.rename_bank, kind="quiet", height=36, padx=14).pack(
             side="left"
+        )
+        Button(head_actions, theme, fonts, "导出", self.export_bank, kind="quiet", height=36, padx=14).pack(
+            side="left", padx=(8, 0)
         )
         Button(head_actions, theme, fonts, "保存题库", self.save_bank, kind="ghost", height=36, padx=16).pack(
             side="left", padx=(8, 0)
@@ -276,17 +342,31 @@ class BankPage(tk.Frame):
         self.reload_bank_list()
         self.refresh_table()
 
+    def selected_names(self) -> set[str]:
+        """当前参与出题的文件名。显式集合为空时，等于「只有当前打开的这一份」。"""
+        names = set(self.app.storage.selected_banks())
+        if names:
+            return names
+        bank = self.app.engine.bank if self.app.engine else None
+        return {bank.path.name} if bank and bank.path else set()
+
     def reload_bank_list(self) -> None:
         theme = self.app.theme
         for child in self.rows_holder.winfo_children():
             child.destroy()
-        bank = self.app.engine.bank if self.app.engine else None
+        engine = self.app.engine
+        bank = engine.bank if engine else None
         active_name = bank.path.name if bank and bank.path else ""
         infos = self.app.storage.bank_infos()
+        selected = self.selected_names()
+        scope = engine.quiz_scope() if engine else {"banks": 0, "pool": 0}
+        self.scope_label.configure(
+            text=f"出题范围 {len(selected)}/{len(infos)} 份 · {scope['pool']} 题"
+        )
         if not infos:
             tk.Label(
                 self.rows_holder,
-                text="还没有题库，点下面的「新建」开始",
+                text="还没有题库。点「新建」「导入」，或「恢复内置」把自带题库找回来。",
                 bg=theme.bg,
                 fg=theme.text3,
                 font=self.app.fonts.small,
@@ -294,18 +374,34 @@ class BankPage(tk.Frame):
                 justify="left",
             ).pack(anchor="w")
             return
+        builtin_names = self.app.storage.builtin_names()
         for info in infos:
-            row = BankRow(self.rows_holder, self, info, active=info.filename == active_name)
+            row = BankRow(
+                self.rows_holder,
+                self,
+                info,
+                active=info.filename == active_name,
+                selected=info.filename in selected,
+                builtin=info.filename in builtin_names,
+            )
             row.pack(fill="x", pady=(0, 6))
 
     def refresh_table(self) -> None:
-        if not self.app.engine or not self.app.engine.bank:
+        engine = self.app.engine
+        if not engine or not engine.bank:
+            self.title_label.configure(text="没有打开的题库")
+            self.meta_label.configure(text="先新建或导入一份，也可以点左下「恢复内置」")
+            self.dirty_label.configure(text="")
+            self.tree.delete(*self.tree.get_children())
+            self.footer.configure(text="")
             return
-        bank = self.app.engine.bank
+        bank = engine.bank
         theme, fonts = self.app.theme, self.app.fonts
-        self.title_label.configure(text=bank.name if len(bank.name) <= 22 else bank.name[:21] + "…")
+        self.title_label.configure(text=bank.name if len(bank.name) <= 18 else bank.name[:17] + "…")
         enabled = len(bank.active_items())
-        self.meta_label.configure(text=f"共 {len(bank.items)} 题 · 启用 {enabled} 题")
+        scope = engine.quiz_scope()
+        scope_text = f" · 抽题范围 {scope['banks']} 份 / {scope['pool']} 题" if scope["banks"] else ""
+        self.meta_label.configure(text=f"共 {len(bank.items)} 题 · 启用 {enabled} 题{scope_text}")
         self.dirty_label.configure(text="未保存" if bank.dirty else "")
 
         raw_keyword = self.keyword_entry.get().strip() if hasattr(self, "keyword_entry") else ""
@@ -408,6 +504,79 @@ class BankPage(tk.Frame):
         self.refresh_table()
         self.app.refresh_status()
 
+    # ------------------------------------------------------------ 出题范围
+
+    def toggle_bank_selected(self, info, checked: bool) -> None:
+        st = self.app.storage
+        current = self.selected_names()
+        if not checked and len(current) <= 1:
+            self.app.toast("至少要留一份题库参与出题")
+            self.reload_bank_list()
+            return
+        st.set_bank_selected(info.filename, checked)
+        self.reload_bank_list()
+        self.refresh_table()
+        scope = self.app.engine.quiz_scope() if self.app.engine else {"banks": 0, "pool": 0}
+        self.app.toast(f"出题范围：{scope['banks']} 份题库 / {scope['pool']} 题")
+
+    def select_all_banks(self) -> None:
+        names = self.app.storage.select_all_banks()
+        self.reload_bank_list()
+        self.refresh_table()
+        self.app.toast(f"{len(names)} 份题库全部参与出题")
+
+    def open_prompt(self) -> None:
+        bank_prompt.ask(self, self.app)
+
+    def restore_builtin(self) -> None:
+        created = self.app.storage.restore_builtin()
+        engine = self.app.engine
+        if engine and not engine.bank:
+            try:
+                engine.load_bank()
+            except EngineError:
+                pass
+        self.selected_id = None
+        self.reload_bank_list()
+        self.refresh_table()
+        self.app.refresh_status()
+        if created:
+            self.app.toast(f"已找回 {len(created)} 份内置题库")
+        else:
+            self.app.toast("内置题库都在，没有需要恢复的")
+
+    def delete_bank(self, info) -> None:
+        engine = self.app.engine
+        bank = engine.bank if engine else None
+        is_active = bool(bank and bank.path and Path(bank.path).name == info.filename)
+        count_text = f"{info.count} 道题" if info.count >= 0 else "文件无法解析"
+        detail = "\n\n这是当前打开的题库，删掉后会自动切到另一份。" if is_active else ""
+        confirm = messagebox.askyesno(
+            "删除题库",
+            f"删除题库「{info.name}」？\n\n{count_text}{detail}\n\n"
+            r"文件会移到回收站 data\trash，需要时能找回。",
+            parent=self,
+        )
+        if not confirm:
+            return
+        if is_active and engine and engine.status().get("hasRound"):
+            engine.abandon_round()
+        try:
+            self.app.storage.delete_bank(info.path)
+        except OSError as exc:
+            messagebox.showerror("删除失败", f"无法移动文件：\n{exc}", parent=self)
+            return
+        self.selected_id = None
+        if is_active:
+            try:
+                engine.load_bank()
+            except EngineError:
+                engine.bank = None
+        self.reload_bank_list()
+        self.refresh_table()
+        self.app.refresh_status()
+        self.app.toast(f"已删除「{info.name}」，文件已移到 data\\trash")
+
     def rename_bank(self) -> None:
         bank = self.app.engine.bank
         name = simpledialog.askstring("重命名题库", "新的名称：", parent=self, initialvalue=bank.name)
@@ -422,13 +591,18 @@ class BankPage(tk.Frame):
     def import_bank(self) -> None:
         filename = filedialog.askopenfilename(
             parent=self,
-            title="选择题库 JSON 文件",
-            filetypes=[("JSON 题库", "*.json"), ("所有文件", "*.*")],
+            title="选择题库文件",
+            filetypes=[
+                ("题库文件", "*.json *.txt *.md"),
+                ("JSON 题库", "*.json"),
+                ("所有文件", "*.*"),
+            ],
         )
         if not filename:
             return
         try:
-            payload = json.loads(Path(filename).read_text(encoding="utf-8"))
+            # AI 直接吐出来的内容常带 ```json 围栏，原样存成 .txt 也能读
+            payload = loads_lenient(Path(filename).read_text(encoding="utf-8"))
             name, items = Bank.parse_payload(payload)
         except (json.JSONDecodeError, OSError, ValueError) as exc:
             messagebox.showerror("导入失败", f"文件不是有效的题库 JSON：\n{exc}", parent=self)
