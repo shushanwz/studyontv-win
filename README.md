@@ -5,6 +5,7 @@
 
 - 上游项目：<https://github.com/chadyi/StudyOnTV>（作者 chadyi，Kotlin / Android TV）
 - 本程序定位：以上游的规则引擎与题库格式为准的桌面复刻；遥控器交互改为键鼠交互
+- 开发过程与取舍记录：[docs/开发过程.md](docs/开发过程.md)
 
 ![开始页](shots/01-开始页.png)
 
@@ -378,6 +379,9 @@ python run.py
 │  └─ error.log                # 界面异常记录（有异常才出现）
 ├─ tests/                      # 引擎与界面冒烟测试
 ├─ tools/                      # 截图、启动验证等开发脚本
+├─ docs/
+│  ├─ 家长控制方案.md          # 家长控制的设计取舍与加固定位
+│  └─ 开发过程.md              # 从需求到发布的过程记录
 └─ shots/                      # 本文档用的截图
 ```
 
