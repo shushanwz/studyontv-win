@@ -75,9 +75,13 @@ python run.py
 
 题库、规则、关于三页：
 
-| 题库管理 | 题目编辑 |
+| 题库管理（开关 = 参与出题） | 题目编辑 |
 | --- | --- |
 | ![题库管理](shots/08-题库管理.png) | ![题目编辑](shots/09-题目编辑.png) |
+
+「自建题库」给的提示词，复制给任意大模型就能按本程序格式产题：
+
+![用 AI 自建题库](shots/16-AI自建题库.png)
 
 | 规则设置 | 关于页面 |
 | --- | --- |
@@ -423,6 +427,7 @@ python tests\bank_ui_smoke.py         :: 题库页界面：勾选出题范围、
 - `window_shot.py`：按窗口标题抓截图，用于验证打包后的 exe（没有 tkinter 句柄可用）
 - `press_enter.py`：给安装向导发回车翻页，配合 `window_shot.py` 逐页核对
 - `keypad.py`：给前台窗口打字/按键/点击，用来打通「首次设置」这种只能靠人手点一次的流程
+- `shot_prompt.py`：只截「自建题库」对话框本身，重生成 `shots/16-AI自建题库.png`
 - `uninstall_silent.py`：静默卸载已安装的程序（绕开 Git Bash 的 `/S` 转换）
 - `make_shots.py`：批量生成 `shots/` 里的展示图
 - `make_launcher.py`：重新生成 GBK 编码的启动脚本
