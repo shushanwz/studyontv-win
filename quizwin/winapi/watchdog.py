@@ -69,9 +69,15 @@ def kill_pid(pid: int) -> bool:
         k32.CloseHandle(handle)
 
 
+def frozen() -> bool:
+    return bool(getattr(sys, "frozen", False))
+
+
 def pythonw() -> str:
-    """优先用无控制台的解释器，避免拉起时闪黑框。"""
+    """优先用无控制台的解释器，避免拉起时闪黑框。打包后就是程序自身。"""
     exe = Path(sys.executable)
+    if frozen():
+        return str(exe)
     candidate = exe.with_name("pythonw.exe")
     return str(candidate if candidate.exists() else exe)
 
@@ -141,7 +147,12 @@ def should_relaunch(root: Path) -> tuple[bool, str]:
 # ---------------------------------------------------------------- 守护进程
 
 
-def run_guard(root: Path, parent_pid: int, max_relaunch: int = MAX_RELAUNCH) -> int:
+def run_guard(
+    root: Path,
+    parent_pid: int,
+    max_relaunch: int = MAX_RELAUNCH,
+    exe_dir: Path | None = None,
+) -> int:
     """守护循环。父进程消失时拉起锁屏，然后自己退出（新进程会起新的守护）。"""
     relaunched = 0
     while True:
@@ -154,14 +165,14 @@ def run_guard(root: Path, parent_pid: int, max_relaunch: int = MAX_RELAUNCH) -> 
             if not ok or relaunched >= max_relaunch:
                 _clear_pid(root)
                 return 0
-            _spawn_lock(root)
+            _spawn_lock(root, exe_dir)
             relaunched += 1
             _clear_pid(root)
             return 0
         time.sleep(INTERVAL)
 
 
-def _spawn_lock(root: Path) -> None:
+def _spawn_lock(root: Path, exe_dir: Path | None = None) -> None:
     if os.environ.get("QUIZWIN_GUARD_DRY") == "1":
         # 自检模式：只留痕、不真拉起。验证「父进程被杀后守护会重启锁屏」
         # 这件事本身，又不会在别人正用电脑时把桌面锁住。
@@ -170,11 +181,18 @@ def _spawn_lock(root: Path) -> None:
         except OSError:
             pass
         return
-    cmd = [pythonw(), str(root / "run.py"), "--force-lock"]
+    if frozen():
+        # 打包后没有 run.py，直接再拉起自己
+        cmd = [sys.executable, "--force-lock"]
+        cwd = str(exe_dir or Path(sys.executable).resolve().parent)
+    else:
+        base = Path(exe_dir) if exe_dir else root
+        cmd = [pythonw(), str(base / "run.py"), "--force-lock"]
+        cwd = str(base)
     try:
         subprocess.Popen(
             cmd,
-            cwd=str(root),
+            cwd=cwd,
             creationflags=DETACHED_PROCESS | CREATE_NO_WINDOW,
             close_fds=True,
             stdin=subprocess.DEVNULL,
@@ -198,8 +216,9 @@ def _clear_pid(root: Path) -> None:
 class Watchdog:
     """主进程这一侧的开关：起守护、停守护。"""
 
-    def __init__(self, root: Path):
+    def __init__(self, root: Path, exe_dir: Path | None = None):
         self.root = Path(root)
+        self.exe_dir = Path(exe_dir) if exe_dir else self.root
         self.proc: subprocess.Popen | None = None
         self.pid = 0
         self.last_error = ""
@@ -215,11 +234,16 @@ class Watchdog:
         if self.running:
             return True
         self._kill_stale()
-        module = self.root / "quizwin" / "winapi" / "watchdog.py"
+        if frozen():
+            # 打包后由程序自身带 --guard 参数进入守护模式
+            guard_cmd = [sys.executable, "--guard"]
+        else:
+            guard_cmd = [pythonw(), str(self.exe_dir / "quizwin" / "winapi" / "watchdog.py"), "--guard"]
+        guard_cmd += ["--root", str(self.root), "--parent-pid", str(os.getpid()), "--exe-dir", str(self.exe_dir)]
         try:
             self.proc = subprocess.Popen(
-                [pythonw(), str(module), "--guard", "--root", str(self.root), "--parent-pid", str(os.getpid())],
-                cwd=str(self.root),
+                guard_cmd,
+                cwd=str(self.exe_dir),
                 creationflags=DETACHED_PROCESS | CREATE_NO_WINDOW,
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.DEVNULL,
@@ -274,7 +298,8 @@ def main(argv: list[str]) -> int:
         return 0
     root = Path(argv[argv.index("--root") + 1]) if "--root" in argv else Path.cwd()
     pid = int(argv[argv.index("--parent-pid") + 1]) if "--parent-pid" in argv else 0
-    return run_guard(root, pid)
+    exe_dir = Path(argv[argv.index("--exe-dir") + 1]) if "--exe-dir" in argv else None
+    return run_guard(root, pid, exe_dir=exe_dir)
 
 
 if __name__ == "__main__":  # pragma: no cover

@@ -12,7 +12,8 @@ from tkinter import messagebox
 from ..core.engine import Engine, EngineError
 from ..core.lock import REASON_MANUAL, LockController
 from ..core.parent import ParentControl
-from ..core.storage import BASE_DIR, Storage
+from ..core import paths
+from ..core.storage import Storage
 from ..winapi import HardenOptions, Hardening, Watchdog, set_task_manager_disabled
 from .overlay import OverlayBar
 from .page_lock import LockBar, ParentMenu, ParentSetupDialog, PasswordDialog
@@ -154,6 +155,11 @@ class App(tk.Tk):
 
     # ------------------------------------------------------------ 系统层封锁
 
+    def _data_dir(self) -> Path:
+        """数据目录。启动早期（storage 还没建）出错时也能拿到一个合法路径。"""
+        storage = getattr(self, "storage", None)
+        return storage.data_dir if storage is not None else paths.default_data_dir()
+
     def _build_guard(self) -> None:
         if os.environ.get("QUIZWIN_NO_GUARD") == "1":
             # 自动化测试用：不装钩子、不起守护，避免测试进程真的把桌面锁住
@@ -169,7 +175,11 @@ class App(tk.Tk):
                 keep_foreground=True,
             ),
         )
-        self.watchdog = Watchdog(BASE_DIR) if bool(cfg.get("watchdog", True)) else None
+        self.watchdog = (
+            Watchdog(self._data_dir().parent, exe_dir=paths.app_dir())
+            if bool(cfg.get("watchdog", True))
+            else None
+        )
 
     def reload_guard_config(self) -> None:
         """设置里改了加固开关后，按新配置重建封锁对象。"""
@@ -205,7 +215,7 @@ class App(tk.Tk):
             self._restore_taskmgr()
 
     def _taskmgr_mark(self) -> Path:
-        return BASE_DIR / "data" / "runtime" / "taskmgr.flag"
+        return self._data_dir() / "runtime" / "taskmgr.flag"
 
     def _mark_taskmgr(self) -> None:
         """留个记号：这个策略是本程序设的，退出时要自己收拾干净。"""
@@ -697,7 +707,7 @@ class App(tk.Tk):
     def _report_exception(self, exc_type, exc_value, exc_tb) -> None:
         detail = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
         try:
-            log_path = Path(__file__).resolve().parents[2] / "data" / "error.log"
+            log_path = self._data_dir() / "error.log"
             with log_path.open("a", encoding="utf-8") as handle:
                 handle.write(f"\n[{datetime.now().isoformat(timespec='seconds')}]\n{detail}\n")
         except OSError:

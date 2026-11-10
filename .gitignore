@@ -14,3 +14,13 @@ shots/*.bmp
 shots/_*.png
 
 _scratch/
+
+# 打包产物：可由 build_package.py / build_installer.py 重建
+dist/
+build/_generated.spec
+build/pyi/
+build/tools/
+build/*.ico
+build/*.bmp
+build/*.png
+build/_generated/

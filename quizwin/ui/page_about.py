@@ -5,6 +5,7 @@ from __future__ import annotations
 import tkinter as tk
 from pathlib import Path
 
+from ..core import paths
 from .widgets import Button, ScrollFrame
 
 SHORTCUTS = [
@@ -82,7 +83,7 @@ class AboutPage(tk.Frame):
 
         self._history_card(body)
 
-        data_dir = Path(__file__).resolve().parents[2] / "data"
+        data_dir = self._data_dir()
         self._card(
             body,
             "数据位置",
@@ -151,11 +152,14 @@ class AboutPage(tk.Frame):
                     font=fonts.body if column == 0 else fonts.small,
                 ).grid(row=row_index, column=column, sticky="w", padx=(0, 34), pady=(6, 0))
 
+    def _data_dir(self) -> Path:
+        return self.app.storage.data_dir
+
     def open_data_folder(self) -> None:
         import os
         import subprocess
 
-        data_dir = Path(__file__).resolve().parents[2] / "data"
+        data_dir = self._data_dir()
         data_dir.mkdir(parents=True, exist_ok=True)
         try:
             os.startfile(str(data_dir))  # type: ignore[attr-defined]

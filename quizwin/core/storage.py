@@ -1,6 +1,8 @@
 """本地存储：题库文件与进度状态。
 
-所有数据都放在程序目录的 data/ 下，拷贝整个文件夹即可带走，不写注册表、不联网。
+数据目录按 `paths.default_data_dir()` 判定：源码运行在项目内，安装版在
+`%LOCALAPPDATA%\\题了个题\\data`，便携版（exe 旁放 portable.flag）在程序目录。
+一律不写注册表、不联网。
 """
 
 from __future__ import annotations
@@ -12,10 +14,11 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+from . import paths
 from .models import Bank
 
-BASE_DIR = Path(__file__).resolve().parents[2]  # 程序根目录（storage.py 在 quizwin/core 下）
-DATA_DIR = BASE_DIR / "data"
+BASE_DIR = paths.app_dir()  # 程序目录（安装后即 exe 所在目录）
+DATA_DIR = paths.default_data_dir()
 BANKS_DIR = DATA_DIR / "banks"
 TRASH_DIR = DATA_DIR / "trash"
 STATE_PATH = DATA_DIR / "state.json"
@@ -118,12 +121,13 @@ class BankInfo:
 class Storage:
     def __init__(self, data_dir: Path | None = None):
         if data_dir is None:
-            override = os.environ.get("QUIZWIN_DATA")
-            data_dir = Path(override) if override else DATA_DIR
+            data_dir = paths.default_data_dir()
         self.data_dir = Path(data_dir)
         self.banks_dir = self.data_dir / "banks"
         self.trash_dir = self.data_dir / "trash"
         self.state_path = self.data_dir / "state.json"
+        # 首次运行把随程序分发的题库铺进来（已有题库则跳过）
+        self.seeded = paths.seed_data(self.data_dir)
         self.banks_dir.mkdir(parents=True, exist_ok=True)
         self.trash_dir.mkdir(parents=True, exist_ok=True)
         self.state: dict[str, Any] = self._load_state()
