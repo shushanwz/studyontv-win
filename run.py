@@ -85,10 +85,17 @@ def consume_unlock_flag() -> bool:
 
 
 def decide_lock_mode(argv: list[str]) -> bool:
-    """有密码且启用了家长控制 → 全屏锁屏；否则正常窗口。
+    """默认就是锁屏进程——除了三种明确的例外，启动后一律先答题。
 
-    「没设密码就不许锁屏」是硬约束：锁屏的第一道门就是密码，
-    密码都没设就锁，等于把家长自己关在外面。
+    老版本要求「先设密码才锁屏」，结果新装好第一次打开是个普通窗口，
+    关掉设置向导之后更是永久变成普通窗口，孩子点一下「稍后再说」就全绕过了。
+    现在改成反过来：没密码就**强制**设一个，设完立刻进锁屏；不设就退出程序，
+    绝不停留在一个可以自由玩的窗口里。
+
+    例外只有三种：
+      * 命令行 --no-lock / --unlock：开发调试与家长维护；
+      * unlock.flag：家长救急通道，用完即删；
+      * 已设密码但家长主动停用了家长控制（enabled=False）。
     """
     if "--no-lock" in argv or "--unlock" in argv:
         return False
@@ -104,7 +111,9 @@ def decide_lock_mode(argv: list[str]) -> bool:
         from quizwin.core.storage import Storage
 
         control = ParentControl(Storage())
-        return bool(control.enabled and control.has_password)
+        if control.has_password and not control.enabled:
+            return False  # 家长自己关掉的，尊重这个选择
+        return True
     except Exception:
         # 状态读不出来时不要把人锁在外面
         return False
@@ -151,10 +160,6 @@ def main() -> int:
             pass
         _fail("启动失败", f"{exc}\n\n详细信息已写入数据目录的 startup-error.log。")
         return 1
-
-    if not lock_mode:
-        # 首次运行且没设密码：问一次要不要启用家长控制（放在入口层，测试不受影响）
-        app.after(1200, app._maybe_setup_parent)
 
     app.mainloop()
     return 0

@@ -14,7 +14,7 @@ Unicode true
 !include "FileFunc.nsh"
 
 !define APP_NAME "题了个题"
-!define APP_VERSION "0.3.0"
+!define APP_VERSION "0.3.1"
 !define APP_EXE "题了个题.exe"
 !define APP_REGKEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\题了个题"
 !define APP_DATA "$LOCALAPPDATA\题了个题"
@@ -31,7 +31,7 @@ SetCompressorDictSize 32
 CRCCheck on
 XPStyle on
 
-VIProductVersion "0.3.0.0"
+VIProductVersion "0.3.1.0"
 VIAddVersionKey /LANG=2052 "ProductName" "${APP_NAME}"
 VIAddVersionKey /LANG=2052 "FileDescription" "${APP_NAME} 安装程序"
 VIAddVersionKey /LANG=2052 "FileVersion" "${APP_VERSION}"
@@ -56,7 +56,7 @@ VIAddVersionKey /LANG=2052 "OriginalFilename" "${APP_NAME}-${APP_VERSION}-安装
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_FUNCTION LaunchApp
 !define MUI_FINISHPAGE_RUN_TEXT "立即运行 ${APP_NAME}"
-!define MUI_FINISHPAGE_TEXT "第一次运行会问你是否启用家长控制：启用要设一个家长密码，之后每次开机先答题，够了额度才能玩电脑。$\r$\n$\r$\n答题进度和密码只存在这台电脑上，不联网、不上传。"
+!define MUI_FINISHPAGE_TEXT "第一次运行会全屏要求设置家长密码，设好立刻进入答题锁屏：答够时长才解锁电脑，到点自动锁回来。$\r$\n$\r$\n答题进度和密码只存在这台电脑上，不联网、不上传。"
 
 !define MUI_UNCONFIRMPAGE_TEXT_TOP "将卸载 ${APP_NAME}。卸载过程中会单独询问是否删除答题进度与家长密码，默认保留。"
 

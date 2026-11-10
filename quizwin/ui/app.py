@@ -82,6 +82,8 @@ class App(tk.Tk):
         # shell_mode 决定「当前长什么样」，lock_mode 决定「这个进程是不是锁屏进程」。
         # 两者分开，家长才能从锁屏临时切到设置界面再切回来。
         self.shell_mode = "lock" if self.lock_mode else "normal"
+        # 锁屏进程但还没有密码 → 先走「首次设置」，设完直接进锁屏
+        self.setup_required = bool(self.lock_mode)
         self.settings_mode = False
         self.title(APP_TITLE)
         width, height = 1280, 840
@@ -94,6 +96,8 @@ class App(tk.Tk):
 
         self.storage = Storage()
         self.parent = ParentControl(self.storage)
+        # 已经有密码就不用再走设置向导
+        self.setup_required = bool(self.lock_mode and not self.parent.has_password)
         self.lock = LockController(self.storage)
         # 上次若停在「已解锁」，这里一律收回：不信任跨进程的解锁状态
         self.lock_info = self.lock.recover_from_crash()
@@ -121,11 +125,12 @@ class App(tk.Tk):
         self._guard_job = None
         self.hardening: Hardening | None = None
         self.watchdog: Watchdog | None = None
+        self._quit_from_setup = False
         if self.lock_mode:
             self._apply_lock_window()
             self._build_guard()
 
-        self.report_callback_exception = self._report_exception
+        self.report_callback_exception = self._on_callback_error
         self._build_shell()
         self._build_pages()
         self.set_page("quiz")
@@ -137,7 +142,11 @@ class App(tk.Tk):
         self.deiconify()
         self.lift()
         self.after(400, self._heartbeat)
-        if self.lock_mode:
+        if self.setup_required:
+            # 第一次运行（或上次没设完）：先强制设家长密码，设完立刻进锁屏。
+            # 这段时间不装键盘钩子——密码还没设，装了也只是给家长添麻烦。
+            self.after(120, self._run_first_setup)
+        elif self.lock_mode:
             self.after(300, self._tick_lock)
             # 等窗口真正映射到桌面再装钩子：过早装，hwnd 还没成型
             self.after(600, self.engage_guard)
@@ -569,6 +578,63 @@ class App(tk.Tk):
                 self.lock_bar.refresh()
         return passed
 
+    # ------------------------------------------------------------ 首次设置
+
+    def _run_first_setup(self) -> None:
+        """第一次运行：没密码就先强制设一个，设完立刻进锁屏。
+
+        三条底线：
+          * 不能跳过——跳过就等于留下一个可以自由玩的窗口；
+          * 不设就退出程序，桌面原样还回去，家长下次再来设；
+          * 这一步自己出错也退出，绝不停在「没锁住又能用」的中间态。
+        """
+        if not self.setup_required:
+            return
+        self.setup_required = False
+        try:
+            if self.parent.has_password:
+                self.enter_lock_now()
+                return
+            passed, _code = ParentSetupDialog.ask(self, self, fullscreen=True)
+            if not passed:
+                self.quit_from_setup()
+                return
+            self.enter_lock_now()
+            self.toast("家长密码已设置，答够时长就能解锁电脑", 4000)
+        except Exception:  # noqa: BLE001 - 首次设置失败必须兜住，不能半开着
+            detail = traceback.format_exc()
+            try:
+                log_path = self._data_dir() / "error.log"
+                with log_path.open("a", encoding="utf-8") as handle:
+                    handle.write(f"\n[首次设置失败]\n{detail}\n")
+            except OSError:
+                pass
+            self.quit_from_setup()
+
+    def enter_lock_now(self) -> None:
+        """从「首次设置」直接进入锁屏，不必重启程序。
+
+        窗口在 __init__ 里就已经是全屏无边框了，这里补上内容形态与系统层封锁。
+        """
+        self.lock_mode = True
+        self.settings_mode = False
+        self.lock.force_lock(REASON_MANUAL)
+        self.switch_shell("lock", "quiz")
+        self._apply_lock_window()
+        page = self.pages.get("quiz")
+        if page is not None:
+            page.refresh_entry()
+        self.lift()
+        self.engage_guard()
+        self._tick_lock()
+
+    def quit_from_setup(self) -> None:
+        """首次设置取消：直接退出，绝不停在可用状态。"""
+        self.setup_required = False
+        self._quit_from_setup = True
+        # 让对话框先把自己销毁干净，再关主窗口，避免回调踩到已销毁的控件
+        self.after(1, lambda: self.on_close(force=True))
+
     def _tick_lock(self) -> None:
         """锁屏期间的每秒心跳：既判断是否到点，也顺带刷新额度条。"""
         self._lock_tick_job = None
@@ -599,14 +665,6 @@ class App(tk.Tk):
         except tk.TclError:
             return
         self.after(10_000, self._heartbeat)
-
-    def _maybe_setup_parent(self) -> None:
-        """首次运行且没设密码：先问要不要启用家长控制。"""
-        if self.lock_mode:
-            return
-        if self.parent.has_password or not self.parent.enabled:
-            return
-        self.start_parent_setup()
 
     # ------------------------------------------------------------ 通知
 
@@ -704,7 +762,7 @@ class App(tk.Tk):
 
     # ------------------------------------------------------------ 异常
 
-    def _report_exception(self, exc_type, exc_value, exc_tb) -> None:
+    def _on_callback_error(self, exc_type, exc_value, exc_tb) -> None:
         detail = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
         try:
             log_path = self._data_dir() / "error.log"

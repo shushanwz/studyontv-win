@@ -309,9 +309,13 @@ class PasswordDialog(_DialogBase):
 
 
 class ParentSetupDialog(_DialogBase):
-    """首次设置密码：两步，第二步强制展示恢复码。"""
+    """首次设置密码：两步，第二步强制展示恢复码。
 
-    def __init__(self, parent, app):
+    fullscreen=True 用于程序第一次运行：铺满整个屏幕、不可跳过（Esc 或
+    「退出程序」都是退出程序本身），避免留下一个可以自由玩的窗口。
+    """
+
+    def __init__(self, parent, app, fullscreen: bool = False):
         super().__init__(parent)
         self.app = app
         self.theme: Palette = app.theme
@@ -319,20 +323,59 @@ class ParentSetupDialog(_DialogBase):
         self.control = app.parent
         self.result = False
         self.recovery = ""
+        self.fullscreen = bool(fullscreen)
         self._was_enrolled = bool(self.control.has_password)
 
         self.title("设置家长密码")
         self.configure(bg=self.theme.bg)
-        self.resizable(False, False)
-        self.transient(parent.winfo_toplevel())
-        _center(self, 520, 504)
+        if self.fullscreen:
+            # 全屏页：这一屏本身就是「遮住桌面」，不给标题栏也不给关窗按钮
+            self.overrideredirect(True)
+            self.attributes("-topmost", True)
+            self.geometry(f"{self.winfo_screenwidth()}x{self.winfo_screenheight()}+0+0")
+        else:
+            self.resizable(False, False)
+            self.transient(parent.winfo_toplevel())
+            _center(self, 520, 504)
         self.grab_set()
         self.protocol("WM_DELETE_WINDOW", self._skip)
         self.bind("<Escape>", lambda _e: self._skip())
+        if self.fullscreen:
+            self._build_brand()
         self.panel = tk.Frame(self, bg=self.theme.bg)
-        self.panel.pack(fill="both", expand=True, padx=36, pady=30)
+        if self.fullscreen:
+            self.panel.place(relx=0.5, rely=0.5, anchor="center", width=560)
+        else:
+            self.panel.pack(fill="both", expand=True, padx=36, pady=30)
         self._build_form()
         self.dark_title_later()
+        if self.fullscreen:
+            self.lift()
+
+    def _build_brand(self) -> None:
+        """全屏页的页头页脚：让第一屏看起来像应用的一部分，而不是一块黑底板。"""
+        theme, fonts = self.theme, self.fonts
+        head = tk.Frame(self, bg=theme.bg)
+        head.place(x=46, y=38, anchor="nw")
+        logo = tk.Canvas(head, width=30, height=30, bg=theme.bg, highlightthickness=0, bd=0)
+        logo.pack(side="left")
+        round_rect(logo, 0, 0, 30, 30, 9, fill=theme.accent, outline=theme.accent)
+        logo.create_polygon(11, 9, 11, 21, 21, 15, fill=theme.bg, outline=theme.bg)
+        tk.Label(
+            head, text="题了个题", bg=theme.bg, fg=theme.text, font=(fonts.family, 15, "bold")
+        ).pack(side="left", padx=(10, 0))
+        tk.Label(
+            head, text="家长控制 · 首次设置", bg=theme.bg, fg=theme.text3, font=fonts.small
+        ).pack(side="left", padx=(16, 0))
+
+        foot = tk.Label(
+            self,
+            text="答够时长才能解锁电脑，到点自动锁回来。密码与进度只存在这台电脑上。",
+            bg=theme.bg,
+            fg=theme.text3,
+            font=fonts.small,
+        )
+        foot.place(relx=0.5, rely=1.0, anchor="s", y=-40)
 
     def _clear(self) -> None:
         for child in list(self.panel.children.values()):
@@ -342,15 +385,24 @@ class ParentSetupDialog(_DialogBase):
         theme, fonts = self.theme, self.fonts
         self._clear()
         label(self.panel, theme, "设置家长密码", font=fonts.h1).pack(anchor="w")
+        intro = (
+            "设好之后，打开程序会先锁屏答题，\n"
+            "答够时长才能解锁电脑。\n"
+            "进入设置、临时解锁、退出程序都要用这个密码。"
+        )
+        if self.fullscreen:
+            intro = (
+                "第一次运行，请先设一个家长密码。\n"
+                "设好后立刻进入答题锁屏：答够时长才解锁电脑，到点自动锁回来。\n"
+                "进入设置、临时解锁、退出程序都要用这个密码。"
+            )
         label(
             self.panel,
             theme,
-            "设好之后，打开程序会先锁屏答题，\n"
-            "答够时长才能解锁电脑。\n"
-            "进入设置、临时解锁、退出程序都要用这个密码。",
+            intro,
             font=fonts.body,
             fg=theme.text2,
-            wraplength=460,
+            wraplength=520,
             justify="left",
         ).pack(anchor="w", pady=(8, 20))
 
@@ -364,10 +416,28 @@ class ParentSetupDialog(_DialogBase):
         self.error_label = label(self.panel, theme, "", font=fonts.small, fg=theme.bad, wraplength=430)
         self.error_label.pack(anchor="w", pady=(10, 0))
 
+        if self.fullscreen:
+            label(
+                self.panel,
+                theme,
+                "不设密码就无法使用本程序。按 Esc 或点「退出程序」可以直接关掉。",
+                font=fonts.small,
+                fg=theme.text3,
+                wraplength=520,
+            ).pack(anchor="w", pady=(8, 0))
+
         actions = tk.Frame(self.panel, bg=theme.bg)
-        actions.pack(side="bottom", fill="x")
+        actions.pack(side="bottom", fill="x", pady=(22, 0))
         Button(actions, theme, fonts, "保存并生成恢复码", self._save, kind="primary", height=44).pack(side="right")
-        Button(actions, theme, fonts, "稍后再说", self._skip, kind="quiet", height=44).pack(side="right", padx=(0, 10))
+        Button(
+            actions,
+            theme,
+            fonts,
+            "退出程序" if self.fullscreen else "稍后再说",
+            self._skip,
+            kind="quiet",
+            height=44,
+        ).pack(side="right", padx=(0, 10))
         self.focus_later(self.pass1, 40)
         self.bind("<Return>", lambda _e: self._save())
 
@@ -403,10 +473,22 @@ class ParentSetupDialog(_DialogBase):
         label(box, theme, "例如抄在课本扉页或贴在显示器背面", font=fonts.small, fg=theme.text3).pack(pady=(0, 18))
 
         actions = tk.Frame(self.panel, bg=theme.bg)
-        actions.pack(side="bottom", fill="x")
-        Button(actions, theme, fonts, "我已抄下，开始使用", self._done, kind="primary", height=44).pack(side="right")
+        actions.pack(side="bottom", fill="x", pady=(22, 0))
+        Button(
+            actions,
+            theme,
+            fonts,
+            "我已抄下，开始答题" if self.fullscreen else "我已抄下，开始使用",
+            self._done,
+            kind="primary",
+            height=44,
+        ).pack(side="right")
 
     def _done(self) -> None:
+        # 首次设置里把密码设好了，家长控制自然就是要开着的；
+        # 否则下次启动又按「已停用」走普通窗口。
+        if self.fullscreen and not self.control.enabled:
+            self.control.set_enabled(True)
         self.result = True
         self.destroy()
 
@@ -417,14 +499,20 @@ class ParentSetupDialog(_DialogBase):
             self.control.cfg["recovery"] = {"hash": "", "salt": "", "iters": 0, "used": False}
             self.control.cfg["setupDone"] = False
             self.control.st.save_state()
+        if self.fullscreen:
+            # 首次设置的「退出」= 关掉程序，绝不留下可用的普通窗口
+            self.result = False
+            self.destroy()
+            self.app.quit_from_setup()
+            return
         if not self._was_enrolled:
             self.control.set_enabled(False)
         self.result = False
         self.destroy()
 
     @classmethod
-    def ask(cls, parent, app) -> tuple[bool, str]:
-        dialog = cls(parent, app)
+    def ask(cls, parent, app, fullscreen: bool = False) -> tuple[bool, str]:
+        dialog = cls(parent, app, fullscreen=fullscreen)
         parent.wait_window(dialog)
         return dialog.result, dialog.recovery
 
