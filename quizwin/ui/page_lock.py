@@ -13,6 +13,9 @@ import tkinter as tk
 from .theme import Fonts, Palette, apply_dark_title_bar, mix, round_rect
 from .widgets import Button, label
 
+# 家长密码验证后「临时解锁」给多少分钟。只改这一处，按钮文字跟着变量走。
+PARENT_UNLOCK_MINUTES = 45
+
 
 def _center(window: tk.Toplevel, width: int, height: int) -> None:
     parent = window.master.winfo_toplevel()
@@ -701,9 +704,15 @@ class ParentMenu(_DialogBase):
 
         actions = tk.Frame(panel, bg=theme.bg)
         actions.pack(fill="x")
-        Button(actions, theme, fonts, "解锁 30 分钟", lambda: self._unlock(30), kind="primary", height=44).pack(
-            fill="x"
-        )
+        Button(
+            actions,
+            theme,
+            fonts,
+            f"解锁 {PARENT_UNLOCK_MINUTES} 分钟",
+            lambda: self._unlock(PARENT_UNLOCK_MINUTES),
+            kind="primary",
+            height=44,
+        ).pack(fill="x")
         Button(actions, theme, fonts, "解锁到明天零点", self._unlock_tomorrow, kind="ghost", height=44).pack(
             fill="x", pady=(8, 0)
         )

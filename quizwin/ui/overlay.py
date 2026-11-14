@@ -3,11 +3,13 @@
 主窗口收起后，桌面上只留这一条：显示剩余时间，可拖动，点结束立刻回锁。
 它不自己起定时器——每秒由 App 的锁屏心跳统一刷新，少一个可能跑飞的循环。
 
-两处与像素尺寸有关的坑，都记在这里免得以后又踩：
+三处与像素尺寸有关的坑，都记在这里免得以后又踩：
   * 窗口尺寸不能写死。字体是「磅」，会随系统缩放（125% / 150%）放大，而窗口
     尺寸是物理像素——写死 64 高时，放大后的「10:00」下半截会被窗口边框切掉，
     看起来就是「时间显示不全」。所以先量字再定窗口（见 _fit）。
   * 说明文字不要忽长忽短。几种状态的说明都保持四个汉字，窗口就不会一秒一变。
+  * 最后 30 秒整条放大三倍：只放大外框、不放大字号，会显得字缩在角落里，
+    所以字号、内边距、按钮、圆点全部按同一个倍数走（见 _build 的 scale）。
 """
 
 from __future__ import annotations
@@ -21,6 +23,9 @@ BAR_MIN_WIDTH = 236
 BAR_MIN_HEIGHT = 64
 PAD_X = 14
 PAD_Y = 10
+CLOCK_PT = 17
+CAPTION_PT = 9
+BUTTON_PT = 12
 
 # 说明文字的四种状态，长度都控制在四个字（宽度不跳，布局不抖）
 CAPTION_NORMAL = "剩余时间"
@@ -29,6 +34,7 @@ CAPTION_SAVE = "记得保存"
 CAPTION_LAST = "即将回锁"
 
 BLINK_SECONDS = 30  # 最后 30 秒开始闪
+ZOOM = 3  # 最后 30 秒整条放大到 3 倍
 
 
 class OverlayBar(tk.Toplevel):
@@ -41,21 +47,43 @@ class OverlayBar(tk.Toplevel):
         self._moved = False
         self._blink = False
         self._fitted = False
+        self._scale = 1
+        self._edge = 1
         self._size = (BAR_MIN_WIDTH, BAR_MIN_HEIGHT)
 
         self.overrideredirect(True)
         self.attributes("-topmost", True)
         self.configure(bg=self.theme.line)
         self._place_window()
+        self._build(1, "00:00", CAPTION_NORMAL)
+
+    # ---------- 结构（放大时整套重搭） ----------
+
+    def _build(self, scale: int, text: str, caption: str, center: tuple[int, int] | None = None) -> None:
+        """按 scale 重搭内部控件。
+
+        不重建会很难看：按钮高度、圆点直径、内边距都在创建时定死，事后只能
+        configure 尺寸而不能改字号比例。切换只发生在跨越 30 秒那一刻，用户
+        看到的正是「突然变大」——重建的一次性开销反而是想要的效果。
+        """
+        for child in self.winfo_children():
+            child.destroy()
+
+        self._scale = max(1, int(scale))
+        self._fitted = False
+        s = self._scale
+        self._edge = 1 if s == 1 else 3
+        pad_x, pad_y = PAD_X * s, PAD_Y * s
+        family = self.fonts.family
 
         body = tk.Frame(self, bg=self.theme.surface)
-        body.pack(fill="both", expand=True, padx=1, pady=1)
+        body.pack(fill="both", expand=True, padx=self._edge, pady=self._edge)
         body.bind("<ButtonPress-1>", self._on_press)
         body.bind("<B1-Motion>", self._on_drag)
         body.bind("<ButtonRelease-1>", self._on_release)
 
         inner = tk.Frame(body, bg=self.theme.surface)
-        inner.pack(fill="both", expand=True, padx=PAD_X, pady=PAD_Y)
+        inner.pack(fill="both", expand=True, padx=pad_x, pady=pad_y)
         inner.bind("<ButtonPress-1>", self._on_press)
         inner.bind("<B1-Motion>", self._on_drag)
         inner.bind("<ButtonRelease-1>", self._on_release)
@@ -70,35 +98,48 @@ class OverlayBar(tk.Toplevel):
             "结束",
             command=self.app.end_unlock_early,
             kind="quiet",
-            height=30,
-            padx=12,
+            height=30 * s,
+            padx=12 * s,
+            font=(family, BUTTON_PT * s, "bold"),
         ).pack(side="right")
 
-        self.dot = tk.Canvas(inner, width=10, height=10, bg=self.theme.surface, highlightthickness=0, bd=0)
-        self.dot.pack(side="left", pady=(2, 0))
-        self._dot_item = self.dot.create_oval(1, 1, 9, 9, fill=self.theme.ok, outline=self.theme.ok)
+        dot_size = 10 * s
+        self.dot = tk.Canvas(
+            inner, width=dot_size, height=dot_size, bg=self.theme.surface, highlightthickness=0, bd=0
+        )
+        self.dot.pack(side="left", pady=(2 * s, 0))
+        self._dot_item = self.dot.create_oval(
+            1, 1, dot_size - 1, dot_size - 1, fill=self.theme.ok, outline=self.theme.ok
+        )
 
         texts = tk.Frame(inner, bg=self.theme.surface)
-        texts.pack(side="left", padx=(10, 12))
+        texts.pack(side="left", padx=(10 * s, 12 * s))
         texts.bind("<ButtonPress-1>", self._on_press)
         texts.bind("<B1-Motion>", self._on_drag)
-        self.caption = label(texts, self.theme, CAPTION_NORMAL, font=self.fonts.tiny, fg=self.theme.text3)
+        self.caption = label(
+            texts, self.theme, caption, font=(family, CAPTION_PT * s), fg=self.theme.text3
+        )
         self.caption.pack(anchor="w")
-        self.clock = label(texts, self.theme, "00:00", font=(self.fonts.family, 17, "bold"), fg=self.theme.text)
+        self.clock = label(
+            texts, self.theme, "00:00", font=(family, CLOCK_PT * s, "bold"), fg=self.theme.text
+        )
         self.clock.pack(anchor="w")
         for widget in (self.caption, self.clock):
             widget.bind("<ButtonPress-1>", self._on_press)
             widget.bind("<B1-Motion>", self._on_drag)
 
+        self._fit(text, caption, center)
+
     # ---------- 尺寸 ----------
 
-    def _fit(self, text: str, caption: str) -> None:
+    def _fit(self, text: str, caption: str, center: tuple[int, int] | None = None) -> None:
         """按当前字体尺寸把窗口定成「装得下」的大小。
 
         先塞进同位数的最宽数字（8 比 1 宽）与最长的说明，量出 inner 需要多大，
         再把窗口定成那个尺寸——100% 与 150% 缩放下都不会裁字。
         """
         self._fitted = True
+        s = self._scale
         mask = "".join("8" if ch.isdigit() else ch for ch in text)
         widest_caption = max(
             (CAPTION_NORMAL, CAPTION_SOON, CAPTION_SAVE, CAPTION_LAST), key=lambda item: len(item)
@@ -106,23 +147,31 @@ class OverlayBar(tk.Toplevel):
         self.clock.configure(text=mask)
         self.caption.configure(text=widest_caption)
         self.update_idletasks()
-        width = max(BAR_MIN_WIDTH, self._inner.winfo_reqwidth() + PAD_X * 2 + 2)
-        height = max(BAR_MIN_HEIGHT, self._inner.winfo_reqheight() + PAD_Y * 2 + 2)
+        width = max(BAR_MIN_WIDTH * s, self._inner.winfo_reqwidth() + PAD_X * s * 2 + self._edge * 2)
+        height = max(BAR_MIN_HEIGHT * s, self._inner.winfo_reqheight() + PAD_Y * s * 2 + self._edge * 2)
         self._size = (width, height)
-        self._place_window()
+        self._place_window(center)
         self.clock.configure(text=text)
         self.caption.configure(text=caption)
 
     # ---------- 位置 ----------
 
-    def _place_window(self) -> None:
+    def _center(self) -> tuple[int, int]:
+        """当前窗口中心。放大时以它为锚点，条子会「原地胀开」而不是跳到别处。"""
+        return (self.winfo_x() + self._size[0] // 2, self.winfo_y() + self._size[1] // 2)
+
+    def _place_window(self, center: tuple[int, int] | None = None) -> None:
         width, height = self._size
-        saved = self.app.parent.overlay_position()
-        if saved:
-            x, y = saved
+        if center is not None:
+            x = center[0] - width // 2
+            y = center[1] - height // 2
         else:
-            x = max(0, self.winfo_screenwidth() - width - 40)
-            y = 56
+            saved = self.app.parent.overlay_position()
+            if saved:
+                x, y = saved
+            else:
+                x = max(0, self.winfo_screenwidth() - width - 40)
+                y = 56
         x = max(0, min(max(0, self.winfo_screenwidth() - width), int(x)))
         y = max(0, min(max(0, self.winfo_screenheight() - height), int(y)))
         self.geometry(f"{width}x{height}+{x}+{y}")
@@ -170,7 +219,12 @@ class OverlayBar(tk.Toplevel):
         else:
             caption, color = CAPTION_NORMAL, self.theme.text
 
-        if not self._fitted:
+        # 跨越 30 秒这道坎时整体换尺寸。中心取的是换之前的坐标，条子原地胀开，
+        # 而不是从屏幕某个角落重新摆一次
+        wanted = ZOOM if seconds <= BLINK_SECONDS else 1
+        if wanted != self._scale:
+            self._build(wanted, text, caption, self._center())
+        elif not self._fitted:
             self._fit(text, caption)
 
         # 最后 30 秒：每秒翻一次，时钟与窗口描边一起闪，提醒先把视频/游戏存一下

@@ -160,9 +160,48 @@ def main() -> int:
     )
     check("平时写「剩余时间」", overlay.caption.cget("text") == "剩余时间", overlay.caption.cget("text"))
 
+    # 心跳每 600ms 会按真实剩余时间刷一次，把刚放大的窗口打回 1 倍。机器慢一点
+    # （比如批量跑测试时）就会在这里翻车，所以量尺寸期间先停掉它
+    app._cancel_overlay_job()
+
     overlay.refresh(45)
     check("60 秒内提示「快结束了」", overlay.caption.cget("text") == "快结束了", overlay.caption.cget("text"))
+
+    base_size = overlay._size
+    base_center = overlay._center()
     overlay.refresh(29)
+    app.update()
+    zoom_size = overlay._size
+    zoom_center = overlay._center()
+    ratio_w = zoom_size[0] / base_size[0]
+    ratio_h = zoom_size[1] / base_size[1]
+    check(
+        "最后 30 秒整条放大到三倍",
+        ratio_w >= 2.9 and ratio_h >= 2.9,
+        f"{base_size} → {zoom_size}（宽 {ratio_w:.2f} 倍 / 高 {ratio_h:.2f} 倍）",
+    )
+    # 条子默认停在右上角附近，放大三倍后必然要往里让位（不然出屏），
+    # 所以这里不要求像素级不动，只要求它「还在原来那一带」，没跑到屏幕中央
+    check(
+        "放大后仍贴在右上角一带",
+        zoom_center[0] > overlay.winfo_screenwidth() * 0.6
+        and zoom_center[1] < overlay.winfo_screenheight() * 0.4,
+        f"{base_center} → {zoom_center}，屏幕 {overlay.winfo_screenwidth()}x{overlay.winfo_screenheight()}",
+    )
+    check(
+        "放大后时钟没被裁掉",
+        overlay.clock.winfo_height() >= overlay.clock.winfo_reqheight()
+        and overlay.clock.winfo_width() >= overlay.clock.winfo_reqwidth(),
+        f"{overlay.clock.winfo_width()}x{overlay.clock.winfo_height()} / "
+        f"{overlay.clock.winfo_reqwidth()}x{overlay.clock.winfo_reqheight()}",
+    )
+    check(
+        "放大后窗口仍在屏幕内",
+        overlay.winfo_x() + zoom_size[0] <= overlay.winfo_screenwidth()
+        and overlay.winfo_y() + zoom_size[1] <= overlay.winfo_screenheight(),
+        f"({overlay.winfo_x()},{overlay.winfo_y()}) {zoom_size}",
+    )
+
     first = overlay.clock.cget("fg")
     overlay.refresh(29)
     second = overlay.clock.cget("fg")
@@ -171,7 +210,13 @@ def main() -> int:
     overlay.refresh(9)
     check("最后 10 秒改说「即将回锁」", overlay.caption.cget("text") == "即将回锁", overlay.caption.cget("text"))
     overlay.refresh(300)
+    app.update()
     check("回到 5 分钟时不再闪", overlay.caption.cget("text") == "剩余时间", overlay.caption.cget("text"))
+    check(
+        "回到 5 分钟时缩回原尺寸",
+        overlay._size == base_size,
+        f"{overlay._size} / 原 {base_size}",
+    )
     check("一位数小时也能显示", overlay._format(3725) == "1:02:05", overlay._format(3725))
     overlay.refresh(59)
     app.update()
@@ -191,6 +236,8 @@ def main() -> int:
     check("计时条已销毁", app.overlay is None)
     check("主窗口重新显示", app.state() == "normal", app.state())
     check("回锁原因记为时间到", app.storage.state["lock"]["lastLockReason"] == "timeup")
+    check("回锁后把系统声音关掉", app.mute.engaged() and app.storage.state["lock"]["muteBefore"] == 0)
+    check("声音状态落到 state.json", app.storage.state["lock"]["muteBefore"] in (0, 1))
 
     # ---------------- 提前结束 ----------------
 
@@ -202,14 +249,22 @@ def main() -> int:
 
     # ---------------- 家长解锁 ----------------
 
-    app.parent_unlock(30)
+    check("静音记号还在（解锁前）", app.mute.engaged())
+    from quizwin.ui.page_lock import PARENT_UNLOCK_MINUTES  # noqa: E402
+
+    check("家长临时解锁是 45 分钟", PARENT_UNLOCK_MINUTES == 45, str(PARENT_UNLOCK_MINUTES))
+    app.parent_unlock(PARENT_UNLOCK_MINUTES)
     app.update()
     check("家长可直接解锁", app.lock.is_unlocked())
+    check("解锁时长按 45 分钟计", 44 * 60 <= app.lock.remaining_seconds() <= 45 * 60, str(app.lock.remaining_seconds()))
     check("家长解锁不动答题余额", int(app.storage.state["today"]["credit_ms"]) == before_credit)
+    check("解锁后解除静音", not app.mute.engaged() and app.storage.state["lock"]["muteBefore"] is None)
+    check("解锁后声音恢复", not app.mute._audio.muted)
     app.end_unlock_early()
     app.update()
     check("提前结束立即回锁", app.lock.is_locked())
     check("提前结束也销毁计时条", app.overlay is None)
+    check("结束回锁也静音", app.mute.engaged())
 
     app.destroy()
 

@@ -154,6 +154,21 @@ def main() -> int:
         )
         app.update()
 
+    overlay = None
+    if "--overlay" in sys.argv:
+        # 截「解锁后的悬浮计时条」：--overlay 25 表示把剩余时间定在 25 秒，
+        # 顺带能看到最后 30 秒的三倍放大与闪烁
+        seconds = int(sys.argv[sys.argv.index("--overlay") + 1])
+        app.parent_unlock(10)
+        app.update()
+        # 心跳每 600ms 会按真实剩余时间刷一次，把窗口打回 1 倍。截图期间先停掉它，
+        # 再把截止时间挪到目标秒数，让 refresh 看到的就是我们要截的那一刻
+        app._cancel_overlay_job()
+        app.lock._deadline = app.lock._clock() + seconds
+        overlay = app.overlay
+        overlay.refresh(seconds)
+        app.update()
+
     app.update_idletasks()
     app.update()
     app.attributes("-topmost", True)
@@ -163,7 +178,12 @@ def main() -> int:
     def finish():
         app.lift()
         app.update()
-        target = dialog if dialog is not None and dialog.winfo_exists() else app
+        if dialog is not None and dialog.winfo_exists():
+            target = dialog
+        elif overlay is not None and overlay.winfo_exists():
+            target = overlay
+        else:
+            target = app
         target.lift()
         target.update()
         grab(target, out)

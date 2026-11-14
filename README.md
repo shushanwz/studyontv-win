@@ -13,7 +13,7 @@
 
 ## 一、安装（推荐给普通用户）
 
-双击 **`dist\题了个题-0.3.4-安装版.exe`**（8.4 MB），按向导走完即可。
+双击 **`dist\题了个题-0.3.5-安装版.exe`**（8.4 MB），按向导走完即可。
 
 | 项目 | 说明 |
 | --- | --- |
@@ -102,6 +102,10 @@ python run.py
 | --- | --- |
 | ![锁屏封面](shots/14-锁屏封面.png) | ![锁屏答题](shots/13-锁屏答题.png) |
 
+解锁后桌面上只留一条计时条。到剩 30 秒时整条放大三倍并闪烁，顺便把系统声音关掉——视频、游戏再开着也不会响：
+
+![最后 30 秒](shots/18-最后30秒.png)
+
 规则页底部的家长分区（档位、加固开关、改密码）：
 
 ![家长控制](shots/15-家长控制.png)
@@ -176,9 +180,10 @@ python run.py
 | 换时间 | 底部四档 10 / 15 / 20 / 25 分钟，余额够的才亮，不够的显示「还差 N 分钟」 |
 | 解锁中 | 主窗口收起，桌面只留一条可拖动的倒计时条，显示剩余 MM:SS（超过 1 小时显示 H:MM:SS） |
 | 最后 60 秒 | 说明变成「快结束了」，时间转成强调色 |
-| 最后 30 秒 | 时间、边框、圆点一秒一闪，说明变成「记得保存」——给孩子留出存视频、退游戏的时间 |
-| 到点 | 无提示、无过渡，直接全屏回锁。不会弹「时间到了」——弹窗本身就是可操作的空档 |
-| 提前结束 | 点计时条上的「结束」，放弃剩余时间立刻回锁 |
+| 最后 30 秒 | 整条放大到三倍（字号、内边距、按钮同步放大），时间、边框、圆点一秒一闪，说明变成「记得保存」——给孩子留出存视频、退游戏的时间 |
+| 到点 | 无提示、无过渡，直接全屏回锁，并**关掉系统声音**（视频/游戏还开着也哑了）。不会弹「时间到了」——弹窗本身就是可操作的空档 |
+| 提前结束 | 点计时条上的「结束」，放弃剩余时间立刻回锁，同样静音 |
+| 再解锁 | 换到自由时间的那一刻把声音原样还回去；锁屏前本来就是静音的不动它 |
 
 ### 锁屏期间拦住什么
 
@@ -198,7 +203,7 @@ python run.py
 
 锁屏页底部有「家长解锁」四个字。输密码后可以：
 
-- 临时解锁 30 分钟，或解锁到明天零点
+- 临时解锁 45 分钟，或解锁到明天零点
 - 立即回锁
 - 打开设置（改规则、改档位、改加固开关、换题库）
 - 退出程序
@@ -362,7 +367,12 @@ python run.py
 │  │  ├─ rules.py              # Rules：玩法与奖励参数、通过题数计算
 │  │  ├─ engine.py             # Engine：状态机（开始 / 作答 / 加练 / 结算 / 计时 / SM-2 / 收错题）
 │  │  ├─ wrongbook.py          # WrongBook：错题库读写、内容指纹去重
+│  │  ├─ mute.py               # MuteGuard：锁屏关声音、解锁还原、崩溃残留兜底
 │  │  └─ storage.py            # 本地存储：题库目录、state.json 原子写
+│  ├─ winapi/
+│  │  ├─ harden.py             # 按键拦截、锁光标、抢前台
+│  │  ├─ watchdog.py           # 守护进程：主进程被杀后拉起
+│  │  └─ audio.py              # 系统静音开关（ctypes 调 Core Audio，可读可写）
 │  └─ ui/
 │     ├─ app.py                # 主窗口、导航、主题、全局快捷键
 │     ├─ page_quiz.py          # 答题六种视图
@@ -435,7 +445,8 @@ python run.py
 python tests\engine_smoke.py          :: 引擎 60 项：三种玩法、加练池、额度、归一化、SM-2、题库读写
 python tests\ui_smoke.py              :: 真实建窗：逐页渲染、作答、主题切换、对话框、计时页、拦截页
 python tests\parent_lock_smoke.py     :: 家长控制 94 项：密码哈希、恢复码、错误冷却、锁定状态机、时钟篡改
-python tests\lock_ui_smoke.py         :: 锁屏链路 39 项：兑换 → 计时条尺寸 / 最后 30 秒闪烁 → 到点回锁
+python tests\lock_ui_smoke.py         :: 锁屏链路 52 项：兑换 → 计时条尺寸 / 30 秒放大三倍并闪烁 / 静音 → 到点回锁
+python tests\mute_smoke.py            :: 锁屏静音 32 项：关掉与还原、原本静音不擅动、重复调用、崩溃残留恢复、无声卡降级
 python tests\dialog_layout_smoke.py   :: 对话框布局与销毁后回调
 python tests\settings_mode_smoke.py   :: 家长从锁屏进设置再回锁屏
 python tests\harden_smoke.py          :: 按键拦截判定、钩子装卸、看门狗决策
@@ -447,7 +458,7 @@ python tests\bank_ui_smoke.py         :: 题库页界面 40 项：勾选出题�
 python tests\wrongbook_smoke.py       :: 错题库 49 项：自动收集、内容去重、自动进入范围、清空、删除后重建、编辑中收录
 ```
 
-十三套共 **521 项**，全绿再打包。
+十四套共 **566 项**，全绿再打包。
 
 > 后两套会真的起守护进程。它们用 `QUIZWIN_GUARD_DRY=1` 让「重启锁屏」只留痕不真执行，
 > 因此不会在跑测试时把桌面锁住。
@@ -463,6 +474,7 @@ python tests\wrongbook_smoke.py       :: 错题库 49 项：自动收集、内�
 - `keypad.py`：给前台窗口打字/按键/点击，用来打通「首次设置」这种只能靠人手点一次的流程
 - `shot_prompt.py`：只截「自建题库」对话框本身，重生成 `shots/16-AI自建题库.png`
 - `shot.py --wrongbook`：造几条错题并切到错题库，重生成 `shots/17-错题库.png`
+- `shot.py --overlay <秒>`：解锁后把剩余时间定在指定秒数，截计时条（`--overlay 25` 就是三倍放大版）
 - `uninstall_silent.py`：静默卸载已安装的程序（绕开 Git Bash 的 `/S` 转换）
 - `make_shots.py`：批量生成 `shots/` 里的展示图
 - `make_launcher.py`：重新生成 GBK 编码的启动脚本
@@ -475,7 +487,7 @@ python tests\wrongbook_smoke.py       :: 错题库 49 项：自动收集、内�
 
 ```bat
 python build_package.py      :: PyInstaller  → dist\题了个题\（免安装目录）
-python build_installer.py    :: NSIS         → dist\题了个题-0.3.4-安装版.exe（8.4 MB）
+python build_installer.py    :: NSIS         → dist\题了个题-0.3.5-安装版.exe（8.4 MB）
 ```
 
 本机 PATH 上的 `python` 是不带 tkinter 的托管版（3.13.12），得用系统那个：

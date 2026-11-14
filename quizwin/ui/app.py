@@ -11,6 +11,7 @@ from tkinter import messagebox
 
 from ..core.engine import Engine, EngineError
 from ..core.lock import REASON_MANUAL, LockController
+from ..core.mute import MuteGuard
 from ..core.parent import ParentControl
 from ..core import paths
 from ..core.storage import Storage
@@ -101,6 +102,9 @@ class App(tk.Tk):
         self.lock = LockController(self.storage)
         # 上次若停在「已解锁」，这里一律收回：不信任跨进程的解锁状态
         self.lock_info = self.lock.recover_from_crash()
+        # 静音不是自愈的：上次若在「锁屏静音」状态被杀，这里把声音还回去
+        self.mute = MuteGuard(self.lock)
+        self.mute.recover()
         try:
             self.engine = Engine(self.storage)
             self.engine_error = ""
@@ -505,6 +509,8 @@ class App(tk.Tk):
         必须先卸掉输入封锁——晚一秒，家长就多一秒用不了自己的电脑。
         """
         self.release_guard(graceful=False)
+        # 回锁时关掉的声音在这里还回去；没关过就什么也不做
+        self.mute.release()
         if self.overlay is None:
             self.overlay = OverlayBar(self)
         self.overlay.refresh(self.lock.remaining_seconds())
@@ -539,6 +545,9 @@ class App(tk.Tk):
         if self.overlay is not None:
             self.overlay.destroy()
             self.overlay = None
+        # 到点收工就把声音关掉：孩子不能再玩了，视频/游戏的背景音留着只会让
+        # 家长以为是程序没锁住。下次解锁（enter_overlay）时还原。
+        self.mute.engage()
         self.deiconify()
         self.attributes("-topmost", True)
         self.lift()
@@ -750,6 +759,8 @@ class App(tk.Tk):
                 return
             self.lock.force_lock(REASON_MANUAL)
         self._cancel_overlay_job()
+        # 退出前把欠着的声音还回去，否则程序关掉了电脑还是哑的
+        self.mute.release()
         # 先让看门狗知道「这次是正常退出」，再卸载钩子，最后才销毁窗口
         self.release_guard(graceful=True)
         try:

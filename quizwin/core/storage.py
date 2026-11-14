@@ -53,6 +53,8 @@ DEFAULT_LOCK: dict[str, Any] = {
     "abnormalExit": 0,
     "lockCount": 0,
     "lastLockReason": "",
+    # None = 本程序没动过系统声音；0/1 = 动过，值为动之前的原始静音状态（见 core/mute.py）
+    "muteBefore": None,
 }
 
 DEFAULT_STATE: dict[str, Any] = {
