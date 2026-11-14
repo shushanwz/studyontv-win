@@ -13,7 +13,7 @@
 
 ## 一、安装（推荐给普通用户）
 
-双击 **`dist\题了个题-0.3.5-安装版.exe`**（8.4 MB），按向导走完即可。
+双击 **`dist\题了个题-0.3.6-安装版.exe`**（8.4 MB），按向导走完即可。
 
 | 项目 | 说明 |
 | --- | --- |
@@ -46,6 +46,8 @@
 ```bat
 python run.py
 ```
+
+手上没有这份源码的话，两条路：不想装 Python 就用 `dist\题了个题-x.y.z-安装版.exe`；想改代码就下 `dist\题了个题-x.y.z-源码版.zip`（解压即是一棵能跑的源码树，或直接 `git clone`）。
 
 程序启动后落在「答题」封面页，点「开始答题」进入一组题；答完一组结算解锁时长，点「开始使用」进入倒计时。
 
@@ -360,6 +362,8 @@ python run.py
 题了个题-桌面版/
 ├─ 启动.bat / 调试启动.bat     # 双击运行
 ├─ run.py                      # 入口（DPI 感知 + 启动兜底）
+├─ build_package.py / build_installer.py / build_source.py   # 打包：exe 目录、安装包、源码 zip
+├─ build/                      # NSIS 脚本、图标、版本资源
 ├─ quizwin/
 │  ├─ core/
 │  │  ├─ paths.py              # 数据目录判定、内置题库铺设
@@ -481,26 +485,31 @@ python tests\wrongbook_smoke.py       :: 错题库 49 项：自动收集、内�
 
 ---
 
-## 十一、打包成安装包
+## 十一、打包
 
-两步，都要用**带 tkinter 的** Python：
+三件事，都要用**带 tkinter 的** Python：
 
 ```bat
 python build_package.py      :: PyInstaller  → dist\题了个题\（免安装目录）
-python build_installer.py    :: NSIS         → dist\题了个题-0.3.5-安装版.exe（8.4 MB）
+python build_installer.py    :: NSIS         → dist\题了个题-0.3.6-安装版.exe（8.4 MB）
+python build_source.py       :: zipfile      → dist\题了个题-0.3.6-源码版.zip（1.1 MB）
 ```
+
+顺序不能换：`build_package.py` 开头会 `rmtree(dist)`，所以源码版必须最后打。
 
 本机 PATH 上的 `python` 是不带 tkinter 的托管版（3.13.12），得用系统那个：
 
 ```bat
 "%LOCALAPPDATA%\Programs\Python\Python313\python.exe" build_package.py
 "%LOCALAPPDATA%\Programs\Python\Python313\python.exe" build_installer.py
+"%LOCALAPPDATA%\Programs\Python\Python313\python.exe" build_source.py
 ```
 
 | 文件 | 作用 |
 | --- | --- |
 | `build_package.py` | 生成 `dist\题了个题\`：onedir、无控制台、带图标与版本资源 |
 | `build_installer.py` | 编译 NSIS 脚本，自动给 `.nsi` 补 UTF-8 BOM，输出安装包 |
+| `build_source.py` | 按 `git ls-files` 收文件打源码 zip，附一份「源码版说明.txt」，打完自检夹带 |
 | `build\installer.nsi` | 安装脚本本身：装到 `%LOCALAPPDATA%`、卸载项写 HKCU、可选开机自启 |
 | `tools\make_icon.py` | 生成 `build\app.ico`（256→16 七个尺寸） |
 | `tools\make_installer_art.py` | 生成安装向导的 `welcome.bmp` / `header.bmp` |
